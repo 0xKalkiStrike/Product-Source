@@ -17,6 +17,7 @@ interface ProjectContextType {
   activeProject: Project | null;
   setActiveProject: (proj: Project | null) => void;
   fetchProjects: () => Promise<void>;
+  createProject: (name: string, description?: string) => Promise<Project>;
   loading: boolean;
 }
 
@@ -33,16 +34,44 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       setLoading(true);
       const res = await api.get('/projects');
-      const items: Project[] = res.data.items || [];
+      let items: Project[] = res.data.items || [];
+      
+      if (items.length === 0) {
+        try {
+          const createRes = await api.post('/projects', {
+            name: 'Default Market Scope',
+            description: 'Default workspace project for product verification & market intelligence'
+          });
+          items = [createRes.data];
+        } catch (createErr) {
+          console.error('Failed to auto-create default project:', createErr);
+        }
+      }
+      
       setProjects(items);
-      if (items.length > 0 && !activeProject) {
-        setActiveProject(items[0]);
+      if (items.length > 0) {
+        setActiveProject((prev) => {
+          if (!prev || !items.find(p => p.id === prev.id)) {
+            return items[0];
+          }
+          return prev;
+        });
+      } else {
+        setActiveProject(null);
       }
     } catch (err) {
       console.error('Failed to fetch projects:', err);
     } finally {
       setLoading(false);
     }
+  };
+
+  const createProject = async (name: string, description?: string): Promise<Project> => {
+    const res = await api.post('/projects', { name, description });
+    const newProj: Project = res.data;
+    setProjects(prev => [...prev, newProj]);
+    setActiveProject(newProj);
+    return newProj;
   };
 
   useEffect(() => {
@@ -52,7 +81,7 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
   }, [token]);
 
   return (
-    <ProjectContext.Provider value={{ projects, activeProject, setActiveProject, fetchProjects, loading }}>
+    <ProjectContext.Provider value={{ projects, activeProject, setActiveProject, fetchProjects, createProject, loading }}>
       {children}
     </ProjectContext.Provider>
   );

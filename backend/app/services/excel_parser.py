@@ -4,6 +4,12 @@ import re
 from typing import List, Dict, Any, Tuple
 
 def clean_identifier(val: Any) -> str:
+    if isinstance(val, (pd.Series, list)):
+        for item in val:
+            res = clean_identifier(item)
+            if res:
+                return res
+        return ""
     if pd.isna(val) or val is None:
         return ""
     val_str = str(val).strip()
@@ -17,6 +23,12 @@ def clean_identifier(val: Any) -> str:
     return val_str
 
 def parse_price(val: Any) -> float | None:
+    if isinstance(val, (pd.Series, list)):
+        for item in val:
+            res = parse_price(item)
+            if res is not None:
+                return res
+        return None
     if pd.isna(val) or val is None:
         return None
     val_str = str(val).strip().replace('$', '').replace(',', '')
@@ -45,6 +57,20 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     if df.empty:
         raise ValueError("Uploaded file contains no data rows.")
 
+    # Deduplicate original column names if duplicate headers exist in Excel file
+    cols = list(df.columns)
+    seen_cols: Dict[str, int] = {}
+    new_cols = []
+    for c in cols:
+        c_str = str(c).strip()
+        if c_str in seen_cols:
+            seen_cols[c_str] += 1
+            new_cols.append(f"{c_str}_dup{seen_cols[c_str]}")
+        else:
+            seen_cols[c_str] = 1
+            new_cols.append(c_str)
+    df.columns = new_cols
+
     # Auto-detect header row if first row was blank or unmapped
     if df.columns[0].startswith("Unnamed:") and len(df) > 1:
         for r_idx in range(min(5, len(df))):
@@ -54,32 +80,39 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
                 df = df.iloc[r_idx + 1:].reset_index(drop=True)
                 break
 
-    # Column mapping normalization
+    # Column mapping normalization: ensure target field is mapped AT MOST ONCE
     column_map = {}
+    used_targets = set()
+
     for col in df.columns:
         norm = str(col).strip().lower().replace('_', ' ').replace('-', ' ')
+        target = None
         if 'sku' in norm:
-            column_map[col] = 'sku'
-        elif 'product' in norm or 'name' in norm or 'title' in norm or 'item' in norm or 'description' in norm:
-            column_map[col] = 'name'
+            target = 'sku'
+        elif 'product' in norm or 'title' in norm or 'item' in norm or 'name' in norm:
+            target = 'name'
         elif 'brand' in norm or 'manufacturer' in norm or 'vendor' in norm:
-            column_map[col] = 'brand'
+            target = 'brand'
         elif 'category' in norm:
-            column_map[col] = 'category'
+            target = 'category'
         elif 'mpn' in norm or 'model' in norm:
-            column_map[col] = 'mpn'
+            target = 'mpn'
         elif 'upc' in norm:
-            column_map[col] = 'upc'
+            target = 'upc'
         elif 'ean' in norm:
-            column_map[col] = 'ean'
+            target = 'ean'
         elif 'pack' in norm or 'size' in norm:
-            column_map[col] = 'pack_size'
+            target = 'pack_size'
         elif 'variant' in norm:
-            column_map[col] = 'variant'
+            target = 'variant'
         elif 'price' in norm or 'cost' in norm or 'msrp' in norm or 'retail' in norm:
-            column_map[col] = 'price'
+            target = 'price'
+
+        if target and target not in used_targets:
+            column_map[col] = target
+            used_targets.add(target)
         else:
-            column_map[col] = col
+            column_map[col] = str(col)
 
     df = df.rename(columns=column_map)
 

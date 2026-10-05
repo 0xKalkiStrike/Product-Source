@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   FolderKanban,
@@ -15,6 +15,7 @@ import {
   FileCheck2,
   FileSpreadsheet,
   Server,
+  Layers,
   HeartPulse,
   Settings
 } from 'lucide-react';
@@ -34,100 +35,52 @@ const navItems = [
   { path: '/audit-logs', label: 'Audit Logs', icon: ShieldCheck },
   { path: '/evidence', label: 'Evidence & Screenshots', icon: FileCheck2 },
   { path: '/reports', label: 'Reports & Exports', icon: FileSpreadsheet },
-  { path: '/workers', label: 'Workers Pool', icon: Server },
+  { path: '/workers', label: 'Workers Pool', icon: Layers },
   { path: '/health', label: 'System Health', icon: HeartPulse },
   { path: '/settings', label: 'Settings', icon: Settings },
 ];
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
+  const location = useLocation();
+
+  // Close the drawer after navigating on small screens.
+  useEffect(() => {
+    onClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
+
   return (
-    <aside style={{
-      width: '260px',
-      backgroundColor: 'var(--bg-surface)',
-      borderRight: '1px solid var(--border-color)',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-      position: 'sticky',
-      top: 0,
-      zIndex: 10
-    }}>
-      {/* Brand Header */}
-      <div style={{
-        padding: '1.25rem 1.5rem',
-        borderBottom: '1px solid var(--border-color)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.75rem'
-      }}>
-        <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '8px',
-          background: 'linear-gradient(135deg, var(--primary), var(--accent-cyan))',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 700,
-          color: 'white',
-          fontSize: '1.1rem'
-        }}>
-          M
-        </div>
-        <div>
-          <div style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
-            MarketLens
-          </div>
-          <div style={{ fontSize: '0.68rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-            PRODUCT VERIFICATION & INTEL
+    <>
+      <aside className={`sidebar ${open ? 'open' : ''}`} aria-label="Main navigation">
+        <div className="sidebar-brand">
+          <div className="sidebar-logo">M</div>
+          <div>
+            <div className="sidebar-brand-name">MarketLens</div>
+            <div className="sidebar-brand-tag">Product Verification &amp; Market Intelligence Platform</div>
           </div>
         </div>
-      </div>
 
-      {/* Nav List */}
-      <nav style={{
-        flex: 1,
-        padding: '1rem 0.75rem',
-        overflowY: 'auto'
-      }}>
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              style={({ isActive }) => ({
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.625rem 0.875rem',
-                marginBottom: '0.2rem',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.85rem',
-                fontWeight: isActive ? 600 : 400,
-                color: isActive ? 'white' : 'var(--text-muted)',
-                backgroundColor: isActive ? 'var(--primary)' : 'transparent',
-                transition: 'var(--transition)'
-              })}
-            >
-              <Icon size={18} />
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
-      </nav>
+        <nav className="sidebar-nav">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <NavLink key={item.path} to={item.path}>
+                <Icon size={18} />
+                <span>{item.label}</span>
+              </NavLink>
+            );
+          })}
+        </nav>
 
-      {/* Footer info */}
-      <div style={{
-        padding: '1rem',
-        borderTop: '1px solid var(--border-color)',
-        fontSize: '0.75rem',
-        color: 'var(--text-dim)',
-        textAlign: 'center'
-      }}>
-        Internal Workload Engine Active
-      </div>
-    </aside>
+        <div className="sidebar-footer">Internal workload engine active</div>
+      </aside>
+
+      {open && <div className="sidebar-backdrop" onClick={onClose} aria-hidden="true" />}
+    </>
   );
 };

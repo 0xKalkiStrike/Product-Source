@@ -150,7 +150,9 @@ async def start_verification_job(
                 currency=currency,
                 pack_size=details.get("pack_size", "Single"),
                 availability=details.get("availability", "IN_STOCK"),
-                evidence_path=f"storage/evidence/{evidence_hash[:12]}.png",
+                # evidence_hash fingerprints this result record. No screenshot is captured
+                # here yet, so no evidence_path is recorded for a file that does not exist.
+                evidence_path=None,
                 evidence_hash=evidence_hash,
                 status="VERIFIED" if is_match else "NOT_FOUND",
                 verified_at=now

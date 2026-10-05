@@ -4,8 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ShieldCheck, Lock, Mail, AlertCircle } from 'lucide-react';
 
 export const Login: React.FC = () => {
-  const [email, setEmail] = useState('deep@brainbean.in');
-  const [password, setPassword] = useState('Deep@231104');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -122,7 +122,7 @@ export const Login: React.FC = () => {
                 type="email"
                 className="input"
                 style={{ paddingLeft: '2.5rem' }}
-                placeholder="deep@brainbean.in"
+                placeholder="admin@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -162,11 +162,6 @@ export const Login: React.FC = () => {
           <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 600 }}>
             Create Account
           </Link>
-        </div>
-
-        <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-dim)' }}>
-          Default Administrator Credentials:<br />
-          <code>deep@brainbean.in</code> / <code>Deep@231104</code>
         </div>
       </div>
     </div>

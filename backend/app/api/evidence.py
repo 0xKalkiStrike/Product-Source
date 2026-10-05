@@ -56,8 +56,9 @@ async def list_evidence_records(
             "match_confidence": ver.match_confidence,
             "extracted_price": ver.extracted_price,
             "currency": ver.currency,
-            "evidence_path": ver.evidence_path or f"storage/evidence/{ver.id[:10]}.png",
-            "evidence_hash": ver.evidence_hash or "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            # Null means no evidence was captured; never fabricate a path or hash.
+            "evidence_path": ver.evidence_path,
+            "evidence_hash": ver.evidence_hash,
             "status": ver.status,
             "verified_at": ver.verified_at.isoformat() if ver.verified_at else None,
             "match_evidence": ver.match_evidence

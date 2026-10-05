@@ -15,8 +15,8 @@ interface EvidenceRecord {
   match_confidence: number;
   extracted_price: number | null;
   currency: string;
-  evidence_path: string;
-  evidence_hash: string;
+  evidence_path: string | null;
+  evidence_hash: string | null;
   status: string;
   verified_at: string;
 }
@@ -83,12 +83,12 @@ export const EvidencePage: React.FC = () => {
                 </span>
               </div>
 
-              {/* Mock Screenshot Evidence Container */}
+              {/* Evidence proof container: shows a real capture reference or an explicit "not captured" state */}
               <div style={{
                 height: '160px',
                 backgroundColor: 'rgba(0,0,0,0.3)',
                 borderRadius: 'var(--radius-sm)',
-                border: '1px border-dashed var(--border-color)',
+                border: '1px dashed var(--border-color)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -98,13 +98,22 @@ export const EvidencePage: React.FC = () => {
                 gap: '0.5rem'
               }}>
                 <ImageIcon size={32} color="var(--primary)" />
-                <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Webpage Screenshot Proof</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Hash: {ev.evidence_hash.slice(0, 16)}...</span>
+                {ev.evidence_path ? (
+                  <>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Captured evidence</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', wordBreak: 'break-all', textAlign: 'center' }}>{ev.evidence_path}</span>
+                    {ev.evidence_hash && (
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Hash: {ev.evidence_hash.slice(0, 16)}...</span>
+                    )}
+                  </>
+                ) : (
+                  <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>No evidence captured</span>
+                )}
               </div>
 
               <div style={{ fontSize: '0.82rem', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem', color: 'var(--text-muted)' }}>
                 <div>Target Source: <strong style={{ color: 'var(--text-main)' }}>{ev.source_name}</strong></div>
-                <div>Extracted Price: <strong style={{ color: 'var(--accent-green)' }}>${ev.extracted_price?.toFixed(2) || '24.99'}</strong></div>
+                <div>Extracted Price: <strong style={{ color: 'var(--accent-green)' }}>{ev.extracted_price != null ? `$${ev.extracted_price.toFixed(2)}` : 'Not extracted'}</strong></div>
                 <div>Priority Level: <span style={{ color: 'var(--primary)' }}>{ev.match_priority_level}</span></div>
                 <div>Captured At: <span>{ev.verified_at?.slice(0, 10)}</span></div>
               </div>

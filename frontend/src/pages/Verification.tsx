@@ -57,6 +57,10 @@ export const VerificationPage: React.FC = () => {
     if (activeProject) {
       fetchSources();
       fetchResults();
+    } else {
+      setLoading(false);
+      setResults([]);
+      setSources([]);
     }
   }, [activeProject, selectedSource, selectedStatus]);
 
@@ -71,7 +75,10 @@ export const VerificationPage: React.FC = () => {
   };
 
   const fetchResults = async () => {
-    if (!activeProject) return;
+    if (!activeProject) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     try {
       let url = `/projects/${activeProject.id}/verification/results?limit=100`;

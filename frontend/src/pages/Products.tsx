@@ -32,7 +32,7 @@ export interface Category {
 }
 
 export const ProductsPage: React.FC = () => {
-  const { activeProject } = useProject();
+  const { activeProject, createProject } = useProject();
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCat, setSelectedCat] = useState<string>('');
@@ -60,7 +60,11 @@ export const ProductsPage: React.FC = () => {
   const [newCategory, setNewCategory] = useState<string>('');
 
   const fetchProductsData = async () => {
-    if (!activeProject) return;
+    if (!activeProject) {
+      setLoading(false);
+      setProducts([]);
+      return;
+    }
     setLoading(true);
     try {
       const [prodRes, catRes] = await Promise.all([
@@ -127,16 +131,27 @@ export const ProductsPage: React.FC = () => {
 
   const handleUploadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!uploadFile || !activeProject) return;
+    if (!uploadFile) return;
     setUploading(true);
     setUploadError('');
     setUploadResult(null);
+
+    let proj = activeProject;
+    if (!proj) {
+      try {
+        proj = await createProject('Default Market Scope', 'Auto-created project workspace for product upload');
+      } catch (err) {
+        setUploadError('Could not initialize active project scope.');
+        setUploading(false);
+        return;
+      }
+    }
 
     const formData = new FormData();
     formData.append('file', uploadFile);
 
     try {
-      const res = await api.post(`/projects/${activeProject.id}/products/upload`, formData, {
+      const res = await api.post(`/projects/${proj.id}/products/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setUploadResult(res.data);
