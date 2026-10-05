@@ -8,6 +8,71 @@ from app.models.all_models import Source, User, AuditLog
 from app.schemas.phase2 import SourceCreate, SourceUpdate, SourceOut, SourceListOut
 from app.api.deps import get_current_user
 
+DEFAULT_TARGET_SOURCES = [
+    {
+        "name": "BigCommerce Target Catalog",
+        "url": "https://cdn11.bigcommerce.com/s-3om7ob",
+        "source_type": "AUTHORIZED_API",
+        "auth_required": False,
+        "adapter_name": "GenericSourceAdapter",
+        "max_concurrency": 8,
+        "rate_limit_rpm": 90,
+        "monitoring_interval_min": 30
+    },
+    {
+        "name": "Famous Smoke Shop",
+        "url": "https://www.famous-smoke.com",
+        "source_type": "PUBLIC_SURFACE_WEB",
+        "auth_required": False,
+        "adapter_name": "CigarSourceAdapter",
+        "max_concurrency": 5,
+        "rate_limit_rpm": 60,
+        "monitoring_interval_min": 60
+    },
+    {
+        "name": "Gotham Cigars Marketplace",
+        "url": "https://www.gothamcigars.com",
+        "source_type": "PUBLIC_SURFACE_WEB",
+        "auth_required": False,
+        "adapter_name": "CigarSourceAdapter",
+        "max_concurrency": 5,
+        "rate_limit_rpm": 60,
+        "monitoring_interval_min": 60
+    },
+    {
+        "name": "VaporDNA E-Commerce Store",
+        "url": "https://vapordna.com",
+        "source_type": "AUTHORIZED_PORTAL",
+        "auth_required": True,
+        "adapter_name": "VapeSourceAdapter",
+        "max_concurrency": 10,
+        "rate_limit_rpm": 120,
+        "monitoring_interval_min": 15
+    }
+]
+
+async def seed_default_sources_for_project(project_id: str, db: AsyncSession) -> List[Source]:
+    new_sources = []
+    for item in DEFAULT_TARGET_SOURCES:
+        source = Source(
+            project_id=project_id,
+            name=item["name"],
+            url=item["url"],
+            source_type=item["source_type"],
+            auth_required=item["auth_required"],
+            adapter_name=item["adapter_name"],
+            max_concurrency=item["max_concurrency"],
+            rate_limit_rpm=item["rate_limit_rpm"],
+            monitoring_interval_min=item["monitoring_interval_min"],
+            status="ACTIVE"
+        )
+        db.add(source)
+        new_sources.append(source)
+    await db.commit()
+    for s in new_sources:
+        await db.refresh(s)
+    return new_sources
+
 router = APIRouter(prefix="/projects/{project_id}/sources", tags=["Sources"])
 
 @router.get("", response_model=SourceListOut)
@@ -19,16 +84,39 @@ async def list_sources(
     db: AsyncSession = Depends(get_db)
 ):
     count_stmt = select(func.count(Source.id)).where(Source.project_id == project_id)
-    stmt = select(Source).where(Source.project_id == project_id).offset(skip).limit(limit).order_by(Source.created_at.desc())
-
     total_res = await db.execute(count_stmt)
     total = total_res.scalar() or 0
 
-    res = await db.execute(stmt)
-    sources = res.scalars().all()
+    if total == 0:
+        sources = await seed_default_sources_for_project(project_id, db)
+        total = len(sources)
+    else:
+        stmt = select(Source).where(Source.project_id == project_id).offset(skip).limit(limit).order_by(Source.created_at.desc())
+        res = await db.execute(stmt)
+        sources = res.scalars().all()
 
     return SourceListOut(
         total=total,
+        items=[SourceOut.model_validate(s) for s in sources]
+    )
+
+@router.post("/seed", response_model=SourceListOut)
+async def seed_sources_endpoint(
+    project_id: str,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    stmt = select(Source).where(Source.project_id == project_id)
+    res = await db.execute(stmt)
+    existing = res.scalars().all()
+    
+    if len(existing) == 0:
+        sources = await seed_default_sources_for_project(project_id, db)
+    else:
+        sources = existing
+
+    return SourceListOut(
+        total=len(sources),
         items=[SourceOut.model_validate(s) for s in sources]
     )
 

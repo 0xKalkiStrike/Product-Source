@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { api } from '../services/api';
-import { Globe, Plus, Trash2, Cpu } from 'lucide-react';
+import { Globe, Plus, Trash2, Cpu, Settings2, RefreshCw } from 'lucide-react';
 
 export interface Source {
   id: string;
@@ -20,7 +20,9 @@ export const SourcesPage: React.FC = () => {
   const { activeProject } = useProject();
   const [sources, setSources] = useState<Source[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [seeding, setSeeding] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [editSource, setEditSource] = useState<Source | null>(null);
 
   // Form state
   const [name, setName] = useState('');
@@ -32,7 +34,11 @@ export const SourcesPage: React.FC = () => {
   const [rateLimitRpm, setRateLimitRpm] = useState(60);
 
   const fetchSources = async () => {
-    if (!activeProject) return;
+    if (!activeProject) {
+      setLoading(false);
+      setSources([]);
+      return;
+    }
     setLoading(true);
     try {
       const res = await api.get(`/projects/${activeProject.id}/sources`);
@@ -47,6 +53,19 @@ export const SourcesPage: React.FC = () => {
   useEffect(() => {
     fetchSources();
   }, [activeProject]);
+
+  const handleSeed = async () => {
+    if (!activeProject) return;
+    setSeeding(true);
+    try {
+      const res = await api.post(`/projects/${activeProject.id}/sources/seed`);
+      setSources(res.data.items || []);
+    } catch (err: any) {
+      alert(err.response?.data?.detail || 'Failed to seed target sources');
+    } finally {
+      setSeeding(false);
+    }
+  };
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,6 +89,27 @@ export const SourcesPage: React.FC = () => {
     }
   };
 
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!activeProject || !editSource) return;
+    try {
+      await api.patch(`/projects/${activeProject.id}/sources/${editSource.id}`, {
+        name: editSource.name,
+        url: editSource.url,
+        source_type: editSource.source_type,
+        auth_required: editSource.auth_required,
+        adapter_name: editSource.adapter_name,
+        max_concurrency: editSource.max_concurrency,
+        rate_limit_rpm: editSource.rate_limit_rpm,
+        status: editSource.status
+      });
+      setEditSource(null);
+      fetchSources();
+    } catch (err: any) {
+      alert(err.response?.data?.detail || 'Failed to update target source');
+    }
+  };
+
   const handleDelete = async (sourceId: string) => {
     if (!activeProject || !confirm('Are you sure you want to remove this source website?')) return;
     try {
@@ -89,10 +129,16 @@ export const SourcesPage: React.FC = () => {
             Configure target source sites, custom adapters, concurrency limits & rate limits {activeProject ? `(Scope: ${activeProject.name})` : ''}
           </p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>
-          <Plus size={16} />
-          <span>Add Source Site</span>
-        </button>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <button className="btn btn-secondary" onClick={handleSeed} disabled={seeding}>
+            <RefreshCw size={16} className={seeding ? 'spin' : ''} />
+            <span>Fetch Target Sources</span>
+          </button>
+          <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            <Plus size={16} />
+            <span>Add Source Site</span>
+          </button>
+        </div>
       </div>
 
       <div className="card">
@@ -108,23 +154,23 @@ export const SourcesPage: React.FC = () => {
                 <th>Max Concurrency</th>
                 <th>Rate Limit</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th style={{ textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
-                <tr><td colSpan={9} style={{ textAlign: 'center', padding: '2rem' }}>Loading sources...</td></tr>
+                <tr><td colSpan={9} style={{ textAlign: 'center', padding: '2rem' }}>Loading target sources...</td></tr>
               ) : sources.length === 0 ? (
                 <tr>
                   <td colSpan={9} style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--text-dim)' }}>
                     <Globe size={32} style={{ marginBottom: '0.5rem', opacity: 0.5 }} /><br />
-                    No source websites configured. Click "Add Source Site" to configure your first target website.
+                    No target source websites configured. Click "Fetch Target Sources" to fetch and configure target sites immediately.
                   </td>
                 </tr>
               ) : (
                 sources.map((s) => (
                   <tr key={s.id}>
-                    <td style={{ fontWeight: 600 }}>{s.name}</td>
+                    <td style={{ fontWeight: 600, color: 'var(--text-main)' }}>{s.name}</td>
                     <td style={{ color: 'var(--accent-cyan)', fontSize: '0.82rem' }}>
                       <a href={s.url} target="_blank" rel="noreferrer">{s.url}</a>
                     </td>
@@ -135,17 +181,35 @@ export const SourcesPage: React.FC = () => {
                       </span>
                     </td>
                     <td style={{ fontWeight: 600, color: 'var(--primary)' }}>
-                      <Cpu size={14} /> {s.adapter_name}
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                        <Cpu size={14} /> {s.adapter_name}
+                      </span>
                     </td>
                     <td>{s.max_concurrency} workers</td>
                     <td>{s.rate_limit_rpm} req/min</td>
                     <td>
                       <span className="badge badge-active">{s.status}</span>
                     </td>
-                    <td>
-                      <button className="btn btn-danger" style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem' }} onClick={() => handleDelete(s.id)}>
-                        <Trash2 size={14} />
-                      </button>
+                    <td style={{ textAlign: 'right' }}>
+                      <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
+                        <button
+                          className="btn btn-secondary"
+                          style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                          onClick={() => setEditSource(s)}
+                          title="Configure adapter and rate limits"
+                        >
+                          <Settings2 size={13} />
+                          <span>Configure</span>
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem' }}
+                          onClick={() => handleDelete(s.id)}
+                          title="Delete target source"
+                        >
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -159,7 +223,7 @@ export const SourcesPage: React.FC = () => {
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>Configure Source Website</h2>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>Configure New Source Website</h2>
             <form onSubmit={handleCreate}>
               <div className="form-group">
                 <label className="form-label">Source Name *</label>
@@ -203,6 +267,89 @@ export const SourcesPage: React.FC = () => {
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem' }}>
                 <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
                 <button type="submit" className="btn btn-primary">Save Source Website</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit / Configure Target Source Modal */}
+      {editSource && (
+        <div className="modal-overlay" onClick={() => setEditSource(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+              Configure Adapter & Limits: {editSource.name}
+            </h2>
+            <form onSubmit={handleUpdate}>
+              <div className="form-group">
+                <label className="form-label">Source Name *</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={editSource.name}
+                  onChange={(e) => setEditSource({ ...editSource, name: e.target.value })}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Website URL *</label>
+                <input
+                  type="url"
+                  className="input"
+                  value={editSource.url}
+                  onChange={(e) => setEditSource({ ...editSource, url: e.target.value })}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Adapter Module</label>
+                <select
+                  className="input"
+                  value={editSource.adapter_name}
+                  onChange={(e) => setEditSource({ ...editSource, adapter_name: e.target.value })}
+                >
+                  <option value="GenericSourceAdapter">GenericSourceAdapter</option>
+                  <option value="CigarSourceAdapter">CigarSourceAdapter</option>
+                  <option value="VapeSourceAdapter">VapeSourceAdapter</option>
+                </select>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="form-group">
+                  <label className="form-label">Max Worker Concurrency</label>
+                  <input
+                    type="number"
+                    className="input"
+                    value={editSource.max_concurrency}
+                    onChange={(e) => setEditSource({ ...editSource, max_concurrency: Number(e.target.value) })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Rate Limit (RPM)</label>
+                  <input
+                    type="number"
+                    className="input"
+                    value={editSource.rate_limit_rpm}
+                    onChange={(e) => setEditSource({ ...editSource, rate_limit_rpm: Number(e.target.value) })}
+                  />
+                </div>
+              </div>
+              <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
+                <input
+                  type="checkbox"
+                  id="editAuthReq"
+                  checked={editSource.auth_required}
+                  onChange={(e) => setEditSource({ ...editSource, auth_required: e.target.checked })}
+                />
+                <label htmlFor="editAuthReq" style={{ fontSize: '0.85rem', cursor: 'pointer' }}>Requires Credentials</label>
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem' }}>
+                <button type="button" className="btn btn-secondary" onClick={() => setEditSource(null)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Save Changes
+                </button>
               </div>
             </form>
           </div>

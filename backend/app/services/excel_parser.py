@@ -85,34 +85,46 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     used_targets = set()
 
     for col in df.columns:
-        norm = str(col).strip().lower().replace('_', ' ').replace('-', ' ')
+        col_str = str(col).strip()
+        norm = col_str.lower().replace('_', ' ').replace('-', ' ')
+        
+        is_image_col = any(img_kw in norm for img_kw in ['image', 'img', 'photo', 'picture', 'pic', 'thumbnail', 'avatar'])
+        is_url_col = any(url_kw in norm for url_kw in ['url', 'link', 'href', 'path', 'src'])
+        
         target = None
-        if 'sku' in norm:
+        if is_image_col or (is_url_col and not any(k in norm for k in ['name', 'title', 'sku'])):
+            target = 'image_url'
+        elif 'sku' in norm or norm in ['item #', 'item no', 'code', 'product code', 'item id']:
             target = 'sku'
-        elif 'product' in norm or 'title' in norm or 'item' in norm or 'name' in norm:
+        elif not is_image_col and not is_url_col and (
+            norm in ['name', 'product name', 'item name', 'title', 'product title', 'description', 'product description', 'item description', 'label'] or
+            ('name' in norm and not any(x in norm for x in ['brand', 'file', 'category', 'class', 'type', 'vendor', 'supplier', 'first', 'last'])) or
+            ('title' in norm) or
+            ('product' in norm and not any(x in norm for x in ['id', 'type', 'cat', 'group', 'class', 'brand', 'price', 'cost', 'stat', 'tag', 'code']))
+        ):
             target = 'name'
-        elif 'brand' in norm or 'manufacturer' in norm or 'vendor' in norm:
+        elif 'brand' in norm or 'manufacturer' in norm or 'vendor' in norm or 'make' in norm:
             target = 'brand'
-        elif 'category' in norm:
+        elif 'category' in norm or 'dept' in norm or 'department' in norm or 'class' in norm:
             target = 'category'
-        elif 'mpn' in norm or 'model' in norm:
+        elif 'mpn' in norm or 'model' in norm or 'part' in norm:
             target = 'mpn'
-        elif 'upc' in norm:
+        elif 'upc' in norm or 'barcode' in norm:
             target = 'upc'
         elif 'ean' in norm:
             target = 'ean'
         elif 'pack' in norm or 'size' in norm:
             target = 'pack_size'
-        elif 'variant' in norm:
+        elif 'variant' in norm or 'color' in norm or 'flavour' in norm or 'flavor' in norm:
             target = 'variant'
-        elif 'price' in norm or 'cost' in norm or 'msrp' in norm or 'retail' in norm:
+        elif 'price' in norm or 'cost' in norm or 'msrp' in norm or 'retail' in norm or 'amount' in norm:
             target = 'price'
 
         if target and target not in used_targets:
             column_map[col] = target
             used_targets.add(target)
         else:
-            column_map[col] = str(col)
+            column_map[col] = col_str
 
     df = df.rename(columns=column_map)
 
@@ -133,12 +145,36 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
         pack_size = clean_identifier(row.get('pack_size'))
         variant = clean_identifier(row.get('variant'))
         price_val = parse_price(row.get('price'))
+        image_url = clean_identifier(row.get('image_url'))
 
-        # If name is empty, try to fallback to any non-empty cell in the row
+        # Check if name looks like an image URL or image file
+        is_name_url = (
+            name.startswith("http://") or
+            name.startswith("https://") or
+            any(ext in name.lower() for ext in ['.jpg', '.png', '.jpeg', '.webp', '.gif'])
+        )
+
+        if is_name_url:
+            if not image_url:
+                image_url = name
+            name = ""
+
+        # If name is empty, fallback to non-empty cell in row that is NOT a URL/image
         if not name:
-            non_empty_vals = [clean_identifier(v) for k, v in row.items() if clean_identifier(v)]
-            if non_empty_vals:
-                name = non_empty_vals[0]
+            candidate_names = []
+            for col_k, val_v in row.items():
+                str_v = clean_identifier(val_v)
+                if (
+                    str_v and
+                    not str_v.startswith("http://") and
+                    not str_v.startswith("https://") and
+                    not any(ext in str_v.lower() for ext in ['.jpg', '.png', '.jpeg', '.webp', '.gif'])
+                ):
+                    col_k_norm = str(col_k).lower()
+                    if not any(k in col_k_norm for k in ['sku', 'price', 'upc', 'ean', 'cost', 'image', 'url']):
+                        candidate_names.append(str_v)
+            if candidate_names:
+                name = candidate_names[0]
 
         row_errors = []
 
@@ -165,11 +201,23 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
         else:
             seen_skus[sku] = 1
 
+        # Save ALL original columns in specifications dictionary
+        specifications = {}
+        for orig_c in df.columns:
+            val_c = clean_identifier(row.get(orig_c))
+            if val_c:
+                specifications[str(orig_c)] = val_c
+        
+        if price_val is not None:
+            specifications["price"] = price_val
+        if image_url:
+            specifications["image_url"] = image_url
+
         if row_errors:
             errors.append({
                 "row": row_num,
                 "sku": sku,
-                "name": name,
+                "name": name or "Unnamed Product",
                 "errors": row_errors
             })
         else:
@@ -183,7 +231,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
                 "ean": ean or None,
                 "pack_size": pack_size or None,
                 "variant": variant or None,
-                "specifications": {"price": price_val if price_val is not None else 24.99}
+                "specifications": specifications
             })
 
     return valid_products, errors

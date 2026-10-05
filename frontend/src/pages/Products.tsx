@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { api } from '../services/api';
 import {
@@ -11,7 +11,9 @@ import {
   CheckCircle2,
   Download,
   X,
-  FileCheck
+  FileCheck,
+  Eye,
+  Layers
 } from 'lucide-react';
 
 export interface Product {
@@ -21,7 +23,10 @@ export interface Product {
   brand?: string;
   mpn?: string;
   upc?: string;
+  ean?: string;
   pack_size?: string;
+  variant?: string;
+  specifications?: Record<string, any>;
   status: string;
   created_at: string;
 }
@@ -42,6 +47,7 @@ export const ProductsPage: React.FC = () => {
   // Modals
   const [showUploadModal, setShowUploadModal] = useState<boolean>(false);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const [selectedProductDetail, setSelectedProductDetail] = useState<Product | null>(null);
 
   // Drag & Drop Upload State
   const [dragActive, setDragActive] = useState<boolean>(false);
@@ -85,6 +91,116 @@ export const ProductsPage: React.FC = () => {
   useEffect(() => {
     fetchProductsData();
   }, [activeProject, selectedCat, searchTerm]);
+
+  // Extract all unique dynamic specification keys across all loaded products
+  const dynamicColumns = useMemo(() => {
+    const keysSet = new Set<string>();
+    const standardKeys = new Set([
+      'id', 'sku', 'name', 'brand', 'mpn', 'upc', 'ean', 'pack_size',
+      'variant', 'status', 'created_at', 'project_id', 'category_id', 'updated_at'
+    ]);
+
+    products.forEach(p => {
+      if (p.specifications && typeof p.specifications === 'object') {
+        Object.keys(p.specifications).forEach(k => {
+          const kLower = k.toLowerCase().replace(/_/g, ' ').replace(/-/g, ' ').trim();
+          if (!standardKeys.has(kLower) && !['sku', 'name', 'id'].includes(kLower)) {
+            keysSet.add(k);
+          }
+        });
+      }
+    });
+
+    return Array.from(keysSet);
+  }, [products]);
+
+  const extractTitleFromUrl = (urlStr: string): string => {
+    if (!urlStr || (!urlStr.startsWith('http://') && !urlStr.startsWith('https://'))) {
+      return urlStr;
+    }
+    try {
+      const cleanUrl = urlStr.split('?')[0].split('#')[0];
+      const filename = decodeURIComponent(cleanUrl.split('/').pop() || '');
+      let title = filename.replace(/\.(jpg|jpeg|png|webp|gif)$/i, '');
+      title = title.replace(/[_\-]+\d+(\.\d+)+$/, '');
+      title = title.replace(/__\d+.*$/, '');
+      title = title.replace(/---/g, ' - ').replace(/[-_]/g, ' ');
+      title = title.replace(/\s+/g, ' ').trim();
+      return title || urlStr;
+    } catch {
+      return urlStr;
+    }
+  };
+
+  // Safety net to get real product name if a legacy DB record contains a URL as name
+  const getDisplayName = (p: Product) => {
+    if (!p) return '—';
+    if (p.name && !p.name.startsWith('http://') && !p.name.startsWith('https://')) {
+      return p.name;
+    }
+    if (p.name && (p.name.startsWith('http://') || p.name.startsWith('https://'))) {
+      const extracted = extractTitleFromUrl(p.name);
+      if (extracted && extracted !== p.name) {
+        return extracted;
+      }
+    }
+    if (p.specifications && typeof p.specifications === 'object') {
+      for (const [k, v] of Object.entries(p.specifications)) {
+        const kLower = k.toLowerCase();
+        if (
+          (kLower.includes('name') || kLower.includes('title') || kLower.includes('item') || kLower.includes('desc')) &&
+          typeof v === 'string' &&
+          v &&
+          !v.startsWith('http://') &&
+          !v.startsWith('https://')
+        ) {
+          return v;
+        }
+      }
+    }
+    return p.name ? extractTitleFromUrl(p.name) : 'Unnamed Product';
+  };
+
+  // Render cell content with smart image URL preview
+  const renderCellContent = (val: any) => {
+    if (val === null || val === undefined || val === '') return <span style={{ color: 'var(--text-dim)' }}>—</span>;
+    const strVal = String(val);
+    const isImage = (
+      strVal.startsWith('http://') ||
+      strVal.startsWith('https://') ||
+      /\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(strVal)
+    );
+
+    if (isImage) {
+      return (
+        <a
+          href={strVal}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-cyan)' }}
+          title={strVal}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={strVal}
+            alt="Product"
+            style={{
+              width: '28px',
+              height: '28px',
+              objectFit: 'cover',
+              borderRadius: '4px',
+              border: '1px solid var(--border-color)',
+              flexShrink: 0
+            }}
+            onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
+          />
+          <span style={{ fontSize: '0.78rem', textDecoration: 'underline', whiteSpace: 'nowrap' }}>View Image</span>
+        </a>
+      );
+    }
+
+    return <span>{strVal}</span>;
+  };
 
   // Drag & Drop Handlers
   const handleDrag = (e: React.DragEvent) => {
@@ -165,10 +281,10 @@ export const ProductsPage: React.FC = () => {
 
   const downloadSampleTemplate = () => {
     const csvContent = "data:text/csv;charset=utf-8," +
-      "Product Name,SKU,Brand,Category,UPC,MPN,Price,Pack Size\n" +
-      "Premium Cigar Cohiba Behike 52,SKU-COH-001,Cohiba,Cigar,123456789012,MPN-52,24.99,Box of 10\n" +
-      "Vape Pod System Starter Kit,SKU-VAP-002,Vaporesso,Vape,234567890123,MPN-VAP1,39.99,Single Pack\n" +
-      "Novelty Lighter Special Edition,SKU-NOV-003,Zippo,Novelty,345678901234,MPN-ZIP9,15.00,Single\n";
+      "Product Name,SKU,Brand,Category,UPC,MPN,Price,Pack Size,Image URL\n" +
+      "Premium Cigar Cohiba Behike 52,SKU-COH-001,Cohiba,Cigar,123456789012,MPN-52,24.99,Box of 10,https://example.com/cohiba.jpg\n" +
+      "Vape Pod System Starter Kit,SKU-VAP-002,Vaporesso,Vape,234567890123,MPN-VAP1,39.99,Single Pack,https://example.com/vape.jpg\n" +
+      "Novelty Lighter Special Edition,SKU-NOV-003,Zippo,Novelty,345678901234,MPN-ZIP9,15.00,Single,https://example.com/lighter.jpg\n";
 
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
@@ -203,6 +319,67 @@ export const ProductsPage: React.FC = () => {
     }
   };
 
+  const [modalSearch, setModalSearch] = useState<string>('');
+  const [copySuccess, setCopySuccess] = useState<boolean>(false);
+
+  const isNotEmpty = (val: any) => {
+    if (val === null || val === undefined) return false;
+    const str = String(val).trim().toLowerCase();
+    return str !== '' && str !== '—' && str !== '---' && str !== '-' && str !== 'null' && str !== 'none' && str !== 'undefined';
+  };
+
+  const hasBrand = useMemo(() => products.some(p => isNotEmpty(p.brand)), [products]);
+  const hasMpn = useMemo(() => products.some(p => isNotEmpty(p.mpn)), [products]);
+  const hasUpc = useMemo(() => products.some(p => isNotEmpty(p.upc) || isNotEmpty(p.ean)), [products]);
+
+  const totalCols = 2 + (hasBrand ? 1 : 0) + (hasMpn ? 1 : 0) + (hasUpc ? 1 : 0) + dynamicColumns.length + 3;
+
+  // Compile all attributes present for a given product row
+  const getProductAttributesList = (p: Product) => {
+    if (!p) return [];
+    const list: { key: string; label: string; value: any; category: 'Standard' | 'Excel Column' }[] = [];
+    const seenKeys = new Set<string>();
+
+    const addAttr = (key: string, label: string, val: any, cat: 'Standard' | 'Excel Column') => {
+      const kNorm = key.toLowerCase().trim();
+      if (!seenKeys.has(kNorm) && isNotEmpty(val)) {
+        seenKeys.add(kNorm);
+        list.push({ key, label, value: val, category: cat });
+      }
+    };
+
+    addAttr('name', 'Product Name', getDisplayName(p), 'Standard');
+    addAttr('sku', 'Product SKU / Code', p.sku, 'Standard');
+    if (p.brand) addAttr('brand', 'Brand', p.brand, 'Standard');
+    if (p.mpn) addAttr('mpn', 'MPN', p.mpn, 'Standard');
+    if (p.upc) addAttr('upc', 'UPC', p.upc, 'Standard');
+    if (p.ean) addAttr('ean', 'EAN', p.ean, 'Standard');
+    if (p.pack_size) addAttr('pack_size', 'Pack Size', p.pack_size, 'Standard');
+    if (p.variant) addAttr('variant', 'Variant', p.variant, 'Standard');
+
+    if (p.specifications && typeof p.specifications === 'object') {
+      Object.entries(p.specifications).forEach(([k, val]) => {
+        const kNorm = k.toLowerCase().replace(/_/g, ' ').replace(/-/g, ' ').trim();
+        if (['name', 'product name', 'sku', 'id'].includes(kNorm)) return;
+        const formattedLabel = k.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        addAttr(k, formattedLabel, val, 'Excel Column');
+      });
+    }
+
+    addAttr('status', 'Verification Status', p.status, 'Standard');
+    addAttr('created_at', 'Import Timestamp', new Date(p.created_at).toLocaleString(), 'Standard');
+
+    return list;
+  };
+
+  const copyRowDataToClipboard = (p: Product) => {
+    const attrs = getProductAttributesList(p);
+    const textData = attrs.map(a => `${a.label}: ${typeof a.value === 'object' ? JSON.stringify(a.value) : a.value}`).join('\n');
+    navigator.clipboard.writeText(textData);
+    setCopySuccess(true);
+    setTimeout(() => setCopySuccess(false), 2500);
+  };
+
   return (
     <div className="page-container">
       {/* Header */}
@@ -213,7 +390,7 @@ export const ProductsPage: React.FC = () => {
             Upload Excel or CSV product catalogs, set categories, & map SKU/UPC identifiers {activeProject ? `(Active Scope: ${activeProject.name})` : ''}
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <button className="btn btn-secondary" onClick={downloadSampleTemplate} title="Download CSV sample file format">
             <Download size={16} />
             <span>Sample Template</span>
@@ -261,31 +438,37 @@ export const ProductsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Table */}
+      {/* Main Dynamic Table */}
       <div className="card" style={{ overflow: 'hidden', padding: 0 }}>
-        <div className="table-container" style={{ border: 'none', borderRadius: 0 }}>
-          <table className="table">
+        <div className="table-container" style={{ border: 'none', borderRadius: 0, overflowX: 'auto', paddingLeft: '0.25rem' }}>
+          <table className="table" style={{ whiteSpace: 'nowrap', width: '100%' }}>
             <thead>
               <tr>
-                <th>Product ID / SKU</th>
-                <th>Product Name</th>
-                <th>Brand</th>
-                <th>MPN</th>
-                <th>UPC / EAN</th>
-                <th>Status</th>
-                <th>Created At</th>
+                <th style={{ paddingLeft: '1.5rem', minWidth: '170px' }}>PRODUCT ID / SKU</th>
+                <th style={{ minWidth: '240px' }}>PRODUCT NAME</th>
+                {hasBrand && <th>BRAND</th>}
+                {hasMpn && <th>MPN</th>}
+                {hasUpc && <th>UPC / EAN</th>}
+                {dynamicColumns.map((colKey) => (
+                  <th key={colKey} style={{ color: 'var(--primary)', textTransform: 'uppercase', minWidth: '130px' }}>
+                    {colKey.replace(/_/g, ' ')}
+                  </th>
+                ))}
+                <th>STATUS</th>
+                <th>CREATED AT</th>
+                <th style={{ textAlign: 'right', paddingRight: '1.5rem', minWidth: '130px' }}>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={7} style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
+                  <td colSpan={totalCols} style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
                     Loading imported products catalog...
                   </td>
                 </tr>
               ) : products.length === 0 ? (
                 <tr>
-                  <td colSpan={7} style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-dim)' }}>
+                  <td colSpan={totalCols} style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-dim)' }}>
                     <div style={{
                       width: '64px',
                       height: '64px',
@@ -315,12 +498,25 @@ export const ProductsPage: React.FC = () => {
                 </tr>
               ) : (
                 products.map((p) => (
-                  <tr key={p.id}>
-                    <td style={{ fontWeight: 600, color: 'var(--accent-cyan)' }}>{p.sku}</td>
-                    <td style={{ fontWeight: 600, color: 'var(--text-main)' }}>{p.name}</td>
-                    <td style={{ color: 'var(--text-muted)' }}>{p.brand || '—'}</td>
-                    <td style={{ color: 'var(--text-muted)' }}>{p.mpn || '—'}</td>
-                    <td style={{ color: 'var(--text-muted)' }}>{p.upc || '—'}</td>
+                  <tr key={p.id} style={{ cursor: 'pointer' }} onClick={() => { setModalSearch(''); setSelectedProductDetail(p); }}>
+                    <td style={{ fontWeight: 600, color: 'var(--accent-cyan)', paddingLeft: '1.5rem', minWidth: '170px' }}>{p.sku}</td>
+                    <td style={{ fontWeight: 600, color: 'var(--text-main)', maxWidth: '340px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {getDisplayName(p)}
+                    </td>
+                    {hasBrand && <td style={{ color: 'var(--text-muted)' }}>{p.brand || '—'}</td>}
+                    {hasMpn && <td style={{ color: 'var(--text-muted)' }}>{p.mpn || '—'}</td>}
+                    {hasUpc && <td style={{ color: 'var(--text-muted)' }}>{p.upc || p.ean || '—'}</td>}
+                    
+                    {/* Dynamic Extra Columns from Excel specifications */}
+                    {dynamicColumns.map((colKey) => {
+                      const specVal = p.specifications?.[colKey];
+                      return (
+                        <td key={colKey} style={{ color: 'var(--text-muted)' }}>
+                          {renderCellContent(specVal)}
+                        </td>
+                      );
+                    })}
+
                     <td>
                       <span className="badge badge-active">
                         {p.status}
@@ -329,6 +525,17 @@ export const ProductsPage: React.FC = () => {
                     <td style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                       {new Date(p.created_at).toLocaleDateString()}
                     </td>
+                    <td style={{ textAlign: 'right', paddingRight: '1.5rem' }}>
+                      <button
+                        className="btn btn-secondary"
+                        style={{ padding: '0.35rem 0.65rem', fontSize: '0.78rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                        onClick={(e) => { e.stopPropagation(); setModalSearch(''); setSelectedProductDetail(p); }}
+                        title="View all uploaded Excel attributes"
+                      >
+                        <Eye size={13} />
+                        <span>All Columns</span>
+                      </button>
+                    </td>
                   </tr>
                 ))
               )}
@@ -336,6 +543,103 @@ export const ProductsPage: React.FC = () => {
           </table>
         </div>
       </div>
+
+      {/* View All Excel Attributes / Columns Modal */}
+      {selectedProductDetail && (
+        <div className="modal-overlay" onClick={() => setSelectedProductDetail(null)}>
+          <div className="modal-content" style={{ maxWidth: '780px', width: '92%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', padding: '1.5rem' }} onClick={(e) => e.stopPropagation()}>
+            
+            {/* Modal Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border-color)' }}>
+              <div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--text-main)', lineHeight: 1.3 }}>
+                  {getDisplayName(selectedProductDetail)}
+                </h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '0.35rem' }}>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                    SKU: {selectedProductDetail.sku}
+                  </span>
+                  <span className="badge badge-active" style={{ fontSize: '0.7rem' }}>
+                    {getProductAttributesList(selectedProductDetail).length} Excel Columns Found
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedProductDetail(null)}
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '4px' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal Toolbar (Search + Copy) */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ position: 'relative', flex: 1, minWidth: '220px' }}>
+                <input
+                  type="text"
+                  className="input"
+                  style={{ paddingLeft: '2.25rem', fontSize: '0.82rem', height: '36px' }}
+                  placeholder="Filter column names or values..."
+                  value={modalSearch}
+                  onChange={(e) => setModalSearch(e.target.value)}
+                />
+                <Search size={14} style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+              </div>
+              
+              <button
+                className="btn btn-secondary"
+                style={{ height: '36px', fontSize: '0.8rem', padding: '0 0.85rem' }}
+                onClick={() => copyRowDataToClipboard(selectedProductDetail)}
+              >
+                {copySuccess ? <CheckCircle2 size={14} color="var(--accent-green)" /> : <Layers size={14} />}
+                <span>{copySuccess ? 'Copied Row Data!' : 'Copy Row Attributes'}</span>
+              </button>
+            </div>
+
+            {/* Attributes List / Table */}
+            <div style={{ flex: 1, overflowY: 'auto', backgroundColor: '#0b0f19', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', padding: '0.5rem' }}>
+              <table className="table" style={{ width: '100%', tableLayout: 'fixed' }}>
+                <thead>
+                  <tr>
+                    <th style={{ width: '38%', paddingLeft: '1rem', color: 'var(--primary)' }}>EXCEL COLUMN NAME</th>
+                    <th style={{ width: '62%', paddingRight: '1rem', color: 'var(--primary)' }}>PRODUCT VALUE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getProductAttributesList(selectedProductDetail)
+                    .filter(item => {
+                      if (!modalSearch) return true;
+                      const q = modalSearch.toLowerCase();
+                      return item.label.toLowerCase().includes(q) || String(item.value).toLowerCase().includes(q);
+                    })
+                    .map((item) => (
+                      <tr key={item.key}>
+                        <td style={{ padding: '0.75rem 1rem', wordBreak: 'break-word', verticalAlign: 'top' }}>
+                          <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.83rem' }}>
+                            {item.label}
+                          </div>
+                          <span style={{ fontSize: '0.68rem', color: item.category === 'Excel Column' ? 'var(--accent-cyan)' : 'var(--text-dim)' }}>
+                            {item.category}
+                          </span>
+                        </td>
+                        <td style={{ padding: '0.75rem 1rem', wordBreak: 'break-word', color: 'var(--text-main)', fontSize: '0.85rem', verticalAlign: 'top' }}>
+                          {renderCellContent(item.value)}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Modal Footer */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-color)' }}>
+              <button className="btn btn-secondary" onClick={() => setSelectedProductDetail(null)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Production-Grade Drag & Drop Upload Modal */}
       {showUploadModal && (
@@ -417,7 +721,7 @@ export const ProductsPage: React.FC = () => {
                         Drag & Drop your Excel file here, or <span style={{ color: 'var(--primary)', textDecoration: 'underline' }}>browse</span>
                       </div>
                       <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                        Supports <code>.xlsx</code>, <code>.xls</code>, <code>.csv</code> (Auto-detects Product Name, SKU, Brand, UPC, Price)
+                        Supports <code>.xlsx</code>, <code>.xls</code>, <code>.csv</code> (Auto-detects Product Name, SKU, Brand, UPC, Price, Image URLs & Custom Fields)
                       </div>
                     </div>
                   </div>
