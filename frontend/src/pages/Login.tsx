@@ -153,7 +153,7 @@ export const Login: React.FC = () => {
             disabled={loading}
             style={{ width: '100%', marginTop: '0.5rem', padding: '0.75rem' }}
           >
-            {loading ? 'Authenticating...' : 'Sign In to Orchestrator'}
+            {loading ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
 
