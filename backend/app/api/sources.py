@@ -212,3 +212,25 @@ async def delete_source(
     )
     db.add(audit)
     await db.commit()
+
+from app.services.web_scraper import scrape_target_source
+
+@router.post("/{source_id}/scrape")
+async def scrape_source_endpoint(
+    project_id: str,
+    source_id: str,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    try:
+        result = await scrape_target_source(
+            source_id=source_id,
+            project_id=project_id,
+            db=db,
+            current_user_id=current_user.id
+        )
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Web scraping error: {str(e)}")
+
+

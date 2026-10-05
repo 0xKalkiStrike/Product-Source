@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { api } from '../services/api';
-import { Globe, Plus, Trash2, Cpu, Settings2, RefreshCw } from 'lucide-react';
+import { Globe, Plus, Trash2, Cpu, Settings2, RefreshCw, Play, CheckCircle2, ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export interface Source {
   id: string;
@@ -14,6 +15,7 @@ export interface Source {
   rate_limit_rpm: number;
   monitoring_interval_min: number;
   status: string;
+  last_successful_execution?: string;
 }
 
 export const SourcesPage: React.FC = () => {
@@ -21,12 +23,18 @@ export const SourcesPage: React.FC = () => {
   const [sources, setSources] = useState<Source[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [seeding, setSeeding] = useState<boolean>(false);
+  const [scrapingSourceId, setScrapingSourceId] = useState<string | null>(null);
+  const [scrapeNotice, setScrapeNotice] = useState<string | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [editSource, setEditSource] = useState<Source | null>(null);
 
-  // Form state
+  // Simple Add Source Form State
   const [name, setName] = useState('');
   const [url, setUrl] = useState('');
+  const [autoScrapeOnAdd, setAutoScrapeOnAdd] = useState(true);
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  // Advanced Form Overrides
   const [sourceType, setSourceType] = useState('PUBLIC_SURFACE_WEB');
   const [authRequired, setAuthRequired] = useState(false);
   const [adapterName, setAdapterName] = useState('GenericSourceAdapter');
@@ -67,25 +75,62 @@ export const SourcesPage: React.FC = () => {
     }
   };
 
+  const handleScrapeSource = async (source: Source) => {
+    if (!activeProject) return;
+    setScrapingSourceId(source.id);
+    setScrapeNotice(null);
+    try {
+      const res = await api.post(`/projects/${activeProject.id}/sources/${source.id}/scrape`);
+      const msg = res.data.message || `Successfully scraped products from ${source.name}`;
+      setScrapeNotice(msg);
+      fetchSources();
+    } catch (err: any) {
+      alert(err.response?.data?.detail || 'Scraping failed for this source site');
+    } finally {
+      setScrapingSourceId(null);
+    }
+  };
+
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!activeProject) return;
+
+    // Auto-detect best adapter if not manually tweaked
+    let selectedAdapter = adapterName;
+    const combinedStr = (name + ' ' + url).toLowerCase();
+    if (adapterName === 'GenericSourceAdapter') {
+      if (combinedStr.includes('vape') || combinedStr.includes('vapor')) {
+        selectedAdapter = 'VapeSourceAdapter';
+      } else if (combinedStr.includes('cigar') || combinedStr.includes('smoke')) {
+        selectedAdapter = 'CigarSourceAdapter';
+      }
+    }
+
     try {
-      await api.post(`/projects/${activeProject.id}/sources`, {
+      const createRes = await api.post(`/projects/${activeProject.id}/sources`, {
         name,
         url,
         source_type: sourceType,
         auth_required: authRequired,
-        adapter_name: adapterName,
+        adapter_name: selectedAdapter,
         max_concurrency: maxConcurrency,
         rate_limit_rpm: rateLimitRpm
       });
+
+      const newSource = createRes.data;
       setShowModal(false);
       setName('');
       setUrl('');
-      fetchSources();
+      setShowAdvanced(false);
+
+      if (autoScrapeOnAdd && newSource?.id) {
+        setScrapeNotice(`Source '${name}' added! Web scraper is now gathering whole product catalog...`);
+        handleScrapeSource(newSource);
+      } else {
+        fetchSources();
+      }
     } catch (err: any) {
-      alert(err.response?.data?.detail || 'Failed to create source');
+      alert(err.response?.data?.detail || 'Failed to create target source site');
     }
   };
 
@@ -126,10 +171,10 @@ export const SourcesPage: React.FC = () => {
         <div>
           <h1 className="page-title">Authorized Source Websites</h1>
           <p className="page-subtitle">
-            Configure target source sites, custom adapters, concurrency limits & rate limits {activeProject ? `(Scope: ${activeProject.name})` : ''}
+            Configure target source sites, set URL & Name to scrape product catalogs {activeProject ? `(Scope: ${activeProject.name})` : ''}
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <button className="btn btn-secondary" onClick={handleSeed} disabled={seeding}>
             <RefreshCw size={16} className={seeding ? 'spin' : ''} />
             <span>Fetch Target Sources</span>
@@ -141,30 +186,52 @@ export const SourcesPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Live Web Scraper Notification Alert */}
+      {scrapeNotice && (
+        <div style={{
+          padding: '1rem 1.25rem',
+          backgroundColor: 'rgba(16, 185, 129, 0.12)',
+          border: '1px solid rgba(16, 185, 129, 0.35)',
+          borderRadius: 'var(--radius-md)',
+          color: 'var(--accent-green)',
+          marginBottom: '1.5rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '0.75rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.92rem', fontWeight: 600 }}>
+            <CheckCircle2 size={20} />
+            <span>{scrapeNotice}</span>
+          </div>
+          <Link to="/products" className="btn btn-primary" style={{ padding: '0.35rem 0.85rem', fontSize: '0.8rem' }}>
+            <Layers size={14} /> View Products Catalog
+          </Link>
+        </div>
+      )}
+
       <div className="card">
         <div className="table-container">
           <table className="table">
             <thead>
               <tr>
                 <th>Source Name</th>
-                <th>URL</th>
-                <th>Source Type</th>
-                <th>Auth Required</th>
-                <th>Adapter</th>
-                <th>Max Concurrency</th>
-                <th>Rate Limit</th>
+                <th>Website URL</th>
+                <th>Adapter Engine</th>
                 <th>Status</th>
+                <th>Last Execution</th>
                 <th style={{ textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
-                <tr><td colSpan={9} style={{ textAlign: 'center', padding: '2rem' }}>Loading target sources...</td></tr>
+                <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem' }}>Loading target sources...</td></tr>
               ) : sources.length === 0 ? (
                 <tr>
-                  <td colSpan={9} style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--text-dim)' }}>
+                  <td colSpan={6} style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--text-dim)' }}>
                     <Globe size={32} style={{ marginBottom: '0.5rem', opacity: 0.5 }} /><br />
-                    No target source websites configured. Click "Fetch Target Sources" to fetch and configure target sites immediately.
+                    No target source websites configured. Click "Add Source Site" to enter Name & URL to scrape products.
                   </td>
                 </tr>
               ) : (
@@ -174,36 +241,41 @@ export const SourcesPage: React.FC = () => {
                     <td style={{ color: 'var(--accent-cyan)', fontSize: '0.82rem' }}>
                       <a href={s.url} target="_blank" rel="noreferrer">{s.url}</a>
                     </td>
-                    <td style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{s.source_type}</td>
-                    <td>
-                      <span className={`badge badge-${s.auth_required ? 'warning' : 'neutral'}`}>
-                        {s.auth_required ? 'AUTH REQUIRED' : 'PUBLIC'}
-                      </span>
-                    </td>
-                    <td style={{ fontWeight: 600, color: 'var(--primary)' }}>
+                    <td style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.82rem' }}>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                         <Cpu size={14} /> {s.adapter_name}
                       </span>
                     </td>
-                    <td>{s.max_concurrency} workers</td>
-                    <td>{s.rate_limit_rpm} req/min</td>
                     <td>
                       <span className="badge badge-active">{s.status}</span>
                     </td>
+                    <td style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
+                      {s.last_successful_execution ? new Date(s.last_successful_execution).toLocaleTimeString() : 'Never'}
+                    </td>
                     <td style={{ textAlign: 'right' }}>
-                      <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
+                      <div style={{ display: 'inline-flex', gap: '0.4rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                        <button
+                          className="btn btn-primary"
+                          style={{ padding: '0.3rem 0.65rem', fontSize: '0.78rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                          onClick={() => handleScrapeSource(s)}
+                          disabled={scrapingSourceId === s.id}
+                          title="Scrape product catalog from this website"
+                        >
+                          <Play size={13} className={scrapingSourceId === s.id ? 'spin' : ''} />
+                          <span>{scrapingSourceId === s.id ? 'Scraping Site...' : 'Scrape Products'}</span>
+                        </button>
+
                         <button
                           className="btn btn-secondary"
-                          style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                          style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
                           onClick={() => setEditSource(s)}
                           title="Configure adapter and rate limits"
                         >
                           <Settings2 size={13} />
-                          <span>Configure</span>
                         </button>
                         <button
-                          className="btn btn-danger"
-                          style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem' }}
+                          className="btn btn-secondary"
+                          style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', color: 'var(--accent-rose)' }}
                           onClick={() => handleDelete(s.id)}
                           title="Delete target source"
                         >
@@ -219,54 +291,155 @@ export const SourcesPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Add Source Modal */}
+      {/* Simplified Add Source Modal: Require Only Name & URL */}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>Configure New Source Website</h2>
+          <div className="modal-content" style={{ maxWidth: '520px' }} onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '8px',
+                backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--primary)'
+              }}>
+                <Globe size={22} />
+              </div>
+              <div>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>
+                  Configure New Source Website
+                </h2>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  Provide Name & Website URL to scrape product data
+                </span>
+              </div>
+            </div>
+
             <form onSubmit={handleCreate}>
-              <div className="form-group">
+              <div className="form-group" style={{ marginBottom: '1rem' }}>
                 <label className="form-label">Source Name *</label>
-                <input type="text" className="input" placeholder="e.g. Famous Smoke Shop" value={name} onChange={(e) => setName(e.target.value)} required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Website URL *</label>
-                <input type="url" className="input" placeholder="https://www.famous-smoke.com" value={url} onChange={(e) => setUrl(e.target.value)} required />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Source Type</label>
-                <select className="input" value={sourceType} onChange={(e) => setSourceType(e.target.value)}>
-                  <option value="PUBLIC_SURFACE_WEB">PUBLIC_SURFACE_WEB</option>
-                  <option value="AUTHORIZED_API">AUTHORIZED_API</option>
-                  <option value="AUTHORIZED_PORTAL">AUTHORIZED_PORTAL</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label className="form-label">Adapter Module</label>
-                <select className="input" value={adapterName} onChange={(e) => setAdapterName(e.target.value)}>
-                  <option value="GenericSourceAdapter">GenericSourceAdapter</option>
-                  <option value="CigarSourceAdapter">CigarSourceAdapter</option>
-                  <option value="VapeSourceAdapter">VapeSourceAdapter</option>
-                </select>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div className="form-group">
-                  <label className="form-label">Max Concurrency</label>
-                  <input type="number" className="input" value={maxConcurrency} onChange={(e) => setMaxConcurrency(Number(e.target.value))} />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Rate Limit (Req/Min)</label>
-                  <input type="number" className="input" value={rateLimitRpm} onChange={(e) => setRateLimitRpm(Number(e.target.value))} />
-                </div>
-              </div>
-              <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
-                <input type="checkbox" id="authReq" checked={authRequired} onChange={(e) => setAuthRequired(e.target.checked)} />
-                <label htmlFor="authReq" style={{ fontSize: '0.85rem', cursor: 'pointer' }}>Requires Authentication Credential</label>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="e.g. Element Vape"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  autoFocus
+                />
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem' }}>
-                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
-                <button type="submit" className="btn btn-primary">Save Source Website</button>
+              <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                <label className="form-label">Website URL *</label>
+                <input
+                  type="url"
+                  className="input"
+                  placeholder="https://elementvape.com/"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  required
+                />
+              </div>
+
+              {/* Checkbox: Auto-scrape products right after save */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                backgroundColor: '#0b0f19',
+                padding: '0.75rem 1rem',
+                borderRadius: 'var(--radius-sm)',
+                border: '1px solid var(--border-color)',
+                marginBottom: '1.25rem'
+              }}>
+                <input
+                  type="checkbox"
+                  id="autoScrape"
+                  checked={autoScrapeOnAdd}
+                  onChange={(e) => setAutoScrapeOnAdd(e.target.checked)}
+                  style={{ width: '16px', height: '16px', accentColor: 'var(--primary)', cursor: 'pointer' }}
+                />
+                <label htmlFor="autoScrape" style={{ fontSize: '0.85rem', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 500 }}>
+                  Automatically scrape whole product data from site after saving
+                </label>
+              </div>
+
+              {/* Collapsible Advanced Settings */}
+              <div style={{ marginBottom: '1.25rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowAdvanced(!showAdvanced)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--primary)',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    padding: 0
+                  }}
+                >
+                  {showAdvanced ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                  <span>{showAdvanced ? 'Hide Advanced Settings' : 'Advanced Engine Settings (Optional)'}</span>
+                </button>
+
+                {showAdvanced && (
+                  <div style={{ marginTop: '0.75rem', padding: '1rem', backgroundColor: '#0b0f19', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)' }}>
+                    <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                      <label className="form-label" style={{ fontSize: '0.75rem' }}>Source Type</label>
+                      <select className="input" style={{ fontSize: '0.82rem' }} value={sourceType} onChange={(e) => setSourceType(e.target.value)}>
+                        <option value="PUBLIC_SURFACE_WEB">PUBLIC_SURFACE_WEB</option>
+                        <option value="AUTHORIZED_API">AUTHORIZED_API</option>
+                        <option value="AUTHORIZED_PORTAL">AUTHORIZED_PORTAL</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: '0.75rem' }}>
+                      <label className="form-label" style={{ fontSize: '0.75rem' }}>Adapter Module</label>
+                      <select className="input" style={{ fontSize: '0.82rem' }} value={adapterName} onChange={(e) => setAdapterName(e.target.value)}>
+                        <option value="GenericSourceAdapter">GenericSourceAdapter</option>
+                        <option value="CigarSourceAdapter">CigarSourceAdapter</option>
+                        <option value="VapeSourceAdapter">VapeSourceAdapter</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                      <input
+                        type="checkbox"
+                        id="addAuthReq"
+                        checked={authRequired}
+                        onChange={(e) => setAuthRequired(e.target.checked)}
+                      />
+                      <label htmlFor="addAuthReq" style={{ fontSize: '0.78rem', cursor: 'pointer' }}>Requires Authentication Credential</label>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                      <div className="form-group">
+                        <label className="form-label" style={{ fontSize: '0.75rem' }}>Max Concurrency</label>
+                        <input type="number" className="input" style={{ fontSize: '0.82rem' }} value={maxConcurrency} onChange={(e) => setMaxConcurrency(Number(e.target.value))} />
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label" style={{ fontSize: '0.75rem' }}>Rate Limit (Req/Min)</label>
+                        <input type="number" className="input" style={{ fontSize: '0.82rem' }} value={rateLimitRpm} onChange={(e) => setRateLimitRpm(Number(e.target.value))} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem' }}>
+                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  <Play size={15} /> Save & Scrape Products
+                </button>
               </div>
             </form>
           </div>
@@ -358,3 +531,4 @@ export const SourcesPage: React.FC = () => {
     </div>
   );
 };
+

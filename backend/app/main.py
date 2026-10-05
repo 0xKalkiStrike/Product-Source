@@ -77,12 +77,41 @@ app.add_middleware(
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(api_router, prefix="/api")
 
-@app.get("/")
-async def root():
+@app.get("/health")
+async def health_check():
     return {
         "title": settings.PROJECT_NAME,
         "status": "online",
         "orchestration_engine": "operational",
-        "docs_url": "/docs",
         "api_v1": settings.API_V1_STR
     }
+
+# Mount static frontend bundle if available (for production Docker deployments)
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "static"))
+if os.path.exists(static_dir):
+    assets_dir = os.path.join(static_dir, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        if full_path.startswith("api") or full_path.startswith("docs") or full_path.startswith("openapi.json") or full_path == "health":
+            return None
+        target = os.path.join(static_dir, full_path)
+        if os.path.isfile(target):
+            return FileResponse(target)
+        return FileResponse(os.path.join(static_dir, "index.html"))
+else:
+    @app.get("/")
+    async def root():
+        return {
+            "title": settings.PROJECT_NAME,
+            "status": "online",
+            "orchestration_engine": "operational",
+            "docs_url": "/docs",
+            "api_v1": settings.API_V1_STR
+        }
+
