@@ -58,10 +58,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     <>
       <aside className={`sidebar ${open ? 'open' : ''}`} aria-label="Main navigation">
         <div className="sidebar-brand">
-          <div className="sidebar-logo">M</div>
+          <div className="sidebar-logo">P</div>
           <div>
-            <div className="sidebar-brand-name">MarketLens</div>
-            <div className="sidebar-brand-tag">Product Verification &amp; Market Intelligence Platform</div>
+            <div className="sidebar-brand-name">Product-Source</div>
+            <div className="sidebar-brand-tag">Market Intelligence &amp; Verification Platform</div>
           </div>
         </div>
 

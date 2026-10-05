@@ -486,7 +486,7 @@ export const ProductsPage: React.FC = () => {
                       No Products in Catalog
                     </h3>
                     <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem', maxWidth: '450px', margin: '0 auto 1.5rem' }}>
-                      Upload your Excel sheet (<code>.xlsx</code> / <code>.csv</code>) to parse products into MarketLens immediately.
+                      Upload your Excel sheet (<code>.xlsx</code> / <code>.csv</code>) to parse products into Product-Source immediately.
                     </p>
                     <button
                       className="btn btn-primary"

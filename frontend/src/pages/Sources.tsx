@@ -213,15 +213,15 @@ export const SourcesPage: React.FC = () => {
 
       <div className="card">
         <div className="table-container">
-          <table className="table">
+          <table className="table" style={{ width: '100%' }}>
             <thead>
               <tr>
-                <th>Source Name</th>
-                <th>Website URL</th>
-                <th>Adapter Engine</th>
-                <th>Status</th>
-                <th>Last Execution</th>
-                <th style={{ textAlign: 'right' }}>Actions</th>
+                <th style={{ paddingLeft: '1.5rem', minWidth: '170px' }}>SOURCE NAME</th>
+                <th style={{ minWidth: '220px' }}>WEBSITE URL</th>
+                <th style={{ minWidth: '160px' }}>ADAPTER ENGINE</th>
+                <th>STATUS</th>
+                <th style={{ minWidth: '130px' }}>LAST EXECUTION</th>
+                <th style={{ textAlign: 'right', paddingRight: '1.5rem', minWidth: '160px' }}>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
@@ -235,56 +235,61 @@ export const SourcesPage: React.FC = () => {
                   </td>
                 </tr>
               ) : (
-                sources.map((s) => (
-                  <tr key={s.id}>
-                    <td style={{ fontWeight: 600, color: 'var(--text-main)' }}>{s.name}</td>
-                    <td style={{ color: 'var(--accent-cyan)', fontSize: '0.82rem' }}>
-                      <a href={s.url} target="_blank" rel="noreferrer">{s.url}</a>
-                    </td>
-                    <td style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.82rem' }}>
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                        <Cpu size={14} /> {s.adapter_name}
-                      </span>
-                    </td>
-                    <td>
-                      <span className="badge badge-active">{s.status}</span>
-                    </td>
-                    <td style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                      {s.last_successful_execution ? new Date(s.last_successful_execution).toLocaleTimeString() : 'Never'}
-                    </td>
-                    <td style={{ textAlign: 'right' }}>
-                      <div style={{ display: 'inline-flex', gap: '0.4rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                        <button
-                          className="btn btn-primary"
-                          style={{ padding: '0.3rem 0.65rem', fontSize: '0.78rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-                          onClick={() => handleScrapeSource(s)}
-                          disabled={scrapingSourceId === s.id}
-                          title="Scrape product catalog from this website"
-                        >
-                          <Play size={13} className={scrapingSourceId === s.id ? 'spin' : ''} />
-                          <span>{scrapingSourceId === s.id ? 'Scraping Site...' : 'Scrape Products'}</span>
-                        </button>
+                sources.map((s) => {
+                  const cleanDisplayUrl = s.url ? s.url.replace(/(https?:\/\/[^\/]+)\/https?:\/\/.*/, '$1') : s.url;
+                  return (
+                    <tr key={s.id}>
+                      <td style={{ fontWeight: 600, color: 'var(--text-main)', paddingLeft: '1.5rem', minWidth: '170px' }}>{s.name}</td>
+                      <td style={{ color: 'var(--accent-cyan)', fontSize: '0.82rem', maxWidth: '240px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <a href={cleanDisplayUrl} target="_blank" rel="noreferrer" title={cleanDisplayUrl}>
+                          {cleanDisplayUrl}
+                        </a>
+                      </td>
+                      <td style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.82rem' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                          <Cpu size={14} /> {s.adapter_name}
+                        </span>
+                      </td>
+                      <td>
+                        <span className="badge badge-active">{s.status}</span>
+                      </td>
+                      <td style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
+                        {s.last_successful_execution ? new Date(s.last_successful_execution).toLocaleTimeString() : 'Never'}
+                      </td>
+                      <td style={{ textAlign: 'right', paddingRight: '1.5rem' }}>
+                        <div style={{ display: 'inline-flex', gap: '0.4rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                          <button
+                            className="btn btn-primary"
+                            style={{ padding: '0.3rem 0.65rem', fontSize: '0.78rem', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                            onClick={() => handleScrapeSource(s)}
+                            disabled={scrapingSourceId === s.id}
+                            title="Scrape product catalog from this website"
+                          >
+                            <Play size={13} className={scrapingSourceId === s.id ? 'spin' : ''} />
+                            <span>{scrapingSourceId === s.id ? 'Scraping Site...' : 'Scrape Products'}</span>
+                          </button>
 
-                        <button
-                          className="btn btn-secondary"
-                          style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
-                          onClick={() => setEditSource(s)}
-                          title="Configure adapter and rate limits"
-                        >
-                          <Settings2 size={13} />
-                        </button>
-                        <button
-                          className="btn btn-secondary"
-                          style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', color: 'var(--accent-rose)' }}
-                          onClick={() => handleDelete(s.id)}
-                          title="Delete target source"
-                        >
-                          <Trash2 size={13} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                          <button
+                            className="btn btn-secondary"
+                            style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                            onClick={() => setEditSource(s)}
+                            title="Configure adapter and rate limits"
+                          >
+                            <Settings2 size={13} />
+                          </button>
+                          <button
+                            className="btn btn-secondary"
+                            style={{ padding: '0.3rem 0.5rem', fontSize: '0.75rem', color: 'var(--accent-rose)' }}
+                            onClick={() => handleDelete(s.id)}
+                            title="Delete target source"
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
