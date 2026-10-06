@@ -94,13 +94,19 @@ async def list_source_data(
         "items": formatted_items
     }
 
+from pydantic import BaseModel
+
+class CollectRequest(BaseModel):
+    source_ids: Optional[List[str]] = None
+
 @router.post("/collect")
 async def collect_source_data(
     project_id: str,
-    source_ids: Optional[List[str]] = None,
+    req: Optional[CollectRequest] = None,
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
+    source_ids = req.source_ids if req else None
     src_query = select(Source).where(Source.project_id == project_id, Source.status == "ACTIVE")
     if source_ids:
         src_query = src_query.where(Source.id.in_(source_ids))
