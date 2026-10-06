@@ -97,8 +97,9 @@ async def upload_products(
     if len(contents) == 0:
         raise HTTPException(status_code=400, detail="Uploaded file is empty")
 
+    filename = file.filename or "uploaded_file.xlsx"
     try:
-        valid_products, errors = parse_product_file(contents, file.filename)
+        valid_products, errors = parse_product_file(contents, filename)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"File parsing error: {str(e)}")
 

@@ -23,7 +23,7 @@ class BaseWorker:
         self.worker_name = worker_name
         self.worker_type = worker_type
         self.running = False
-        self._task: asyncio.Task = None
+        self._task: asyncio.Task | None = None
 
     async def start(self):
         self.running = True
@@ -52,7 +52,7 @@ class BaseWorker:
                 worker.last_heartbeat = datetime.now(timezone.utc)
             await db.commit()
 
-    async def _send_heartbeat(self, status: str = "IDLE", current_job_id: str = None):
+    async def _send_heartbeat(self, status: str = "IDLE", current_job_id: str | None = None):
         async with AsyncSessionLocal() as db:
             res = await db.execute(select(WorkerModel).where(WorkerModel.worker_name == self.worker_name))
             worker = res.scalars().first()
@@ -145,7 +145,7 @@ class BaseWorker:
         async with AsyncSessionLocal() as db:
             # Check checkpoint
             checkpoint = await get_checkpoint(db, job_id)
-            completed_ids = set(checkpoint.completed_item_ids) if checkpoint else set()
+            completed_ids = set(checkpoint.completed_item_ids or []) if checkpoint else set()
 
             # Fetch target products for job
             prod_query = select(Product).where(Product.project_id == project_id)

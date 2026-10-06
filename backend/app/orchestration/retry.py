@@ -8,7 +8,7 @@ class RetryEngine:
         self.base_delay_seconds = base_delay_seconds
         self.max_delay_seconds = max_delay_seconds
 
-    def should_retry(self, retry_count: int, max_retries: int, error_message: str = None) -> bool:
+    def should_retry(self, retry_count: int, max_retries: int, error_message: str | None = None) -> bool:
         if retry_count >= max_retries:
             return False
         # Do not endlessly retry auth failures or invalid configuration errors

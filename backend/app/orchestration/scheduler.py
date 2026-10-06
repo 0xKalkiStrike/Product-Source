@@ -18,7 +18,7 @@ class InternalScheduler:
     def __init__(self, check_interval_seconds: int = 15):
         self.check_interval_seconds = check_interval_seconds
         self.running = False
-        self._task: asyncio.Task = None
+        self._task: asyncio.Task | None = None
 
     async def start(self):
         self.running = True

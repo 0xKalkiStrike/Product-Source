@@ -62,7 +62,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     seen_cols: Dict[str, int] = {}
     new_cols = []
     for c in cols:
-        c_str = str(c).strip()
+        c_str = c.strip() if isinstance(c, str) else str(c).strip()
         if c_str in seen_cols:
             seen_cols[c_str] += 1
             new_cols.append(f"{c_str}_dup{seen_cols[c_str]}")
@@ -85,7 +85,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     used_targets = set()
 
     for col in df.columns:
-        col_str = str(col).strip()
+        col_str = col.strip() if isinstance(col, str) else str(col).strip()
         norm = col_str.lower().replace('_', ' ').replace('-', ' ')
         
         is_image_col = any(img_kw in norm for img_kw in ['image', 'img', 'photo', 'picture', 'pic', 'thumbnail', 'avatar'])
@@ -133,7 +133,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     seen_skus: Dict[str, int] = {}
 
     for idx, row in df.iterrows():
-        row_num = idx + 2  # Excel row (1-indexed + header)
+        row_num = int(str(idx)) + 2  # Excel row (1-indexed + header)
         
         name = clean_identifier(row.get('name'))
         sku = clean_identifier(row.get('sku'))
@@ -206,7 +206,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
         for orig_c in df.columns:
             val_c = clean_identifier(row.get(orig_c))
             if val_c:
-                specifications[str(orig_c)] = val_c
+                specifications[orig_c if isinstance(orig_c, str) else str(orig_c)] = val_c
         
         if price_val is not None:
             specifications["price"] = price_val

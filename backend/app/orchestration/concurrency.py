@@ -21,7 +21,7 @@ class ConcurrencyController:
         self.current_source: Dict[str, int] = {}
         self._lock = asyncio.Lock()
 
-    async def can_execute(self, project_id: str, source_id: str = None) -> bool:
+    async def can_execute(self, project_id: str, source_id: str | None = None) -> bool:
         async with self._lock:
             if self.current_global >= self.global_limit:
                 return False
@@ -31,7 +31,7 @@ class ConcurrencyController:
                 return False
             return True
 
-    async def acquire_slot(self, project_id: str, source_id: str = None) -> bool:
+    async def acquire_slot(self, project_id: str, source_id: str | None = None) -> bool:
         async with self._lock:
             if self.current_global >= self.global_limit:
                 return False
@@ -46,7 +46,7 @@ class ConcurrencyController:
                 self.current_source[source_id] = self.current_source.get(source_id, 0) + 1
             return True
 
-    async def release_slot(self, project_id: str, source_id: str = None):
+    async def release_slot(self, project_id: str, source_id: str | None = None):
         async with self._lock:
             self.current_global = max(0, self.current_global - 1)
             if project_id in self.current_project:

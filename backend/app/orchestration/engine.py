@@ -14,7 +14,7 @@ class OrchestrationEngine:
     """
     def __init__(self):
         self.is_initialized = False
-        self._recovery_task: asyncio.Task = None
+        self._recovery_task: asyncio.Task | None = None
 
     async def initialize(self):
         if self.is_initialized:
