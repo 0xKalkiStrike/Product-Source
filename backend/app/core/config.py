@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     SUPABASE_ANON_KEY: Optional[str] = os.getenv("SUPABASE_ANON_KEY", None)
     SUPABASE_SERVICE_ROLE_KEY: Optional[str] = os.getenv("SUPABASE_SERVICE_ROLE_KEY", None)
 
-    # Database connection URL (Defaults to SQLite for local zero-config, converts postgresql:// to postgresql+asyncpg:// for Supabase)
-    RAW_DB_URL: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./product_intelligence.db")
+    _default_db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "product_intelligence.db")).replace("\\", "/")
+    RAW_DB_URL: str = os.getenv("DATABASE_URL", f"sqlite+aiosqlite:///{_default_db_path}")
 
     @property
     def DATABASE_URL(self) -> str:

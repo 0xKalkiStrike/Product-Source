@@ -9,7 +9,7 @@ from sqlalchemy import select
 from app.core.config import settings
 from app.core.database import engine, Base, AsyncSessionLocal
 from app.core.security import get_password_hash
-from app.models.all_models import User
+from app.models.all_models import User, Project
 from app.api.router import api_router
 from app.orchestration.engine import orchestration_engine
 
@@ -43,11 +43,23 @@ async def init_db():
                 is_active=True
             )
             session.add(user_account)
-        else:
-            deep_user.hashed_password = get_password_hash("Deep@231104")
-            deep_user.is_active = True
-
         await session.commit()
+
+        # Seed default project d48568e0-b2a3-4f90-a252-55b3db6461d2 if missing
+        proj_res = await session.execute(select(Project).where(Project.id == "d48568e0-b2a3-4f90-a252-55b3db6461d2"))
+        default_proj = proj_res.scalars().first()
+        if not default_proj:
+            owner = admin or deep_user
+            if owner:
+                default_proj = Project(
+                    id="d48568e0-b2a3-4f90-a252-55b3db6461d2",
+                    name="Default Product Verification Project",
+                    description="Primary workspace for catalog verification and market intelligence.",
+                    status="ACTIVE",
+                    owner_id=owner.id
+                )
+                session.add(default_proj)
+                await session.commit()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
