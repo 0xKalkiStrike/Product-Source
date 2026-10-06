@@ -227,6 +227,7 @@ class VerificationResult(Base):
 
     project: Mapped["Project"] = relationship("Project", back_populates="verification_results")
     product: Mapped["Product"] = relationship("Product", back_populates="verification_results")
+    source: Mapped[Optional["Source"]] = relationship("Source", foreign_keys=[source_id])
 
 class ProductPrice(Base):
     __tablename__ = "product_prices"

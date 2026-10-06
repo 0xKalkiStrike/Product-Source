@@ -28,6 +28,13 @@ class VerificationResultOut(BaseModel):
     status: str
     verified_at: datetime
 
+    product_name: Optional[str] = None
+    product_sku: Optional[str] = None
+    product_brand: Optional[str] = None
+    product_description: Optional[str] = None
+    source_name: Optional[str] = None
+    excel_price: Optional[float] = None
+
     model_config = ConfigDict(from_attributes=True)
 
 class VerificationListOut(BaseModel):

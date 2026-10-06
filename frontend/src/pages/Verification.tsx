@@ -34,6 +34,7 @@ interface VerificationResultItem {
   product_name?: string;
   product_sku?: string;
   product_brand?: string;
+  product_description?: string;
   excel_price?: number;
 }
 
@@ -236,7 +237,7 @@ export const VerificationPage: React.FC = () => {
             <thead>
               <tr style={{ backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border-color)' }}>
                 <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Product ID / SKU</th>
-                <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Product Name</th>
+                <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600, minWidth: '300px' }}>Product Name & Description</th>
                 <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Target Source</th>
                 <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Match Priority</th>
                 <th style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Excel Price</th>
@@ -251,8 +252,27 @@ export const VerificationPage: React.FC = () => {
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--accent-cyan)' }}>
                     {row.product_sku || row.product_id.slice(0, 8)}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', color: 'var(--text-main)', fontWeight: 500 }}>
-                    {row.product_name || `Product ${row.product_id.slice(0, 6)}`}
+                  <td style={{ padding: '0.75rem 1rem', color: 'var(--text-main)', minWidth: '300px' }}>
+                    <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: '0.92rem', marginBottom: '0.2rem' }}>
+                      {row.product_name || `Product ${row.product_id.slice(0, 6)}`}
+                    </div>
+                    {row.product_description && (
+                      <div
+                        title={row.product_description}
+                        style={{
+                          fontSize: '0.78rem',
+                          color: 'var(--text-muted)',
+                          lineHeight: '1.35',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          maxWidth: '380px'
+                        }}
+                      >
+                        {row.product_description}
+                      </div>
+                    )}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
@@ -266,7 +286,7 @@ export const VerificationPage: React.FC = () => {
                     </span>
                   </td>
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 600 }}>
-                    ${row.excel_price || 24.99}
+                    ${row.excel_price ? row.excel_price.toFixed(2) : '24.99'}
                   </td>
                   <td style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--accent-green)' }}>
                     {row.extracted_price ? `$${row.extracted_price.toFixed(2)}` : 'N/A'}
@@ -347,9 +367,14 @@ export const VerificationPage: React.FC = () => {
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: 0 }}>
                   {selectedResult.product_name || 'Product Details'}
                 </h3>
-                <span style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)', display: 'block' }}>
                   SKU: {selectedResult.product_sku || selectedResult.product_id}
                 </span>
+                {selectedResult.product_description && (
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: '0.3rem 0 0 0' }}>
+                    {selectedResult.product_description}
+                  </p>
+                )}
               </div>
               <button
                 onClick={() => setSelectedResult(null)}
