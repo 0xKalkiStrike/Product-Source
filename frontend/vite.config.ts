@@ -4,4 +4,19 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: true,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 5173,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
+    },
+  },
+  preview: {
+    host: true,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
+    allowedHosts: true,
+  },
 })

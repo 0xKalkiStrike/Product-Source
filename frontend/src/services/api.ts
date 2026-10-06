@@ -1,9 +1,17 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  if (typeof window !== 'undefined' && window.location.port === '5173') {
+    return 'http://127.0.0.1:8000/api/v1';
+  }
+  return 'http://127.0.0.1:8000/api/v1';
+};
 
 export const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },

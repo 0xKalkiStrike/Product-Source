@@ -49,8 +49,18 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
             df = pd.read_csv(io.BytesIO(file_content), dtype=str)
         elif ext in ['xlsx', 'xls']:
             df = pd.read_excel(io.BytesIO(file_content), dtype=str)
+        elif ext == 'json':
+            import json
+            raw_data = json.loads(file_content.decode('utf-8'))
+            if isinstance(raw_data, dict) and "products" in raw_data:
+                raw_data = raw_data["products"]
+            elif isinstance(raw_data, dict) and "items" in raw_data:
+                raw_data = raw_data["items"]
+            elif not isinstance(raw_data, list):
+                raw_data = [raw_data]
+            df = pd.DataFrame(raw_data).astype(str)
         else:
-            raise ValueError(f"Unsupported file format '.{ext}'. Supported formats: .xlsx, .xls, .csv")
+            raise ValueError(f"Unsupported file format '.{ext}'. Supported formats: .xlsx, .xls, .csv, .json")
     except Exception as e:
         raise ValueError(f"Failed to read file: {str(e)}")
 

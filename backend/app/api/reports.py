@@ -106,18 +106,17 @@ async def export_verified_report(
         )
 
     if format == "pdf":
-        # Professional clean PDF report generator output
-        pdf_content = f"""%PDF-1.4
-MarketLens Verified Results Report
-Project ID: {project_id}
-Total Records: {len(report_data)}
-Generated At: {rows[0][0].verified_at if rows else "Now"}
-"""
-        for item in report_data[:10]:
-            pdf_content += f"\n- {item['SKU']}: {item['Product Name']} | Excel: ${item['Excel Price ($)']} | Source ({item['Source']}): ${item['Source Price ($)']} | Status: {item['Verification Status']}"
+        from app.models.all_models import Project
+        from app.services.pdf_generator import generate_pdf_report
+        
+        proj_res = await db.execute(select(Project).where(Project.id == project_id))
+        proj = proj_res.scalars().first()
+        proj_name = proj.name if proj else "MarketLens Project"
+
+        pdf_bytes = generate_pdf_report(proj_name, project_id, report_data)
 
         return Response(
-            content=pdf_content.encode('utf-8'),
+            content=pdf_bytes,
             media_type="application/pdf",
-            headers={"Content-Disposition": f"attachment; filename=marketlens_report_{project_id[:8]}.pdf"}
+            headers={"Content-Disposition": f"inline; filename=marketlens_report_{project_id[:8]}.pdf"}
         )
