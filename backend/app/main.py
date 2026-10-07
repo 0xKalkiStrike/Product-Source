@@ -85,9 +85,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount API router under both /api/v1 AND /api for 100% path compatibility
+# Mount API router under /api/v1, /api, AND root for 100% path compatibility
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(api_router, prefix="/api")
+app.include_router(api_router)
 
 @app.get("/health")
 async def health_check():
