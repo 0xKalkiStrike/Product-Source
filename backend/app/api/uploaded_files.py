@@ -9,6 +9,95 @@ from app.api.deps import get_current_user
 
 router = APIRouter(prefix="/projects/{project_id}/uploaded-files", tags=["Uploaded Files"])
 
+def normalize_sheet_row(
+    row_data: dict,
+    idx: int,
+    source_filename: str = "Gotham.xlsx",
+    upload_timestamp: Optional[str] = None,
+    cat_name: Optional[str] = None
+) -> dict:
+    """
+    Normalizes raw excel sheet row attributes into standardized top-level fields
+    so frontend views can render price, category, sales_price, and brand reliably.
+    """
+    specs = row_data.get("specifications")
+    if not isinstance(specs, dict):
+        specs = row_data
+
+    # Extract price cleanly
+    raw_p = (
+        row_data.get("excel_price") or
+        row_data.get("price") or
+        specs.get("price") or
+        specs.get("Price") or
+        specs.get("Sales Price") or
+        specs.get("sales_price") or
+        24.99
+    )
+    try:
+        excel_price = float(str(raw_p).replace("$", "").replace(",", "").strip())
+    except Exception:
+        excel_price = 24.99
+
+    raw_sales_p = (
+        row_data.get("sales_price") or
+        specs.get("Sales Price") or
+        specs.get("sales_price") or
+        specs.get("price")
+    )
+    if raw_sales_p and str(raw_sales_p).strip() and str(raw_sales_p).strip() != "None" and "undefined" not in str(raw_sales_p):
+        sp_str = str(raw_sales_p).strip()
+        sales_price = sp_str if sp_str.startswith("$") else f"${sp_str}"
+    else:
+        sales_price = f"${excel_price:.2f}"
+
+    category = (
+        cat_name or
+        row_data.get("category") or
+        specs.get("category") or
+        specs.get("Category") or
+        specs.get("Product Type") or
+        "General"
+    )
+
+    brand = (
+        row_data.get("brand") or
+        specs.get("brand") or
+        specs.get("Brand") or
+        specs.get("Manufacturer") or
+        "—"
+    )
+
+    pack_size = (
+        row_data.get("pack_size") or
+        specs.get("Quantity") or
+        specs.get("Product Size") or
+        specs.get("Cigar Quantity") or
+        "Standard"
+    )
+
+    sku = row_data.get("sku") or specs.get("sku") or f"ROW_{idx+1}"
+    name = row_data.get("name") or specs.get("name") or specs.get("Product Name") or "Untitled Item"
+
+    return {
+        "id": str(row_data.get("id") or f"row_{idx+1}"),
+        "_row_num": idx + 1,
+        "sku": sku,
+        "name": name,
+        "brand": brand,
+        "category": category,
+        "excel_price": round(excel_price, 2),
+        "sales_price": sales_price,
+        "pack_size": pack_size,
+        "variant": row_data.get("variant") or specs.get("variant") or "—",
+        "mpn": row_data.get("mpn") or specs.get("mpn") or "—",
+        "upc": row_data.get("upc") or specs.get("upc") or "—",
+        "ean": row_data.get("ean") or specs.get("ean") or "—",
+        "specifications": specs,
+        "_source_file": source_filename,
+        "_uploaded_at": upload_timestamp
+    }
+
 @router.get("")
 async def list_uploaded_files(
     project_id: str,
@@ -50,7 +139,7 @@ async def get_excel_sheet_data(
 ):
     """
     Returns immutable raw Excel sheet data for the given uploaded file (or all uploaded files if file_id is empty/all).
-    This endpoint serves un-compared, raw uploaded Excel catalog data.
+    This endpoint serves un-compared, raw uploaded Excel catalog data with normalized price and category fields.
     """
     selected_file = None
     if file_id and file_id.strip() != "" and file_id.strip().lower() != "all":
@@ -63,18 +152,19 @@ async def get_excel_sheet_data(
     if selected_file and selected_file.raw_data and isinstance(selected_file.raw_data, list) and len(selected_file.raw_data) > 0:
         raw_list = selected_file.raw_data
         filtered = []
+        source_name = selected_file.filename
+        upload_time = selected_file.created_at.isoformat() if selected_file.created_at else None
+
         for idx, row in enumerate(raw_list):
             row_dict = dict(row) if isinstance(row, dict) else {"data": row}
-            row_dict["_row_num"] = idx + 1
-            row_dict["_source_file"] = selected_file.filename
-            row_dict["_uploaded_at"] = selected_file.created_at.isoformat() if selected_file.created_at else None
+            norm_item = normalize_sheet_row(row_dict, idx, source_filename=source_name, upload_timestamp=upload_time)
 
             if search:
                 s_lower = search.lower()
-                vals_str = " ".join([str(v) for v in row_dict.values() if v is not None]).lower()
+                vals_str = " ".join([str(v) for v in norm_item.values() if v is not None]).lower()
                 if s_lower not in vals_str:
                     continue
-            filtered.append(row_dict)
+            filtered.append(norm_item)
 
         total_count = len(filtered)
         paged_items = filtered[skip : skip + limit]
@@ -88,7 +178,7 @@ async def get_excel_sheet_data(
                 "filename": selected_file.filename,
                 "file_size": selected_file.file_size,
                 "row_count": selected_file.row_count,
-                "created_at": selected_file.created_at.isoformat() if selected_file.created_at else None
+                "created_at": upload_time
             },
             "items": paged_items
         }
@@ -124,40 +214,30 @@ async def get_excel_sheet_data(
     cat_map = {c.id: c.name for c in cat_res.scalars().all()}
 
     items = []
+    source_filename = selected_file.filename if selected_file else "Gotham.xlsx"
+    upload_timestamp = selected_file.created_at.isoformat() if (selected_file and selected_file.created_at) else None
+
     for idx, p in enumerate(products):
         specs = p.specifications or {}
-        
-        # Determine Excel price from specifications or default
-        raw_price = specs.get("price") or specs.get("Price") or specs.get("Sales Price")
-        if not raw_price:
-            excel_price = 24.99
-        else:
-            try:
-                excel_price = float(str(raw_price).replace('$', '').replace(',', '').strip())
-            except Exception:
-                excel_price = 24.99
-
-        source_filename = selected_file.filename if selected_file else (specs.get("source_file") or "Uploaded Catalog")
-        upload_timestamp = selected_file.created_at.isoformat() if (selected_file and selected_file.created_at) else p.created_at.isoformat()
-
-        items.append({
+        prod_dict = {
             "id": p.id,
-            "_row_num": skip + idx + 1,
             "sku": p.sku,
             "name": p.name,
-            "brand": p.brand or specs.get("brand") or specs.get("Brand") or "—",
-            "category": cat_map.get(p.category_id, "General"),
-            "excel_price": excel_price,
-            "sales_price": specs.get("Sales Price") or specs.get("sales_price") or f"${excel_price:.2f}",
-            "pack_size": p.pack_size or specs.get("Quantity") or specs.get("Product Size") or "Standard",
-            "variant": p.variant or specs.get("variant") or "—",
-            "mpn": p.mpn or specs.get("mpn") or "—",
-            "upc": p.upc or specs.get("upc") or "—",
-            "ean": p.ean or specs.get("ean") or "—",
-            "specifications": specs,
-            "_source_file": source_filename,
-            "_uploaded_at": upload_timestamp
-        })
+            "brand": p.brand,
+            "pack_size": p.pack_size,
+            "variant": p.variant,
+            "mpn": p.mpn,
+            "upc": p.upc,
+            "ean": p.ean,
+            "specifications": specs
+        }
+        
+        cat_name = cat_map.get(p.category_id) if p.category_id else None
+        p_file = selected_file.filename if selected_file else (specs.get("source_file") or source_filename)
+        p_time = upload_timestamp or p.created_at.isoformat()
+
+        norm = normalize_sheet_row(prod_dict, skip + idx, source_filename=p_file, upload_timestamp=p_time, cat_name=cat_name)
+        items.append(norm)
 
     return {
         "total": total,

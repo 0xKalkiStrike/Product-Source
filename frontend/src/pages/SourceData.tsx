@@ -112,7 +112,8 @@ export const SourceDataPage: React.FC = () => {
   const categoriesList = useMemo(() => {
     const set = new Set<string>();
     sheetRows.forEach((r) => {
-      if (r.category) set.add(r.category);
+      const cat = r.category || r.specifications?.category || r.specifications?.Category;
+      if (cat) set.add(cat);
     });
     return Array.from(set).sort();
   }, [sheetRows]);
@@ -513,10 +514,12 @@ export const SourceDataPage: React.FC = () => {
                       </span>
                     </td>
                     <td style={{ textAlign: 'right', fontWeight: 600, color: 'var(--color-primary)' }}>
-                      ${row.excel_price ? row.excel_price.toFixed(2) : '0.00'}
+                      ${typeof row.excel_price === 'number' ? row.excel_price.toFixed(2) : (row.specifications?.price ? Number(row.specifications.price).toFixed(2) : '0.00')}
                     </td>
                     <td style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                      {row.sales_price || `$&nbsp;${row.excel_price?.toFixed(2)}`}
+                      {row.sales_price && !row.sales_price.includes('undefined')
+                        ? row.sales_price
+                        : (row.excel_price ? `$${Number(row.excel_price).toFixed(2)}` : '—')}
                     </td>
                     <td style={{ fontSize: '0.85rem' }}>{row.pack_size || 'Standard'}</td>
                     <td>

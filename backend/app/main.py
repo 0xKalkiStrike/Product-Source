@@ -102,6 +102,8 @@ async def health_check():
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
+from fastapi import HTTPException
+
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "static"))
 if os.path.exists(static_dir):
     assets_dir = os.path.join(static_dir, "assets")
@@ -111,7 +113,7 @@ if os.path.exists(static_dir):
     @app.get("/{full_path:path}")
     async def serve_spa(full_path: str):
         if full_path.startswith("api") or full_path.startswith("docs") or full_path.startswith("openapi.json") or full_path == "health":
-            return None
+            raise HTTPException(status_code=404, detail=f"Endpoint '{full_path}' not found")
         target = os.path.join(static_dir, full_path)
         if os.path.isfile(target):
             return FileResponse(target)
