@@ -2,8 +2,25 @@ import axios from 'axios';
 
 const getBaseUrl = () => {
   if (import.meta.env.VITE_API_BASE_URL) {
-    return import.meta.env.VITE_API_BASE_URL;
+    let url = import.meta.env.VITE_API_BASE_URL.trim();
+    if (!url.endsWith('/api/v1') && !url.endsWith('/api/v1/')) {
+      url = url.replace(/\/+$/, '') + '/api/v1';
+    }
+    return url;
   }
+
+  // Dynamic endpoint resolution for Render static site host
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname.includes('.onrender.com')) {
+      if (hostname.includes('frontend')) {
+        const backendHost = hostname.replace('frontend', 'backend');
+        return `${window.location.protocol}//${backendHost}/api/v1`;
+      }
+      return `${window.location.protocol}//product-intelligence-backend-xnwn.onrender.com/api/v1`;
+    }
+  }
+
   return '/api/v1';
 };
 
