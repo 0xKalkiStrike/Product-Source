@@ -43,8 +43,14 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         try:
             yield session
             await session.commit()
+            try:
+                from app.core.json_database import export_db_to_json
+                await export_db_to_json(session)
+            except Exception as json_err:
+                print(f"[JSON DB Sync Warning]: {json_err}")
         except Exception:
             await session.rollback()
             raise
         finally:
             await session.close()
+

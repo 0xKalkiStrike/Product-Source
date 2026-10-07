@@ -1,0 +1,602 @@
+[
+  {
+    "id": "eeed38e0-3960-4337-ad9a-23f99d6781e0",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T09:35:41.534025"
+  },
+  {
+    "id": "67eb4bb8-1933-428c-b856-453aee54dbfe",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T09:35:41.534025"
+  },
+  {
+    "id": "7d88ed01-497e-476f-95cd-06262e1781db",
+    "project_id": "d14b1b77-f4e5-40fe-a258-5c2af73a6905",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T15:05:43.297002"
+  },
+  {
+    "id": "78530b32-75c5-4a4a-9954-0dd77967108e",
+    "project_id": "d14b1b77-f4e5-40fe-a258-5c2af73a6905",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T15:05:43.297002"
+  },
+  {
+    "id": "e42e9f70-616a-4577-942d-871183a6d5ce",
+    "project_id": "3774c421-bc5a-4f55-a54b-3bae9ebdbf12",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T15:09:42.111563"
+  },
+  {
+    "id": "d93a7a20-cfde-4c2a-82a7-2c939b2c692a",
+    "project_id": "3774c421-bc5a-4f55-a54b-3bae9ebdbf12",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T15:09:42.111563"
+  },
+  {
+    "id": "a06eba91-bf0b-415c-907b-a73a4a3762b4",
+    "project_id": "6c87f3fd-5336-4d94-bbf5-155c0e73983e",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T15:16:38.028747"
+  },
+  {
+    "id": "286ada0a-18e3-4ac0-966a-c4caa3058161",
+    "project_id": "6c87f3fd-5336-4d94-bbf5-155c0e73983e",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T15:16:38.028747"
+  },
+  {
+    "id": "67166820-7c3c-4f7c-a27e-013b137f12e0",
+    "project_id": "db1f526b-429e-4971-9640-a79520553f1c",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T16:51:47.683593"
+  },
+  {
+    "id": "8b8dc131-a16a-4842-8695-85df20921250",
+    "project_id": "db1f526b-429e-4971-9640-a79520553f1c",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T16:51:47.683593"
+  },
+  {
+    "id": "89b5e535-ba9b-4d5a-ae4c-ecd342c1c700",
+    "project_id": "a08aa2e5-45ed-49d3-a118-4ba80394c224",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-06T16:59:35.804443"
+  },
+  {
+    "id": "9dcbb65b-e554-4124-bf1e-109e98f48878",
+    "project_id": "a08aa2e5-45ed-49d3-a118-4ba80394c224",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-06T16:59:35.804443"
+  },
+  {
+    "id": "098b8768-7ffb-4e2f-8d45-53d473c108ae",
+    "project_id": "07d6d232-584e-43cb-b466-3227de82788e",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T11:38:25.185378"
+  },
+  {
+    "id": "00f9a5a9-ac8e-4b7b-9809-eb9bcb25b8de",
+    "project_id": "07d6d232-584e-43cb-b466-3227de82788e",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T11:38:25.185378"
+  },
+  {
+    "id": "e545eb40-b9bd-4d10-b99e-5433e42355a7",
+    "project_id": "57993b4c-ebf8-48e5-940e-457fadc61181",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T12:20:12.731977"
+  },
+  {
+    "id": "db5ed328-4af7-41d3-8301-def66417300f",
+    "project_id": "57993b4c-ebf8-48e5-940e-457fadc61181",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T12:20:12.731977"
+  },
+  {
+    "id": "845d3977-b0b1-47ea-802e-397cdf65f310",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T12:53:08.587944"
+  },
+  {
+    "id": "af78a859-1287-4249-a4bc-63ce3ed2602d",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T12:53:08.587944"
+  },
+  {
+    "id": "682e1b31-b0d0-49c0-a08e-e003964f7f56",
+    "project_id": "ec7eaac4-d0f1-4025-b69a-6866d5f3aa60",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T13:11:10.659162"
+  },
+  {
+    "id": "6abe20be-6d26-4058-a97c-6c232502e661",
+    "project_id": "ec7eaac4-d0f1-4025-b69a-6866d5f3aa60",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T13:11:10.659162"
+  },
+  {
+    "id": "57d85b7f-e05d-4aad-bb51-471fe6d6c8c6",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T13:36:01.509587"
+  },
+  {
+    "id": "410fc793-ad95-4a12-8165-2df95983ec58",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T13:36:01.509587"
+  },
+  {
+    "id": "b3f4d054-3222-42d7-967a-802c53b83879",
+    "project_id": "2c27f7bf-1af0-48de-8196-3fda802ac80a",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T15:30:22.354878"
+  },
+  {
+    "id": "83d9fd89-1553-4037-9833-56ce2b4b6f01",
+    "project_id": "2c27f7bf-1af0-48de-8196-3fda802ac80a",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T15:30:22.354878"
+  },
+  {
+    "id": "ba1d0396-44ff-4e1c-8992-a3bf88217368",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T16:13:54.290004"
+  },
+  {
+    "id": "049c620a-89d5-4772-984e-39900d7ac32b",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T16:13:54.290004"
+  },
+  {
+    "id": "a5f31d3b-7bf5-48eb-b098-203e3dd546de",
+    "project_id": "56619def-1ef5-41ef-ad37-9ae305698ec4",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T16:49:01.972546"
+  },
+  {
+    "id": "8c59a4c2-3e1c-441f-8b07-e51c8a8a0ff6",
+    "project_id": "56619def-1ef5-41ef-ad37-9ae305698ec4",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T16:49:01.972546"
+  },
+  {
+    "id": "cba88695-a314-4007-b301-93db92edb6b4",
+    "project_id": "8a21efff-828c-423a-aa4c-d66473dcd43a",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T17:04:04.049552"
+  },
+  {
+    "id": "8dfbf590-1b0b-4f80-b4f8-78e047c2a9c8",
+    "project_id": "8a21efff-828c-423a-aa4c-d66473dcd43a",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T17:04:04.049552"
+  },
+  {
+    "id": "540d48c7-8915-4799-ae08-185ab850aac5",
+    "project_id": "51e4adfb-95dd-42e0-977d-c1b7e454210a",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T17:13:08.193704"
+  },
+  {
+    "id": "41cfcc4e-c242-4c91-af30-a22687485bcb",
+    "project_id": "51e4adfb-95dd-42e0-977d-c1b7e454210a",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T17:13:08.193704"
+  },
+  {
+    "id": "7d033c37-2bf5-4322-950c-7ba56f823650",
+    "project_id": "7506ccf1-39bd-4860-8857-900904917557",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T17:21:19.618266"
+  },
+  {
+    "id": "83620610-76bd-453d-a041-8d34754ebc0d",
+    "project_id": "7506ccf1-39bd-4860-8857-900904917557",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T17:21:19.618266"
+  },
+  {
+    "id": "de27c1ff-d3dd-444b-9fe9-6f966d9296a5",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T17:37:56.717693"
+  },
+  {
+    "id": "3c5378e9-2c10-4d48-bbef-4598f8e5d966",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T17:37:56.717693"
+  },
+  {
+    "id": "21b8297a-b755-4d67-8414-0256bb9af7d4",
+    "project_id": "e2ef8448-d0eb-439b-80b5-ed060aa5e1e9",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T18:11:09.375626"
+  },
+  {
+    "id": "8c35be47-0a19-4c2c-83ab-40ad76bfe092",
+    "project_id": "e2ef8448-d0eb-439b-80b5-ed060aa5e1e9",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T18:11:09.375626"
+  },
+  {
+    "id": "6f39de6f-8315-42a1-8883-5b733ee8497d",
+    "project_id": "91ba3990-d9aa-4c40-a605-1555340e0cf3",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T18:14:33.704176"
+  },
+  {
+    "id": "896d7115-c8e0-4f0d-a5a9-1959b7b09a6e",
+    "project_id": "91ba3990-d9aa-4c40-a605-1555340e0cf3",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T18:14:33.704176"
+  }
+]

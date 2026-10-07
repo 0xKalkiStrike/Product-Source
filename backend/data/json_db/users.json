@@ -1,0 +1,32 @@
+[
+  {
+    "id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "email": "admin@platform.com",
+    "hashed_password": "$2b$12$LDuM0Y03.rx4Wkb/Hkcs0eC6emVYLQQkVRZ2GcgXeJt4uckJ/.ALq",
+    "full_name": "System Administrator",
+    "role": "ADMIN",
+    "is_active": true,
+    "created_at": "2026-09-29T17:54:48.252837",
+    "updated_at": "2026-09-29T17:54:48.252843"
+  },
+  {
+    "id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "email": "deep@brainbean.in",
+    "hashed_password": "$2b$12$fxjyXVbQ/oxz/MS6YBdACeiojrrHz4NsLYdVNN0tYwRuIN1mRtID6",
+    "full_name": "Deep (System Admin)",
+    "role": "ADMIN",
+    "is_active": true,
+    "created_at": "2026-09-29T19:00:42.061041",
+    "updated_at": "2026-10-06T10:23:19.835639"
+  },
+  {
+    "id": "07cf655c-c80e-47d6-b9e0-fc113a835b82",
+    "email": "test_phase5@marketlens.io",
+    "hashed_password": "$2b$12$JMm5FZRDycANPla3iR16WeL.dNgDpi8eqpOd5ydUIr.LcLrnz5jCi",
+    "full_name": "MarketLens Tester",
+    "role": "ADMIN",
+    "is_active": true,
+    "created_at": "2026-10-05T11:28:51.403103",
+    "updated_at": "2026-10-05T11:28:51.403108"
+  }
+]

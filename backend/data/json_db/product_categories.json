@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "cbd31e16-9d1f-4c7c-913c-c7b26f65faeb",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018288"
+  },
+  {
+    "id": "035865c9-e6b4-4013-8a01-15cf29a84186",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018300"
+  },
+  {
+    "id": "5c609ca7-6055-4e26-8821-148c7a3ff801",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018304"
+  },
+  {
+    "id": "283376b4-7775-47dd-97b3-441b2aef2b67",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018308"
+  },
+  {
+    "id": "fcf7e7ef-4a63-4cd9-817d-dd3a5af75837",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018315"
+  },
+  {
+    "id": "583097d7-0054-44e2-914f-942f2451a207",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018319"
+  },
+  {
+    "id": "22e1cf66-ed58-46a4-8e56-3eb16a29249f",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018323"
+  },
+  {
+    "id": "5dd9ddaf-1285-4671-909d-defa99bccda6",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T13:13:29.018326"
+  },
+  {
+    "id": "77f51190-8940-4660-9528-d05dd4f021d8",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117782"
+  },
+  {
+    "id": "de100289-3543-4a8b-945b-1ab0923b0927",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117795"
+  },
+  {
+    "id": "51620398-0dc1-4b00-91da-01ef4bf6d7ed",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117799"
+  },
+  {
+    "id": "7b19e8a2-6053-4d93-aae9-f45928e79583",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117804"
+  },
+  {
+    "id": "42cb5053-4b2a-4328-9250-8ed12a63bcda",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117809"
+  },
+  {
+    "id": "d80ef7bb-e91a-4af7-9c46-6f8bb508fb59",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117815"
+  },
+  {
+    "id": "ec5d6eff-2de9-43f0-a3d4-82ac34a3b8df",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117820"
+  },
+  {
+    "id": "8d2beef0-0555-4a57-a4ff-eb15cbfd21fe",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T13:27:02.117825"
+  },
+  {
+    "id": "30bb2d2e-1d98-49de-abf5-5f313cb1c2b2",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Machine Made Cigars",
+    "slug": "machine-made-cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.883521"
+  },
+  {
+    "id": "46695762-4dbe-4a14-837f-fc03ca6b3caa",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Premium Cigars",
+    "slug": "premium-cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.905976"
+  },
+  {
+    "id": "7e7a9e32-af5a-4487-9e39-a701d7e782e8",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Cigar Accessories",
+    "slug": "cigar-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.915859"
+  },
+  {
+    "id": "c70c01c0-fc64-46b2-8438-e62e0fc069bf",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Hidden",
+    "slug": "hidden",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.929035"
+  },
+  {
+    "id": "c6af8a42-f418-4c1a-8a6b-a672df8c2994",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "General",
+    "slug": "general",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.939349"
+  },
+  {
+    "id": "575839fa-cbfb-479d-9a9d-b1a90841c30e",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Machine Made",
+    "slug": "machine-made",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.962204"
+  },
+  {
+    "id": "6846e37c-5ca0-4f5f-b5e8-ce15f016cb0f",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Machine Made Cigar",
+    "slug": "machine-made-cigar",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.984626"
+  },
+  {
+    "id": "7c7abe8f-72c6-4156-b836-ce2911aaec76",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Filtered Cigars",
+    "slug": "filtered-cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:43.991826"
+  },
+  {
+    "id": "387f8225-4652-449f-bae8-781ca5660675",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Little Cigars",
+    "slug": "little-cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.006914"
+  },
+  {
+    "id": "4bb86d9d-5663-446e-bb5c-d7a29d410fa0",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Groupon Deals",
+    "slug": "groupon-deals",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.026979"
+  },
+  {
+    "id": "e5c01731-7fa8-42e9-99ad-2db968c8f5a1",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Filtered  Cigars",
+    "slug": "filtered--cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.046624"
+  },
+  {
+    "id": "5a2deafd-e982-48a2-9de9-d995d043a5d7",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Cigar Super Bundles",
+    "slug": "cigar-super-bundles",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.093987"
+  },
+  {
+    "id": "2ac30fb6-695e-479e-8b8c-c47666db223a",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Nicotine Pouches",
+    "slug": "nicotine-pouches",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.141838"
+  },
+  {
+    "id": "59a1dd1b-0f8b-4502-9ec7-e826719c72fa",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Smoke-Free Pouches",
+    "slug": "smoke-free-pouches",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.158025"
+  },
+  {
+    "id": "9e3f42c3-6af5-465b-9148-bfec3a04ed9d",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Filtered Cigar",
+    "slug": "filtered-cigar",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.191502"
+  },
+  {
+    "id": "5d737b4a-e952-4eec-836a-4d253a0cfabc",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Premium Baby Birth Cigars",
+    "slug": "premium-baby-birth-cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.215791"
+  },
+  {
+    "id": "a82f6fb9-4027-4453-8ba7-7bbbf09a94cf",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Cigar Accessory",
+    "slug": "cigar-accessory",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.229672"
+  },
+  {
+    "id": "8517933f-5c43-4353-b5c7-9e545eb192b1",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Strength Mild",
+    "slug": "strength-mild",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.254473"
+  },
+  {
+    "id": "f8d7f387-86eb-484c-a1e8-efc8bf404202",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "No",
+    "slug": "no",
+    "description": null,
+    "created_at": "2026-10-07T13:27:44.276795"
+  },
+  {
+    "id": "8a2394a6-d264-481f-92c0-25c2cb075974",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Starter Kits",
+    "slug": "starter-kits",
+    "description": null,
+    "created_at": "2026-10-07T13:29:10.804167"
+  },
+  {
+    "id": "28a65221-04df-47e4-9f9a-a39ee3b18341",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Pod Systems",
+    "slug": "pod-systems",
+    "description": null,
+    "created_at": "2026-10-07T13:29:10.909617"
+  },
+  {
+    "id": "ce91754b-ab54-4115-a244-f223889be8d6",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "E-Liquids",
+    "slug": "e-liquids",
+    "description": null,
+    "created_at": "2026-10-07T13:29:10.918756"
+  },
+  {
+    "id": "e684a0d4-03a9-4b42-8f08-3ca8607628a1",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Disposables",
+    "slug": "disposables",
+    "description": null,
+    "created_at": "2026-10-07T13:29:10.930740"
+  },
+  {
+    "id": "e7d7df03-5170-42ed-8bf7-dee346d307c2",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Tanks & Atomizers",
+    "slug": "tanks-&-atomizers",
+    "description": null,
+    "created_at": "2026-10-07T13:29:10.938632"
+  },
+  {
+    "id": "abb9f5e6-cd2d-4130-ac74-d5f2d09ab331",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842340"
+  },
+  {
+    "id": "74763362-6e6b-408c-a51b-1ddb67d1e532",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842358"
+  },
+  {
+    "id": "4a12c571-98fa-48dd-bef3-ab761f0ebfb9",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842363"
+  },
+  {
+    "id": "6fcee9bb-2ae8-412f-bab1-f476aaea5e46",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842371"
+  },
+  {
+    "id": "13c1cd48-a9ea-4b2b-aae1-8cb50b43efe7",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842374"
+  },
+  {
+    "id": "2fbd9838-0bc6-4802-8ed4-6705396325e2",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842378"
+  },
+  {
+    "id": "5d3fa9de-1761-4bc9-b2b7-cbf81430a956",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842381"
+  },
+  {
+    "id": "4d6878b4-d9de-45e2-ad7c-86fa3a1dd7cc",
+    "project_id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T13:35:20.842385"
+  },
+  {
+    "id": "7e26a530-ef3d-4099-b62c-74e1860b5956",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802740"
+  },
+  {
+    "id": "2bf3a1fd-2cf4-4c75-80db-80d8b307144e",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802752"
+  },
+  {
+    "id": "0e73072f-1bf0-434f-aa62-4a55465172a0",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802757"
+  },
+  {
+    "id": "7d39f2b2-7b42-4e4b-8757-2dce7a8d2bb0",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802763"
+  },
+  {
+    "id": "579c8371-4ea3-445d-855a-0cdde047ed41",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802768"
+  },
+  {
+    "id": "0e9162c2-f731-4de2-879c-17c1ee9d9c2f",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802772"
+  },
+  {
+    "id": "5d36c119-4c8b-43fd-b513-48c74a1bb1e1",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802776"
+  },
+  {
+    "id": "59fe8aad-0356-4dd1-9af1-0bea28d2caf7",
+    "project_id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T13:35:55.802781"
+  },
+  {
+    "id": "ee64861e-25d0-4b8a-bd5e-92f84421bb2d",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370128"
+  },
+  {
+    "id": "4eaed943-7165-4289-ae76-5c9d861103eb",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370143"
+  },
+  {
+    "id": "e0563160-8569-40b2-a547-83ff11725fe1",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370148"
+  },
+  {
+    "id": "0716ef8d-acf5-4eef-9447-bf3b287f2060",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370151"
+  },
+  {
+    "id": "a13bf43a-7d8a-4551-8d6a-4df1f7875b81",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370155"
+  },
+  {
+    "id": "e19e7079-89c7-47a7-a87f-aacd9ff2d6de",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370158"
+  },
+  {
+    "id": "85cd3ea6-b12f-4c0c-8221-e9c35122cb8a",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370166"
+  },
+  {
+    "id": "86826545-68fe-4204-80c4-44128437cc23",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T15:10:19.370171"
+  },
+  {
+    "id": "bc219ae8-b701-4162-aa64-c0b132b5d68c",
+    "project_id": "5ebbbd65-a4dc-4aa4-8282-936a98194197",
+    "name": "Vape",
+    "slug": "vape",
+    "description": null,
+    "created_at": "2026-10-07T15:30:15.489733"
+  },
+  {
+    "id": "3a5fa793-dbfa-437a-9a6a-75efb329a41e",
+    "project_id": "5ebbbd65-a4dc-4aa4-8282-936a98194197",
+    "name": "Accessories",
+    "slug": "accessories",
+    "description": null,
+    "created_at": "2026-10-07T15:30:15.498312"
+  },
+  {
+    "id": "1fe74dd4-7b43-4d67-8ecc-6dfa82b05fe6",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.823978"
+  },
+  {
+    "id": "171e5baf-cda1-4dbc-8eb3-012364fb9430",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.823991"
+  },
+  {
+    "id": "0d43e0d1-f335-49d3-9d99-276c4829380a",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.823997"
+  },
+  {
+    "id": "95bb5a66-0585-4836-b2a1-75c42a490e41",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.824001"
+  },
+  {
+    "id": "8fbb1ee6-c578-4aaa-915d-4e58930711eb",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.824006"
+  },
+  {
+    "id": "383954a9-1149-49cc-9feb-788e11cbee80",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.824011"
+  },
+  {
+    "id": "df275b6c-71fa-495b-a357-dbd3104cbdfe",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.824017"
+  },
+  {
+    "id": "cd13365f-4fe7-4240-93ee-b192d85b7b11",
+    "project_id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T15:30:17.824025"
+  },
+  {
+    "id": "713ea87d-70d9-42c1-b8a6-f23976823903",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141113"
+  },
+  {
+    "id": "4947d8e2-a3f0-4c21-9288-ff92c432a639",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141132"
+  },
+  {
+    "id": "66ac10d7-2703-4a0a-98f2-1dbca013d6c7",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141145"
+  },
+  {
+    "id": "881711ae-72ff-440b-bda9-593ae85ab5a5",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141156"
+  },
+  {
+    "id": "9f7846ff-6065-4fd3-a7fb-08e355e9b80e",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141166"
+  },
+  {
+    "id": "b773ee88-05d6-4377-9d28-69e5d1e39557",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141175"
+  },
+  {
+    "id": "9c50ff58-0dd4-485b-88cf-11cdc41b10ca",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141184"
+  },
+  {
+    "id": "d6d269fa-383a-42e4-8e16-72c175fd3523",
+    "project_id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T16:13:50.141193"
+  },
+  {
+    "id": "ec772ff1-e4c7-499c-89a0-ab531861e91e",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806730"
+  },
+  {
+    "id": "5a3da579-4a9e-4dad-b38e-93f478d4c570",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806745"
+  },
+  {
+    "id": "8e134c8e-073e-408b-890b-d372778126c5",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806752"
+  },
+  {
+    "id": "ef2002e2-9877-4eda-b8e1-b853b2f353fb",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806757"
+  },
+  {
+    "id": "36ab5fc9-114a-4bbf-8dc4-59d7516f33b1",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806762"
+  },
+  {
+    "id": "2559fd5a-12c2-4bf2-9d1c-fecf2e01abe1",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806766"
+  },
+  {
+    "id": "a608e805-669a-477a-9c32-a816f1b4beec",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806772"
+  },
+  {
+    "id": "0cca0dcb-df54-45f8-be19-7d75b8b4ae1d",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T16:15:54.806777"
+  },
+  {
+    "id": "ef7faf0c-22b4-4a7a-ab86-7926cb066452",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947564"
+  },
+  {
+    "id": "fba93189-4999-4915-babe-08340b50d38b",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947571"
+  },
+  {
+    "id": "7f164575-b3a4-48b0-8e15-d590b67e7cbb",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947575"
+  },
+  {
+    "id": "02230247-5054-4f72-b7f2-69fc14e4781f",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947580"
+  },
+  {
+    "id": "c9d53b61-898f-441c-a9bf-e1694c98e34b",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947583"
+  },
+  {
+    "id": "0866f980-4e55-4a9b-8a2c-76ef659f90d1",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947585"
+  },
+  {
+    "id": "16c9d7b5-5746-4abd-ba0b-be084c2377d0",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947588"
+  },
+  {
+    "id": "4c6acbaf-3e25-4aaa-8df7-ff13e70a1483",
+    "project_id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T16:48:57.947591"
+  },
+  {
+    "id": "59bd169e-ad8a-434d-b59b-1be82afba1d6",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618876"
+  },
+  {
+    "id": "2c70d69b-ec11-4981-9329-f6e334177d91",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618883"
+  },
+  {
+    "id": "4b7740ae-c533-48c5-87ee-a2604f7fa12c",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618887"
+  },
+  {
+    "id": "a4c214dd-ba71-46b5-82ac-46e2c1a35f01",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618891"
+  },
+  {
+    "id": "588d7bb1-5b83-492f-b20a-08e9955129f3",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618894"
+  },
+  {
+    "id": "d84d354c-b03f-4b6c-ba52-2ea676e32cc5",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618897"
+  },
+  {
+    "id": "e6c12d38-5541-4145-b565-320584c3f199",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618900"
+  },
+  {
+    "id": "40f0ead7-7f19-4605-8156-13e3a23d5c67",
+    "project_id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T17:03:59.618902"
+  },
+  {
+    "id": "39137c73-27ff-4a6f-a5f4-30c95c0748db",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310388"
+  },
+  {
+    "id": "aad48aba-0b9d-415a-8420-209dd6963957",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310396"
+  },
+  {
+    "id": "7708cfc6-352e-44ca-bc69-d1fb16de3ca7",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310399"
+  },
+  {
+    "id": "e29d5365-a2bc-42fe-a267-ce9fad2ea3fd",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310402"
+  },
+  {
+    "id": "c1f63e14-5aeb-41bd-bf7e-6946fd33deda",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310405"
+  },
+  {
+    "id": "8276237d-8582-48dd-ad43-64938fe63fe8",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310408"
+  },
+  {
+    "id": "7b6514a1-c17d-4e80-9ac1-8dac3d38f2b5",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310411"
+  },
+  {
+    "id": "23899264-687e-423b-8972-c5b6d989dcd3",
+    "project_id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T17:13:04.310414"
+  },
+  {
+    "id": "5a57b59e-4300-4d37-9845-aec56732d8a9",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070782"
+  },
+  {
+    "id": "0fd2330c-0ffa-4b7e-b65e-c3f2492e60bc",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070800"
+  },
+  {
+    "id": "a942262d-a31b-4907-892c-0c3eb57c3e08",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070807"
+  },
+  {
+    "id": "81c9a3d2-68c6-4ce6-8134-b4b63d28d897",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070812"
+  },
+  {
+    "id": "0cd0008a-dd32-44ae-aae9-a6bae6fbae4f",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070817"
+  },
+  {
+    "id": "90e2419d-b47b-4986-ae13-d3359fdf77c3",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070823"
+  },
+  {
+    "id": "f5dca3ae-3d7d-4745-96cc-e8802844fe67",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070827"
+  },
+  {
+    "id": "7a1b0786-9533-47a7-8957-b617a09a6f7c",
+    "project_id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T17:21:15.070831"
+  },
+  {
+    "id": "17170d53-a570-4fe6-9b80-53c33130a1ea",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567363"
+  },
+  {
+    "id": "5f58331c-bd55-4d45-b307-af61161b664d",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567373"
+  },
+  {
+    "id": "7bfc1c0d-977b-4efd-93fe-c5e5811bfa1e",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567378"
+  },
+  {
+    "id": "37fd5bb9-d291-4f7f-8674-a64add62efba",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567382"
+  },
+  {
+    "id": "864e0ca2-ad5a-4b69-8f23-47a66685a7d7",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567386"
+  },
+  {
+    "id": "e4633ec3-8b71-488b-8618-d825f793652f",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567390"
+  },
+  {
+    "id": "884f2b95-82fa-4a62-b6ae-3e9ce3f0e0ea",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567393"
+  },
+  {
+    "id": "ee11d48e-6bd6-42c6-9366-9d456b0ed82f",
+    "project_id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T17:37:52.567397"
+  },
+  {
+    "id": "5e23bbe1-3d49-448a-97e7-ef0f09356ab5",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358658"
+  },
+  {
+    "id": "00bf031a-0fb9-40e5-8c6b-03fa2969fac6",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358701"
+  },
+  {
+    "id": "df50dc6b-4337-4a4b-b435-6ef08ea1fac5",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358712"
+  },
+  {
+    "id": "21cd1af2-13bf-4ab2-9dc8-1ca7f54696a5",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358725"
+  },
+  {
+    "id": "11d51643-fea8-48bc-94fc-6635c975e342",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358736"
+  },
+  {
+    "id": "c624016b-2710-4ccd-85a3-e7b844182ae7",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358744"
+  },
+  {
+    "id": "3df0df47-c8a3-4770-8601-b44596af9486",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358753"
+  },
+  {
+    "id": "d2d95f88-d641-4543-a928-aa3d12be62a2",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T18:10:20.358761"
+  },
+  {
+    "id": "99e860f8-e31f-4121-9a0d-9e9c0f0e238a",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118490"
+  },
+  {
+    "id": "cb1b811a-65f3-4658-861f-9833e2d307e0",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118497"
+  },
+  {
+    "id": "80157afa-b07f-4c83-9d29-239c310408dc",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118500"
+  },
+  {
+    "id": "e592d8a8-12c7-41fe-ba0b-4d40c785543d",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118503"
+  },
+  {
+    "id": "8d78578a-08a0-43e6-b8af-a6bc3e0ddd79",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118506"
+  },
+  {
+    "id": "b977c21a-3493-4d5f-be94-2e720881c9a8",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118511"
+  },
+  {
+    "id": "ad78df90-c4ee-4163-8ecb-62f906daf365",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118513"
+  },
+  {
+    "id": "c3b5bf85-c779-4da3-9c73-71dc35794dd0",
+    "project_id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T18:11:05.118516"
+  },
+  {
+    "id": "92e6ffbe-47e6-4edd-970d-0f612068249a",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519248"
+  },
+  {
+    "id": "dacfa76f-197e-4d3b-a985-231eff13b5a7",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519255"
+  },
+  {
+    "id": "949ac7d3-b2a2-409e-999d-fe9b368d7cc2",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519258"
+  },
+  {
+    "id": "6e66bb87-9462-454a-906f-274ea7c534c0",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519261"
+  },
+  {
+    "id": "855677f6-ac92-4246-957c-bd8e663b2e25",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519264"
+  },
+  {
+    "id": "01005e4a-29f0-4c5f-b2cc-a9523902695e",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519267"
+  },
+  {
+    "id": "9b893cdf-c6a6-4f8f-95df-fdb946a4dc71",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519270"
+  },
+  {
+    "id": "bab90312-4ed8-43d2-b60a-d0fbc976206f",
+    "project_id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T18:14:29.519274"
+  },
+  {
+    "id": "3f5bd74e-26d2-4122-a493-0bf19ead3140",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Cigars",
+    "slug": "cigars",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343507"
+  },
+  {
+    "id": "4c6198ac-026a-4456-bc8c-cd2f7a4e5dc1",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Cigar Products",
+    "slug": "cigar-products",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343515"
+  },
+  {
+    "id": "d8097fb7-34f5-4257-bf3d-19b951884379",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Vape/E-Cigarette Products",
+    "slug": "vape-e-cigarette-products",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343519"
+  },
+  {
+    "id": "1308f249-f999-4d80-ab01-e4d6ac41c7da",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Vape Devices/Accessories",
+    "slug": "vape-devices-accessories",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343523"
+  },
+  {
+    "id": "50b31fd1-afd7-4af3-a62a-f13c02e4e2a3",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Smoking Accessories",
+    "slug": "smoking-accessories",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343526"
+  },
+  {
+    "id": "957ea75f-dde6-4993-886a-d9640e0b7e5d",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Novelties",
+    "slug": "novelties",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343529"
+  },
+  {
+    "id": "7813e207-cec6-49e7-a573-fa9cae0d24da",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Novelty Gifts",
+    "slug": "novelty-gifts",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343532"
+  },
+  {
+    "id": "72b94bd1-2bc9-4c17-b21e-b19a6ca6aa4b",
+    "project_id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Other",
+    "slug": "other",
+    "description": null,
+    "created_at": "2026-10-07T20:46:44.343534"
+  }
+]

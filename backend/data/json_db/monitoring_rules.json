@@ -1,0 +1,222 @@
+[
+  {
+    "id": "c60786cc-1874-4cc2-811e-c824e1bd8124",
+    "project_id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "source_id": "d7f6269b-8ae3-4a4c-acf5-18f70ee389c1",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T09:35:41.517728",
+    "next_execution_at": "2026-10-06T10:35:41.517728",
+    "created_at": "2026-10-06T09:35:41.519231"
+  },
+  {
+    "id": "5f639c49-ede5-4a36-9ba4-6ef4827b4ead",
+    "project_id": "d14b1b77-f4e5-40fe-a258-5c2af73a6905",
+    "source_id": "83f932d9-fc56-44ff-b993-2c07a74c615c",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T15:05:43.268458",
+    "next_execution_at": "2026-10-06T16:05:43.268458",
+    "created_at": "2026-10-06T15:05:43.271076"
+  },
+  {
+    "id": "60b4e9e8-6c50-4525-988d-baad55c95c0f",
+    "project_id": "3774c421-bc5a-4f55-a54b-3bae9ebdbf12",
+    "source_id": "d3766666-a911-46bf-88f7-e733c114c5ac",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T15:09:42.089880",
+    "next_execution_at": "2026-10-06T16:09:42.089880",
+    "created_at": "2026-10-06T15:09:42.092116"
+  },
+  {
+    "id": "25b29ddc-230b-4636-8294-05ad0d8532a1",
+    "project_id": "6c87f3fd-5336-4d94-bbf5-155c0e73983e",
+    "source_id": "692c44f7-dbde-4585-ac94-8a931ce3c6e1",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T15:16:38.009307",
+    "next_execution_at": "2026-10-06T16:16:38.009307",
+    "created_at": "2026-10-06T15:16:38.010572"
+  },
+  {
+    "id": "ef889183-d492-4f7a-a6b1-972f9b88fd6e",
+    "project_id": "db1f526b-429e-4971-9640-a79520553f1c",
+    "source_id": "d7ec5253-37c1-4cc2-bd52-7eceb46362c0",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T16:51:47.650893",
+    "next_execution_at": "2026-10-06T17:51:47.650893",
+    "created_at": "2026-10-06T16:51:47.653486"
+  },
+  {
+    "id": "c03b8947-4438-470c-a55e-11530ed76c99",
+    "project_id": "a08aa2e5-45ed-49d3-a118-4ba80394c224",
+    "source_id": "5f508dc4-ff7b-4c3f-854d-d51a58276d0d",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-06T16:59:35.785961",
+    "next_execution_at": "2026-10-06T17:59:35.785961",
+    "created_at": "2026-10-06T16:59:35.787015"
+  },
+  {
+    "id": "62c8602c-d937-41ee-9312-657a90eb0143",
+    "project_id": "07d6d232-584e-43cb-b466-3227de82788e",
+    "source_id": "c502e9b9-3e49-4856-b9cc-6acfc0930944",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T11:38:25.159096",
+    "next_execution_at": "2026-10-07T12:38:25.159096",
+    "created_at": "2026-10-07T11:38:25.160605"
+  },
+  {
+    "id": "f8bb9058-e161-4da1-9e53-3793f00e4f9b",
+    "project_id": "57993b4c-ebf8-48e5-940e-457fadc61181",
+    "source_id": "f9ccf8d8-4520-4f8a-b283-d9635efc708f",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T12:20:12.705845",
+    "next_execution_at": "2026-10-07T13:20:12.705845",
+    "created_at": "2026-10-07T12:20:12.707695"
+  },
+  {
+    "id": "7ad3c885-4d4d-43f4-a7b5-dcd6e32b2d66",
+    "project_id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "source_id": "bfae3799-bbd8-4a42-ab7b-99351310ab4d",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T12:53:08.561867",
+    "next_execution_at": "2026-10-07T13:53:08.561867",
+    "created_at": "2026-10-07T12:53:08.563402"
+  },
+  {
+    "id": "eea693ce-882a-4be5-b679-ff1ec9e4e04f",
+    "project_id": "ec7eaac4-d0f1-4025-b69a-6866d5f3aa60",
+    "source_id": "d7cc0371-4485-4799-bedb-4da382433895",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T13:11:10.625975",
+    "next_execution_at": "2026-10-07T14:11:10.625975",
+    "created_at": "2026-10-07T13:11:10.628694"
+  },
+  {
+    "id": "e70e7ecd-3c60-4d52-98bd-fccafa726ea5",
+    "project_id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "source_id": "ad0e093e-1322-405d-9709-aa4b6bab87fd",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T13:36:01.482645",
+    "next_execution_at": "2026-10-07T14:36:01.482645",
+    "created_at": "2026-10-07T13:36:01.484301"
+  },
+  {
+    "id": "05b32583-9ce9-4bd1-aefd-6cb3ad5d2ecc",
+    "project_id": "2c27f7bf-1af0-48de-8196-3fda802ac80a",
+    "source_id": "e9da01de-973b-4989-9c09-9d42f0095c4e",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T15:30:22.326181",
+    "next_execution_at": "2026-10-07T16:30:22.326181",
+    "created_at": "2026-10-07T15:30:22.328691"
+  },
+  {
+    "id": "dc342982-4372-4ac3-be0c-7f9980d902c9",
+    "project_id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "source_id": "a64ad98f-867a-4393-ac86-6ccd405a7c59",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T16:13:54.267871",
+    "next_execution_at": "2026-10-07T17:13:54.267871",
+    "created_at": "2026-10-07T16:13:54.269539"
+  },
+  {
+    "id": "f7c8760d-b1d2-4ff6-a7da-b4967eb10dab",
+    "project_id": "56619def-1ef5-41ef-ad37-9ae305698ec4",
+    "source_id": "e4ed4778-dc72-4527-ace8-aeb43a718fe5",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T16:49:01.948518",
+    "next_execution_at": "2026-10-07T17:49:01.948518",
+    "created_at": "2026-10-07T16:49:01.950788"
+  },
+  {
+    "id": "1e49473c-e075-455e-8c79-520219970ea7",
+    "project_id": "8a21efff-828c-423a-aa4c-d66473dcd43a",
+    "source_id": "4c42fb32-5257-49d7-aa9f-8350641ccf0f",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T17:04:04.014525",
+    "next_execution_at": "2026-10-07T18:04:04.014525",
+    "created_at": "2026-10-07T17:04:04.016115"
+  },
+  {
+    "id": "98fd34dd-8284-474a-8579-554f5203edbb",
+    "project_id": "51e4adfb-95dd-42e0-977d-c1b7e454210a",
+    "source_id": "fcf3b025-9315-4968-a396-1e56be0a3011",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T17:13:08.171085",
+    "next_execution_at": "2026-10-07T18:13:08.171085",
+    "created_at": "2026-10-07T17:13:08.172085"
+  },
+  {
+    "id": "6e82a458-93b9-4954-9e0c-c4eec204d262",
+    "project_id": "7506ccf1-39bd-4860-8857-900904917557",
+    "source_id": "b2cef4f8-2ea9-4bc9-9337-4489a0bc41ae",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T17:21:19.594653",
+    "next_execution_at": "2026-10-07T18:21:19.594653",
+    "created_at": "2026-10-07T17:21:19.596256"
+  },
+  {
+    "id": "8eca69fb-0aa6-4dc5-8644-d1fb5a9f6500",
+    "project_id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "source_id": "78143926-9b9d-4db3-994b-678373cdb423",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T17:37:56.695591",
+    "next_execution_at": "2026-10-07T18:37:56.695591",
+    "created_at": "2026-10-07T17:37:56.697074"
+  },
+  {
+    "id": "7341a283-a65d-4aff-93ca-f8c104c3ac80",
+    "project_id": "e2ef8448-d0eb-439b-80b5-ed060aa5e1e9",
+    "source_id": "47790927-24fb-47c5-afc8-a43ccd391fcc",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T18:11:09.350014",
+    "next_execution_at": "2026-10-07T19:11:09.350014",
+    "created_at": "2026-10-07T18:11:09.352034"
+  },
+  {
+    "id": "23dcbf9a-d0d7-45ba-9808-5a0c3a7028d3",
+    "project_id": "91ba3990-d9aa-4c40-a605-1555340e0cf3",
+    "source_id": "397b6a99-b549-460d-8e85-025b252552bc",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T18:14:33.681654",
+    "next_execution_at": "2026-10-07T19:14:33.681654",
+    "created_at": "2026-10-07T18:14:33.683530"
+  }
+]

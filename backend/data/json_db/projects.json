@@ -1,0 +1,596 @@
+[
+  {
+    "id": "93c3ef2a-b0fd-4e82-929b-d8abfcd278cb",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T12:53:08.285328",
+    "updated_at": "2026-10-07T12:53:08.285331"
+  },
+  {
+    "id": "d48568e0-b2a3-4f90-a252-55b3db6461d2",
+    "name": "Default Product Verification Project",
+    "description": "Primary workspace for catalog verification and market intelligence.",
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T13:26:37.919418",
+    "updated_at": "2026-10-07T13:26:37.919423"
+  },
+  {
+    "id": "c0ca100b-73fd-4734-a605-6c1af25586a3",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T13:35:20.799351",
+    "updated_at": "2026-10-07T13:35:20.799355"
+  },
+  {
+    "id": "257d66bd-15fb-460f-9974-26afd46a1410",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T13:35:54.897342",
+    "updated_at": "2026-10-07T13:35:54.897347"
+  },
+  {
+    "id": "b6cdd4f7-d877-474b-9a5c-5612b042a104",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T13:35:55.770991",
+    "updated_at": "2026-10-07T13:35:55.770998"
+  },
+  {
+    "id": "b7a2b999-0b11-4b1b-ae65-6ded466a9120",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T13:35:56.341925",
+    "updated_at": "2026-10-07T13:35:56.341929"
+  },
+  {
+    "id": "20d8e508-d53e-4b12-bb15-df0bd71646ab",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T13:36:00.748008",
+    "updated_at": "2026-10-07T13:36:00.748016"
+  },
+  {
+    "id": "4e26b405-ea41-4ccc-8358-2f396f85a858",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T13:36:01.235200",
+    "updated_at": "2026-10-07T13:36:01.235206"
+  },
+  {
+    "id": "5ebbbd65-a4dc-4aa4-8282-936a98194197",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T15:30:14.513891",
+    "updated_at": "2026-10-07T15:30:14.513896"
+  },
+  {
+    "id": "21c735ec-fee6-44b0-b7d1-4575fa277458",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T15:30:15.946872",
+    "updated_at": "2026-10-07T15:30:15.946877"
+  },
+  {
+    "id": "e7c321d6-9af2-4214-ba9d-5d6651523cc7",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T15:30:17.778137",
+    "updated_at": "2026-10-07T15:30:17.778141"
+  },
+  {
+    "id": "3ad577b7-b8e4-4fd6-9edf-ac97895db2a9",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T15:30:18.625638",
+    "updated_at": "2026-10-07T15:30:18.625642"
+  },
+  {
+    "id": "36283abb-7104-40a9-a6bd-b63b3412028a",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T15:30:21.627163",
+    "updated_at": "2026-10-07T15:30:21.627168"
+  },
+  {
+    "id": "2c27f7bf-1af0-48de-8196-3fda802ac80a",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T15:30:22.071178",
+    "updated_at": "2026-10-07T15:30:22.071182"
+  },
+  {
+    "id": "853652e2-7d7c-4e0a-ae9c-4880a7cdb308",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:13:49.012796",
+    "updated_at": "2026-10-07T16:13:49.012801"
+  },
+  {
+    "id": "bfac77c1-bf21-416a-a84b-47b55d9a5448",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:13:49.738280",
+    "updated_at": "2026-10-07T16:13:49.738287"
+  },
+  {
+    "id": "b5a27e24-aa54-47a2-88e4-4e145ca95340",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:13:50.104643",
+    "updated_at": "2026-10-07T16:13:50.104646"
+  },
+  {
+    "id": "714c93bb-8cce-451b-9bfc-2e3852063667",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:13:50.659165",
+    "updated_at": "2026-10-07T16:13:50.659168"
+  },
+  {
+    "id": "ae14a317-f48d-40b6-9ffb-ef9a681a9ef4",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:13:53.554065",
+    "updated_at": "2026-10-07T16:13:53.554073"
+  },
+  {
+    "id": "f3cca5ea-4f7d-4c67-a0b5-f30097ba3b7f",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:13:53.997578",
+    "updated_at": "2026-10-07T16:13:53.997585"
+  },
+  {
+    "id": "8c7e5b82-d65a-45c9-96e1-9f4cb5804980",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:48:56.877893",
+    "updated_at": "2026-10-07T16:48:56.877897"
+  },
+  {
+    "id": "3d710e8b-276e-49a2-a5c9-efc0d77dd220",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:48:57.577704",
+    "updated_at": "2026-10-07T16:48:57.577708"
+  },
+  {
+    "id": "53d66e56-eb4a-4679-b611-06ffbfa4c13b",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:48:57.927933",
+    "updated_at": "2026-10-07T16:48:57.927936"
+  },
+  {
+    "id": "09a5f4d6-155d-4fe4-adbd-9fed80e4b9b6",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:48:58.423901",
+    "updated_at": "2026-10-07T16:48:58.423905"
+  },
+  {
+    "id": "93d26889-bcce-447d-b4c4-ddcc2640a243",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T16:49:01.350780",
+    "updated_at": "2026-10-07T16:49:01.350783"
+  },
+  {
+    "id": "56619def-1ef5-41ef-ad37-9ae305698ec4",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T16:49:01.737171",
+    "updated_at": "2026-10-07T16:49:01.737175"
+  },
+  {
+    "id": "fa02fc2c-ccad-4212-8185-b9464e32f32b",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:03:57.665467",
+    "updated_at": "2026-10-07T17:03:57.665472"
+  },
+  {
+    "id": "d0d894d7-4ee0-4340-8ac0-182eeb887146",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:03:59.090476",
+    "updated_at": "2026-10-07T17:03:59.090483"
+  },
+  {
+    "id": "ee6d4d63-531a-4dbf-94d4-f13017efee14",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:03:59.586295",
+    "updated_at": "2026-10-07T17:03:59.586309"
+  },
+  {
+    "id": "1fdc46e8-7707-46e6-a3c5-e6201ff5e9df",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:04:00.286271",
+    "updated_at": "2026-10-07T17:04:00.286286"
+  },
+  {
+    "id": "cd11d891-00d1-4a3b-90f3-a5241317d5f1",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:04:03.259165",
+    "updated_at": "2026-10-07T17:04:03.259178"
+  },
+  {
+    "id": "8a21efff-828c-423a-aa4c-d66473dcd43a",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:04:03.758132",
+    "updated_at": "2026-10-07T17:04:03.758138"
+  },
+  {
+    "id": "8128aada-ec13-4a58-8f1c-340426972eed",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:13:03.188030",
+    "updated_at": "2026-10-07T17:13:03.188033"
+  },
+  {
+    "id": "17b3b54f-49f0-4530-a68f-e36323cc6451",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:13:03.949532",
+    "updated_at": "2026-10-07T17:13:03.949536"
+  },
+  {
+    "id": "9b2a926c-2761-4e7e-bf55-35f735e79c7d",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:13:04.291604",
+    "updated_at": "2026-10-07T17:13:04.291607"
+  },
+  {
+    "id": "0927bd88-a158-46d5-923d-17eea04fec37",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:13:04.739979",
+    "updated_at": "2026-10-07T17:13:04.739983"
+  },
+  {
+    "id": "7d7d29e1-833b-41df-a340-ecdc929bac9c",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:13:07.614752",
+    "updated_at": "2026-10-07T17:13:07.614758"
+  },
+  {
+    "id": "51e4adfb-95dd-42e0-977d-c1b7e454210a",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:13:08.005314",
+    "updated_at": "2026-10-07T17:13:08.005317"
+  },
+  {
+    "id": "e6127f6c-9735-4d6e-b9e3-826d2363798e",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:21:12.749592",
+    "updated_at": "2026-10-07T17:21:12.749599"
+  },
+  {
+    "id": "5534fc61-7d75-420e-aae1-77321deebc2a",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:21:13.683292",
+    "updated_at": "2026-10-07T17:21:13.683298"
+  },
+  {
+    "id": "dc93059a-6593-47ff-8cae-2b5f43b1bd45",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:21:15.033106",
+    "updated_at": "2026-10-07T17:21:15.033113"
+  },
+  {
+    "id": "5558a469-8154-4937-83aa-03429ae146d5",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:21:16.033125",
+    "updated_at": "2026-10-07T17:21:16.033130"
+  },
+  {
+    "id": "8c7386a4-0953-45d4-9231-34aaf332e8e3",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:21:18.968133",
+    "updated_at": "2026-10-07T17:21:18.968138"
+  },
+  {
+    "id": "7506ccf1-39bd-4860-8857-900904917557",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:21:19.375871",
+    "updated_at": "2026-10-07T17:21:19.375874"
+  },
+  {
+    "id": "e8c0e795-97f9-431f-980f-46c35177ffe4",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:37:50.691639",
+    "updated_at": "2026-10-07T17:37:50.691644"
+  },
+  {
+    "id": "bdc4442a-8222-49f5-9bbf-559593408e66",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:37:51.719125",
+    "updated_at": "2026-10-07T17:37:51.719130"
+  },
+  {
+    "id": "b9e5db0b-dbfa-405c-a5df-b917844ece58",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:37:52.540552",
+    "updated_at": "2026-10-07T17:37:52.540560"
+  },
+  {
+    "id": "60dbd3f1-0b8d-4aec-96ba-8903eb2279b8",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:37:53.156597",
+    "updated_at": "2026-10-07T17:37:53.156600"
+  },
+  {
+    "id": "067cc483-7a0b-4eb3-985a-7f20c5753abc",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T17:37:56.019490",
+    "updated_at": "2026-10-07T17:37:56.019497"
+  },
+  {
+    "id": "f9b41e81-68ac-487a-83a4-d16d8a34293c",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T17:37:56.498550",
+    "updated_at": "2026-10-07T17:37:56.498554"
+  },
+  {
+    "id": "cb85be50-220f-4638-8227-4bb83ec7d4f9",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:11:03.057946",
+    "updated_at": "2026-10-07T18:11:03.057954"
+  },
+  {
+    "id": "d2d677ef-7ca2-4b63-a52c-b79fed86ddfd",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:11:04.298949",
+    "updated_at": "2026-10-07T18:11:04.298953"
+  },
+  {
+    "id": "04e68d79-258a-4c79-a2c7-2d8fe6190d1b",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:11:05.097169",
+    "updated_at": "2026-10-07T18:11:05.097173"
+  },
+  {
+    "id": "39675b4e-01b5-43c4-8ad0-8d36de3a61a0",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:11:05.681349",
+    "updated_at": "2026-10-07T18:11:05.681352"
+  },
+  {
+    "id": "6a97058f-637a-481b-ba7f-114c7e7d5ac0",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:11:08.652414",
+    "updated_at": "2026-10-07T18:11:08.652417"
+  },
+  {
+    "id": "e2ef8448-d0eb-439b-80b5-ed060aa5e1e9",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:11:09.143040",
+    "updated_at": "2026-10-07T18:11:09.143047"
+  },
+  {
+    "id": "7acd2e3f-1132-4bd1-9512-e585bad249c6",
+    "name": "Live Excel Upload Test Project",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:14:27.561544",
+    "updated_at": "2026-10-07T18:14:27.561547"
+  },
+  {
+    "id": "cbaa56f0-6260-49e4-a9a6-d4958165a4c1",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:14:28.442130",
+    "updated_at": "2026-10-07T18:14:28.442135"
+  },
+  {
+    "id": "17db5ef4-8094-4471-847d-e0de37099852",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:14:29.498611",
+    "updated_at": "2026-10-07T18:14:29.498614"
+  },
+  {
+    "id": "a7429912-eac0-4095-9389-0d2bbaa8d55f",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:14:30.070470",
+    "updated_at": "2026-10-07T18:14:30.070477"
+  },
+  {
+    "id": "a7169c19-66f7-4044-9672-4d104c5bb348",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T18:14:32.962490",
+    "updated_at": "2026-10-07T18:14:32.962497"
+  },
+  {
+    "id": "91ba3990-d9aa-4c40-a605-1555340e0cf3",
+    "name": "MarketLens Project Alpha",
+    "description": "Verification & Market Intelligence Test",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T18:14:33.467718",
+    "updated_at": "2026-10-07T18:14:33.467723"
+  },
+  {
+    "id": "97bc730d-8652-41d9-9852-2b5474fe1996",
+    "name": "Test Cigar & Vape Intelligence",
+    "description": "Verification project for cigars and vape products",
+    "status": "ACTIVE",
+    "owner_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "created_at": "2026-10-07T20:46:34.862117",
+    "updated_at": "2026-10-07T20:46:34.862121"
+  },
+  {
+    "id": "6d6955b9-7642-464b-b4ce-4aee6a8260c8",
+    "name": "Phase 2 Cigars & Vape Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T20:46:42.924475",
+    "updated_at": "2026-10-07T20:46:42.924478"
+  },
+  {
+    "id": "60c0a963-cbd0-48b6-a7ca-0b69750ee42d",
+    "name": "Phase 3 Orchestration Test Workspace",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T20:46:56.795531",
+    "updated_at": "2026-10-07T20:46:56.795534"
+  },
+  {
+    "id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "name": "Phase 4 Verification Test Scope",
+    "description": null,
+    "status": "ACTIVE",
+    "owner_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "created_at": "2026-10-07T20:47:10.356904",
+    "updated_at": "2026-10-07T20:47:10.356908"
+  }
+]

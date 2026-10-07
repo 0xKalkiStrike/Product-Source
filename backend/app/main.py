@@ -13,11 +13,16 @@ from app.models.all_models import User, Project
 from app.api.router import api_router
 from app.orchestration.engine import orchestration_engine
 
+from app.core.json_database import import_json_to_db, export_db_to_json
+
 async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as session:
+        # Load any existing data from JSON database files
+        await import_json_to_db(session)
+
         # Check if default admin exists
         res = await session.execute(select(User).where(User.email == "admin@platform.com"))
         admin = res.scalars().first()
@@ -60,6 +65,10 @@ async def init_db():
                 )
                 session.add(default_proj)
                 await session.commit()
+
+        # Save current database snapshot out to formatted JSON files in data/json_db/*.json
+        await export_db_to_json(session)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

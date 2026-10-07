@@ -1,0 +1,54 @@
+[
+  {
+    "id": "02f1a137-b1c0-4b23-845b-30c7cc5a2af9",
+    "worker_name": "Worker-01",
+    "worker_type": "VERIFICATION",
+    "status": "IDLE",
+    "current_job_id": null,
+    "cpu_usage": 15.0,
+    "memory_mb": 4096.0,
+    "total_jobs_completed": 47,
+    "total_jobs_failed": 0,
+    "last_heartbeat": "2026-10-07T20:47:02.010047",
+    "created_at": "2026-09-29T18:33:35.738840"
+  },
+  {
+    "id": "a0eb63e9-2f04-4798-a652-a3331d62bda0",
+    "worker_name": "Worker-02",
+    "worker_type": "MONITORING",
+    "status": "IDLE",
+    "current_job_id": null,
+    "cpu_usage": 15.0,
+    "memory_mb": 4096.0,
+    "total_jobs_completed": 38,
+    "total_jobs_failed": 0,
+    "last_heartbeat": "2026-10-07T20:47:02.931992",
+    "created_at": "2026-09-29T18:33:35.751994"
+  },
+  {
+    "id": "6b5055be-81d3-44ed-973d-1068eb1db5fc",
+    "worker_name": "Worker-03",
+    "worker_type": "SCREENSHOT",
+    "status": "IDLE",
+    "current_job_id": null,
+    "cpu_usage": 15.0,
+    "memory_mb": 4096.0,
+    "total_jobs_completed": 41,
+    "total_jobs_failed": 0,
+    "last_heartbeat": "2026-10-07T20:47:03.095664",
+    "created_at": "2026-09-29T18:33:35.765791"
+  },
+  {
+    "id": "63b3b1e4-f562-46d2-82db-3c0b15a4165b",
+    "worker_name": "Worker-04",
+    "worker_type": "PRICE",
+    "status": "IDLE",
+    "current_job_id": null,
+    "cpu_usage": 15.0,
+    "memory_mb": 4096.0,
+    "total_jobs_completed": 58,
+    "total_jobs_failed": 0,
+    "last_heartbeat": "2026-10-07T20:47:02.081380",
+    "created_at": "2026-09-29T18:33:35.779756"
+  }
+]

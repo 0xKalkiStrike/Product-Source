@@ -18,6 +18,7 @@ from app.api.evidence import router as evidence_router
 from app.api.reports import router as reports_router
 from app.api.settings import router as settings_router
 from app.api.uploaded_files import router as uploaded_files_router
+from app.api.virtual_db import router as virtual_db_router
 
 api_router = APIRouter()
 api_router.include_router(auth_router)
@@ -39,4 +40,6 @@ api_router.include_router(audit_logs_router)
 api_router.include_router(evidence_router)
 api_router.include_router(reports_router)
 api_router.include_router(settings_router)
+api_router.include_router(virtual_db_router)
+
 
