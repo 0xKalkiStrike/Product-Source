@@ -14,6 +14,9 @@ if not exist "venv\Scripts\python.exe" (
     .\venv\Scripts\pip install -r backend\requirements.txt
 )
 
+:: Clear conflicting processes on Port 8000 if running another project
+powershell -Command "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like '*server:app*' -or $_.CommandLine -like '*Product-Track*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }" > nul 2>&1
+
 echo [*] Starting FastAPI Backend Server (Port 8000)...
 start "ProductIntel Backend API" cmd /k ".\venv\Scripts\python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload"
 

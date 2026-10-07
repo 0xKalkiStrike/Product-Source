@@ -19,6 +19,8 @@ import { WorkersPage } from './pages/Workers';
 
 import { VerificationPage } from './pages/Verification';
 import { MarketIntelligencePage, PriceComparisonPage } from './pages/MarketIntelligence';
+import { ExcelComparisonPage } from './pages/ExcelComparison';
+import { ScrapedSourcesPage } from './pages/ScrapedSources';
 import { MonitoringPage } from './pages/Monitoring';
 import { AuditLogsPage } from './pages/AuditLogs';
 import { EvidencePage } from './pages/EvidencePage';
@@ -72,6 +74,8 @@ export const App: React.FC = () => {
                 <Route path="monitoring" element={<MonitoringPage />} />
                 <Route path="market-intelligence" element={<MarketIntelligencePage />} />
                 <Route path="price-comparison" element={<PriceComparisonPage />} />
+                <Route path="excel-comparison" element={<ExcelComparisonPage />} />
+                <Route path="scraped-sources" element={<ScrapedSourcesPage />} />
                 <Route path="jobs" element={<JobsPage />} />
                 <Route path="audit-logs" element={<AuditLogsPage />} />
                 <Route path="evidence" element={<EvidencePage />} />

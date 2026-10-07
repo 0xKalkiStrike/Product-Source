@@ -26,23 +26,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+    const timer = setTimeout(() => {
+      if (isMounted) setLoading(false);
+    }, 4000);
+
     const fetchUser = async () => {
       if (!token) {
-        setLoading(false);
+        if (isMounted) setLoading(false);
+        clearTimeout(timer);
         return;
       }
       try {
         const res = await api.get('/auth/me');
-        setUser(res.data);
+        if (isMounted) setUser(res.data);
       } catch (err) {
         localStorage.removeItem('auth_token');
-        setToken(null);
-        setUser(null);
+        if (isMounted) {
+          setToken(null);
+          setUser(null);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
+        clearTimeout(timer);
       }
     };
     fetchUser();
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
   }, [token]);
 
   const login = async (email: string, password: string) => {

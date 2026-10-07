@@ -15,7 +15,7 @@ router = APIRouter(prefix="/projects/{project_id}/products", tags=["Products"])
 async def list_products(
     project_id: str,
     skip: int = 0,
-    limit: int = 50,
+    limit: int = 1000,
     category_id: Optional[str] = None,
     search: Optional[str] = None,
     current_user: User = Depends(get_current_user),
@@ -110,6 +110,10 @@ async def upload_products(
     categories = cat_res.scalars().all()
     cat_map = {c.name.lower(): c.id for c in categories}
 
+    # Pre-fetch ALL existing products for project to avoid N+1 queries during bulk processing
+    exist_res = await db.execute(select(Product).where(Product.project_id == project_id))
+    existing_products_map = {p.sku: p for p in exist_res.scalars().all()}
+
     for prod_data in valid_products:
         category_name = prod_data.pop("category_name", "General")
         cat_key = category_name.lower()
@@ -127,11 +131,7 @@ async def upload_products(
         category_id = cat_map[cat_key]
 
         sku = prod_data["sku"]
-        # Check if product exists in DB for this project
-        exist = await db.execute(
-            select(Product).where(Product.project_id == project_id, Product.sku == sku)
-        )
-        existing_product = exist.scalars().first()
+        existing_product = existing_products_map.get(sku)
 
         if existing_product:
             # Update existing product details
@@ -157,6 +157,7 @@ async def upload_products(
                 status="UNVERIFIED"
             )
             db.add(product)
+            existing_products_map[sku] = product
         inserted_count += 1
 
     # Save Upload Log
@@ -168,6 +169,7 @@ async def upload_products(
         valid_count=inserted_count,
         error_count=len(errors),
         error_report={"row_errors": errors},
+        raw_data=valid_products,
         status="PROCESSED" if inserted_count > 0 else "FAILED"
     )
     db.add(upload_log)

@@ -185,11 +185,20 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
                         candidate_names.append(str_v)
             if candidate_names:
                 name = candidate_names[0]
+            elif sku:
+                name = f"Product ({sku})"
+            else:
+                # Use any non-empty cell in the row
+                for col_k, val_v in row.items():
+                    str_v = clean_identifier(val_v)
+                    if str_v:
+                        name = str_v
+                        break
 
         row_errors = []
 
         if not name:
-            row_errors.append("Missing Product Name")
+            name = f"Catalog Item #{row_num}"
 
         if not sku:
             sku = f"SKU-{row_num:04d}"

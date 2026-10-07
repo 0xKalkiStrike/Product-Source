@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { api } from '../services/api';
+import { Link } from 'react-router-dom';
 import {
   Upload,
   Plus,
@@ -40,6 +41,7 @@ export const ProductsPage: React.FC = () => {
   const { activeProject, createProject } = useProject();
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [targetSources, setTargetSources] = useState<{ id: string; name: string; url: string }[]>([]);
   const [selectedCat, setSelectedCat] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -65,6 +67,16 @@ export const ProductsPage: React.FC = () => {
   const [newUpc, setNewUpc] = useState<string>('');
   const [newCategory, setNewCategory] = useState<string>('');
 
+  const getCleanDomain = (urlStr: string): string => {
+    if (!urlStr) return 'vapordna.com';
+    try {
+      const parsed = new URL(urlStr.startsWith('http') ? urlStr : `https://${urlStr}`);
+      return parsed.hostname.replace('www.', '');
+    } catch {
+      return urlStr.replace('https://', '').replace('http://', '').split('/')[0] || 'vapordna.com';
+    }
+  };
+
   const fetchProductsData = async () => {
     if (!activeProject) {
       setLoading(false);
@@ -73,16 +85,19 @@ export const ProductsPage: React.FC = () => {
     }
     setLoading(true);
     try {
-      const [prodRes, catRes] = await Promise.all([
+      const realCatId = selectedCat.startsWith('cat:') ? selectedCat.replace('cat:', '') : (selectedCat && !selectedCat.startsWith('src:') ? selectedCat : undefined);
+      const [prodRes, catRes, srcRes] = await Promise.all([
         api.get(`/projects/${activeProject.id}/products`, {
-          params: { category_id: selectedCat || undefined, search: searchTerm || undefined }
+          params: { limit: 1000, category_id: realCatId, search: searchTerm || undefined }
         }),
-        api.get(`/projects/${activeProject.id}/categories`)
+        api.get(`/projects/${activeProject.id}/categories`),
+        api.get(`/projects/${activeProject.id}/sources`)
       ]);
       setProducts(prodRes.data.items || []);
       setCategories(catRes.data || []);
+      setTargetSources(srcRes.data.items || []);
     } catch (err) {
-      console.error('Failed to load products/categories:', err);
+      console.error('Failed to load products/categories/sources:', err);
     } finally {
       setLoading(false);
     }
@@ -332,6 +347,17 @@ export const ProductsPage: React.FC = () => {
   const hasMpn = useMemo(() => products.some(p => isNotEmpty(p.mpn)), [products]);
   const hasUpc = useMemo(() => products.some(p => isNotEmpty(p.upc) || isNotEmpty(p.ean)), [products]);
 
+  const displayedProducts = useMemo(() => {
+    if (!selectedCat || !selectedCat.startsWith('src:')) return products;
+    const targetQ = selectedCat.replace('src:', '').toLowerCase();
+    return products.filter(p => {
+      const specsStr = JSON.stringify(p.specifications || {}).toLowerCase();
+      const brandStr = (p.brand || '').toLowerCase();
+      const nameStr = (p.name || '').toLowerCase();
+      return specsStr.includes(targetQ) || brandStr.includes(targetQ) || nameStr.includes(targetQ);
+    });
+  }, [products, selectedCat]);
+
   const totalCols = 2 + (hasBrand ? 1 : 0) + (hasMpn ? 1 : 0) + (hasUpc ? 1 : 0) + dynamicColumns.length + 3;
 
   // Compile all attributes present for a given product row
@@ -391,6 +417,14 @@ export const ProductsPage: React.FC = () => {
           </p>
         </div>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <Link to="/source-data" className="btn btn-secondary" title="View Uploaded Excel Sheets Data">
+            <FileSpreadsheet size={16} />
+            <span>Uploaded Excel Sheets</span>
+          </Link>
+          <Link to="/excel-comparison" className="btn btn-secondary" title="View Excel Comparison Sheet after Target Source matching">
+            <FileSpreadsheet size={16} />
+            <span>Excel Comparison Sheet</span>
+          </Link>
           <button className="btn btn-secondary" onClick={downloadSampleTemplate} title="Download CSV sample file format">
             <Download size={16} />
             <span>Sample Template</span>
@@ -425,14 +459,39 @@ export const ProductsPage: React.FC = () => {
             <Filter size={16} color="var(--primary)" />
             <select
               className="input"
-              style={{ width: '220px' }}
+              style={{ width: '280px' }}
               value={selectedCat}
               onChange={(e) => setSelectedCat(e.target.value)}
             >
-              <option value="">All Categories</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.id}>{c.name}</option>
-              ))}
+              <option value="">All Categories &amp; Target Sources</option>
+              
+              {categories.length > 0 && (
+                <optgroup label="Product Categories">
+                  {categories.map((c) => (
+                    <option key={c.id} value={`cat:${c.id}`}>{c.name}</option>
+                  ))}
+                </optgroup>
+              )}
+
+              <optgroup label="Target Source Sites">
+                {targetSources.map((s) => {
+                  const domain = getCleanDomain(s.url);
+                  return (
+                    <option key={s.id} value={`src:${domain}`}>
+                      {s.name} ({domain})
+                    </option>
+                  );
+                })}
+                {!targetSources.some(s => getCleanDomain(s.url).includes('vapordna')) && (
+                  <option value="src:vapordna.com">VaporDNA E-Commerce (vapordna.com)</option>
+                )}
+                {!targetSources.some(s => getCleanDomain(s.url).includes('gotham')) && (
+                  <option value="src:gothamcigars.com">Gotham Cigars (gothamcigars.com)</option>
+                )}
+                {!targetSources.some(s => getCleanDomain(s.url).includes('famous')) && (
+                  <option value="src:famous-smoke.com">Famous Smoke (famous-smoke.com)</option>
+                )}
+              </optgroup>
             </select>
           </div>
         </div>
@@ -466,7 +525,7 @@ export const ProductsPage: React.FC = () => {
                     Loading imported products catalog...
                   </td>
                 </tr>
-              ) : products.length === 0 ? (
+              ) : displayedProducts.length === 0 ? (
                 <tr>
                   <td colSpan={totalCols} style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-dim)' }}>
                     <div style={{
@@ -483,21 +542,15 @@ export const ProductsPage: React.FC = () => {
                       <FileSpreadsheet size={32} />
                     </div>
                     <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.5rem' }}>
-                      No Products in Catalog
+                      No Products Found
                     </h3>
                     <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem', maxWidth: '450px', margin: '0 auto 1.5rem' }}>
-                      Upload your Excel sheet (<code>.xlsx</code> / <code>.csv</code>) to parse products into Product-Source immediately.
+                      No items match the selected category or Target Source website filter.
                     </p>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => { setUploadFile(null); setUploadResult(null); setUploadError(''); setShowUploadModal(true); }}
-                    >
-                      <Upload size={16} /> Upload Excel File Now
-                    </button>
                   </td>
                 </tr>
               ) : (
-                products.map((p) => (
+                displayedProducts.map((p) => (
                   <tr key={p.id} style={{ cursor: 'pointer' }} onClick={() => { setModalSearch(''); setSelectedProductDetail(p); }}>
                     <td style={{ fontWeight: 600, color: 'var(--accent-cyan)', paddingLeft: '1.5rem', minWidth: '170px' }}>{p.sku}</td>
                     <td style={{ fontWeight: 600, color: 'var(--text-main)', maxWidth: '340px', overflow: 'hidden', textOverflow: 'ellipsis' }}>

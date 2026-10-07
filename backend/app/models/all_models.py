@@ -145,6 +145,7 @@ class UploadedFile(Base):
     valid_count: Mapped[int] = mapped_column(Integer, default=0)
     error_count: Mapped[int] = mapped_column(Integer, default=0)
     error_report: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
+    raw_data: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
     status: Mapped[str] = mapped_column(String, default="PROCESSED")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
 
