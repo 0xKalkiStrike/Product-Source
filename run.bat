@@ -15,7 +15,7 @@ if not exist "venv\Scripts\python.exe" (
 )
 
 echo [*] Starting FastAPI Backend Server (Port 8000)...
-start "ProductIntel Backend API" cmd /k ".\venv\Scripts\python.exe -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8000 --reload"
+start "ProductIntel Backend API" cmd /k ".\venv\Scripts\python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload"
 
 echo [*] Starting React Vite Frontend Server (Port 5173)...
 start "ProductIntel Frontend UI" cmd /k "npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173"
