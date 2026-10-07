@@ -6550,5 +6550,53 @@
     "evidence_hash": "4a5f62ba7f447c4fefe4f63917690b8446fde45e66187930f0e7bf485b2b4a3e",
     "status": "VERIFIED",
     "verified_at": "2026-10-07T18:14:33.598065"
+  },
+  {
+    "id": "52fb4aea-d5d8-43ca-890c-a5ecbe3ed4ee",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "product_id": "6994c9ab-039a-420f-a9b5-451e6b236352",
+    "source_id": "d8ca1cc5-97e3-4609-bfe0-d2ae3ce1f434",
+    "job_id": "8d378db6-dd26-4542-9537-8e99451daff6",
+    "match_priority_level": "SKU",
+    "match_confidence": 0.95,
+    "match_evidence": {
+      "matched_by": "SKU Identifier Match",
+      "matched_sku": "MONTE-002"
+    },
+    "extracted_price": 149.99,
+    "msrp": 175.0,
+    "discount": 25.01,
+    "currency": "USD",
+    "pack_size": "Box of 20",
+    "availability": "IN_STOCK",
+    "condition": "NEW",
+    "evidence_path": null,
+    "evidence_hash": "e04d960580a63f04508f69263f800e99573d3767ab94b8c1a484180853cca554",
+    "status": "VERIFIED",
+    "verified_at": "2026-10-07T20:47:14.974714"
+  },
+  {
+    "id": "413e9b14-2f48-4b40-b84b-9f105787faee",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "product_id": "cd523346-95ef-4d78-bcf6-98680b4d3c9e",
+    "source_id": "1e0f8727-8398-4c93-ab2a-281cbd77d627",
+    "job_id": "67b0fb1a-3d2c-4444-ab92-aee2c7ddc132",
+    "match_priority_level": "SKU",
+    "match_confidence": 0.95,
+    "match_evidence": {
+      "matched_by": "SKU Identifier Match",
+      "matched_sku": "SKU001"
+    },
+    "extracted_price": 24.99,
+    "msrp": 29.99,
+    "discount": 5.0,
+    "currency": "USD",
+    "pack_size": "Pack of 10",
+    "availability": "IN_STOCK",
+    "condition": "NEW",
+    "evidence_path": null,
+    "evidence_hash": "9823dd37b91a71c5cfede405beccbc2ac287057238bce8180b8856a18189fa1f",
+    "status": "VERIFIED",
+    "verified_at": "2026-10-07T20:47:29.425958"
   }
 ]

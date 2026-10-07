@@ -174,11 +174,13 @@ def get_all_models():
         all_models.Evidence
     ]
 
-async def export_db_to_json(session: AsyncSession):
+_export_task = None
+
+async def export_db_to_json(session: AsyncSession, target_models: Optional[List] = None):
     """
-    Exports all tables from active session into JSON files in `data/json_db/*.json`.
+    Exports specified or all tables from active session into JSON files in `data/json_db/*.json`.
     """
-    models = get_all_models()
+    models = target_models or get_all_models()
     for model_cls in models:
         table_name = model_cls.__tablename__
         try:
@@ -188,6 +190,24 @@ async def export_db_to_json(session: AsyncSession):
             await json_db.write_table(table_name, records)
         except Exception as e:
             print(f"[JSON DB Export Warning] Table {table_name}: {e}")
+
+def schedule_json_export():
+    """Schedules a non-blocking background export of database to JSON files."""
+    global _export_task
+    try:
+        loop = asyncio.get_running_loop()
+        if _export_task and not _export_task.done():
+            return
+        
+        async def _bg_runner():
+            await asyncio.sleep(0.5) # Debounce
+            from app.core.database import AsyncSessionLocal
+            async with AsyncSessionLocal() as session:
+                await export_db_to_json(session)
+
+        _export_task = loop.create_task(_bg_runner())
+    except Exception as e:
+        print(f"[JSON DB Background Schedule Warning]: {e}")
 
 async def import_json_to_db(session: AsyncSession):
     """
@@ -205,7 +225,6 @@ async def import_json_to_db(session: AsyncSession):
         if not records:
             continue
 
-        # Primary key attribute (usually 'id' or 'key')
         pk_attr_name = inspect(model_cls).primary_key[0].name
         pk_col = getattr(model_cls, pk_attr_name)
 

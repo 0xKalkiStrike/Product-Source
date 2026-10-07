@@ -2516,5 +2516,105 @@
     "completed_at": "2026-10-07T20:47:00.735568",
     "created_at": "2026-10-07T20:46:59.733421",
     "updated_at": "2026-10-07T20:47:00.736581"
+  },
+  {
+    "id": "8d378db6-dd26-4542-9537-8e99451daff6",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "6994c9ab-039a-420f-a9b5-451e6b236352"
+      ],
+      "source_ids": [
+        "d8ca1cc5-97e3-4609-bfe0-d2ae3ce1f434"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-07T20:47:14.966429",
+    "started_at": null,
+    "completed_at": "2026-10-07T20:47:14.976382",
+    "created_at": "2026-10-07T20:47:14.966436",
+    "updated_at": "2026-10-07T20:47:14.977158"
+  },
+  {
+    "id": "5f5017aa-2e35-4510-8615-ccb0f8d90565",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "task_type": "SOURCE_COLLECTION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "source_ids": [
+        "1e0f8727-8398-4c93-ab2a-281cbd77d627"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 3,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-07T20:47:26.550262",
+    "started_at": null,
+    "completed_at": "2026-10-07T20:47:26.561502",
+    "created_at": "2026-10-07T20:47:26.550266",
+    "updated_at": "2026-10-07T20:47:26.561907"
+  },
+  {
+    "id": "67b0fb1a-3d2c-4444-ab92-aee2c7ddc132",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "task_type": "VERIFICATION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "cd523346-95ef-4d78-bcf6-98680b4d3c9e"
+      ],
+      "source_ids": [
+        "1e0f8727-8398-4c93-ab2a-281cbd77d627"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-07T20:47:29.420249",
+    "started_at": null,
+    "completed_at": "2026-10-07T20:47:29.427507",
+    "created_at": "2026-10-07T20:47:29.420252",
+    "updated_at": "2026-10-07T20:47:29.427987"
+  },
+  {
+    "id": "743d168a-c863-4ff9-ac09-701f46be32f7",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "task_type": "MONITORING_SWEEP",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "trigger": "MANUAL_EXECUTION"
+    },
+    "progress": 100.0,
+    "total_items": 10,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-07T20:47:36.863460",
+    "started_at": null,
+    "completed_at": "2026-10-07T20:47:36.872208",
+    "created_at": "2026-10-07T20:47:36.863463",
+    "updated_at": "2026-10-07T20:47:36.874591"
   }
 ]

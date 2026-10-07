@@ -411050,5 +411050,41 @@
     "status": "VERIFIED",
     "created_at": "2026-10-07T20:46:45.925734",
     "updated_at": "2026-10-07T20:47:02.000488"
+  },
+  {
+    "id": "6994c9ab-039a-420f-a9b5-451e6b236352",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "category_id": null,
+    "sku": "MONTE-002",
+    "name": "Montecristo No. 2 Torpedo",
+    "brand": "Montecristo",
+    "mpn": "MPN-MONTE-2",
+    "upc": "012345678905",
+    "ean": null,
+    "pack_size": null,
+    "variant": null,
+    "specifications": null,
+    "status": "VERIFIED",
+    "created_at": "2026-10-07T20:47:11.774771",
+    "updated_at": "2026-10-07T20:47:14.978955"
+  },
+  {
+    "id": "cd523346-95ef-4d78-bcf6-98680b4d3c9e",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "category_id": null,
+    "sku": "SKU001",
+    "name": "Premium Product A",
+    "brand": "Brand X",
+    "mpn": null,
+    "upc": "123456",
+    "ean": null,
+    "pack_size": null,
+    "variant": null,
+    "specifications": {
+      "price": 24.99
+    },
+    "status": "VERIFIED",
+    "created_at": "2026-10-07T20:47:24.992716",
+    "updated_at": "2026-10-07T20:47:29.429032"
   }
 ]

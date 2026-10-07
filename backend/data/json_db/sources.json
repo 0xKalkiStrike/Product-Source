@@ -736,5 +736,41 @@
     "last_error": null,
     "created_at": "2026-10-07T20:46:48.877728",
     "updated_at": "2026-10-07T20:46:55.332651"
+  },
+  {
+    "id": "d8ca1cc5-97e3-4609-bfe0-d2ae3ce1f434",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "name": "Famous Smoke Shop",
+    "url": "https://www.famous-smoke.com",
+    "source_type": "PUBLIC_SURFACE_WEB",
+    "auth_required": false,
+    "credential_id": null,
+    "adapter_name": "CigarSourceAdapter",
+    "max_concurrency": 5,
+    "rate_limit_rpm": 60,
+    "monitoring_interval_min": 60,
+    "status": "ACTIVE",
+    "last_successful_execution": null,
+    "last_error": null,
+    "created_at": "2026-10-07T20:47:13.421441",
+    "updated_at": "2026-10-07T20:47:13.421452"
+  },
+  {
+    "id": "1e0f8727-8398-4c93-ab2a-281cbd77d627",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "name": "Source A (Primary Market)",
+    "url": "https://source-a.example.com",
+    "source_type": "PUBLIC_SURFACE_WEB",
+    "auth_required": false,
+    "credential_id": null,
+    "adapter_name": "GenericSourceAdapter",
+    "max_concurrency": 5,
+    "rate_limit_rpm": 60,
+    "monitoring_interval_min": 60,
+    "status": "ACTIVE",
+    "last_successful_execution": "2026-10-07T20:47:26.559731",
+    "last_error": null,
+    "created_at": "2026-10-07T20:47:23.216066",
+    "updated_at": "2026-10-07T20:47:26.562921"
   }
 ]

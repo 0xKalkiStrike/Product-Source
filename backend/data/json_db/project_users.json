@@ -453,5 +453,12 @@
     "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
     "role": "OWNER",
     "created_at": "2026-10-07T20:47:10.368159"
+  },
+  {
+    "id": "6e6be737-81d7-460f-a5c1-28dbca066d7e",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "role": "OWNER",
+    "created_at": "2026-10-07T20:47:21.778645"
   }
 ]

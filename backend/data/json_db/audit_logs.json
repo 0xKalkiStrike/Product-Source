@@ -15589,5 +15589,136 @@
     },
     "ip_address": null,
     "timestamp": "2026-10-07T20:47:10.366753"
+  },
+  {
+    "id": "6244c229-067d-49d0-987c-bfbc6df289b8",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Shop",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:13.431815"
+  },
+  {
+    "id": "0cd7acfa-f043-419f-85ea-f77e8d586b99",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "8d378db6-dd26-4542-9537-8e99451daff6"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:14.991502"
+  },
+  {
+    "id": "dba965f4-c003-4541-bfc6-6b33eb8bb98e",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:20.218598"
+  },
+  {
+    "id": "daca16fd-57a1-42c7-8a7e-cb753cc93401",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "MarketLens Project Alpha"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:21.777828"
+  },
+  {
+    "id": "83b00704-c254-4a60-ba17-2eee06bad404",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Source A (Primary Market)",
+      "url": "https://source-a.example.com",
+      "adapter": "GenericSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:23.223333"
+  },
+  {
+    "id": "5265067f-832b-49f7-94c4-9279391792d8",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "SOURCE_DATA_COLLECTION",
+    "status": "SUCCESS",
+    "details": {
+      "sources_count": 1,
+      "items_collected": 3
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:26.571296"
+  },
+  {
+    "id": "15084cbe-e246-4ca2-9f61-0743b4657d26",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "67b0fb1a-3d2c-4444-ab92-aee2c7ddc132"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:29.435436"
+  },
+  {
+    "id": "1829361b-af52-4fe7-975c-605a0feb6a8d",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "MONITORING_RUN_EXECUTED",
+    "status": "SUCCESS",
+    "details": {
+      "events_detected": 2
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:36.879575"
+  },
+  {
+    "id": "c08da59d-ba5d-4416-af10-8f282a03b336",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "json",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:42.884384"
+  },
+  {
+    "id": "c8de884b-f01f-4f51-99ad-d62a77e52065",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "csv",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-07T20:47:44.538971"
   }
 ]

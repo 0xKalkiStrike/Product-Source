@@ -3001,5 +3001,27 @@
     "currency": "USD",
     "normalized_usd": 24.99,
     "recorded_at": "2026-10-07T18:14:33.598065"
+  },
+  {
+    "id": "68294e4c-1e8f-42c3-83b7-3e36a65a4eb2",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "product_id": "6994c9ab-039a-420f-a9b5-451e6b236352",
+    "source_id": "d8ca1cc5-97e3-4609-bfe0-d2ae3ce1f434",
+    "price": 149.99,
+    "msrp": 175.0,
+    "currency": "USD",
+    "normalized_usd": 149.99,
+    "recorded_at": "2026-10-07T20:47:14.974714"
+  },
+  {
+    "id": "2a67d799-dcde-4120-b197-d50b5cf9160b",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "product_id": "cd523346-95ef-4d78-bcf6-98680b4d3c9e",
+    "source_id": "1e0f8727-8398-4c93-ab2a-281cbd77d627",
+    "price": 24.99,
+    "msrp": 29.99,
+    "currency": "USD",
+    "normalized_usd": 24.99,
+    "recorded_at": "2026-10-07T20:47:29.425958"
   }
 ]

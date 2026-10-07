@@ -218,5 +218,16 @@
     "last_executed_at": "2026-10-07T18:14:33.681654",
     "next_execution_at": "2026-10-07T19:14:33.681654",
     "created_at": "2026-10-07T18:14:33.683530"
+  },
+  {
+    "id": "b3376b50-48d4-49b4-9df1-8ac7c469ac2e",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "source_id": "1e0f8727-8398-4c93-ab2a-281cbd77d627",
+    "rule_name": "Hourly Price Check",
+    "interval_minutes": 60,
+    "status": "ACTIVE",
+    "last_executed_at": "2026-10-07T20:47:35.464525",
+    "next_execution_at": "2026-10-07T21:47:35.464525",
+    "created_at": "2026-10-07T20:47:35.465561"
   }
 ]

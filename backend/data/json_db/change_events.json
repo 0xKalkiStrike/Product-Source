@@ -598,5 +598,35 @@
       "availability": "IN_STOCK"
     },
     "detected_at": "2026-10-07T18:14:33.704176"
+  },
+  {
+    "id": "91293f50-f77f-42a8-ab15-384799642aca",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "source_id": "source-01",
+    "product_id": null,
+    "change_type": "PRICE_CHANGE",
+    "old_value": {
+      "price": 27.5,
+      "currency": "USD"
+    },
+    "new_value": {
+      "price": 25.99,
+      "currency": "USD"
+    },
+    "detected_at": "2026-10-07T20:47:36.871042"
+  },
+  {
+    "id": "2a89456b-21dd-45e0-8527-28b4716274b7",
+    "project_id": "20537542-0c82-4bbe-a48c-68bf66f63e55",
+    "source_id": "source-02",
+    "product_id": null,
+    "change_type": "AVAILABILITY_CHANGE",
+    "old_value": {
+      "availability": "OUT_OF_STOCK"
+    },
+    "new_value": {
+      "availability": "IN_STOCK"
+    },
+    "detected_at": "2026-10-07T20:47:36.871042"
   }
 ]
