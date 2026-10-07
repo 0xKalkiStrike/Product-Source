@@ -82,7 +82,7 @@ export const SourceDataPage: React.FC = () => {
     try {
       const fileParam = selectedFileId === 'all' ? '' : selectedFileId;
       const res = await api.get(
-        `/projects/${activeProject.id}/uploaded-files/data?file_id=${fileParam}&limit=1500`
+        `/projects/${activeProject.id}/uploaded-files/data?file_id=${fileParam}&limit=10000`
       );
       const items = res.data.items || [];
       setSheetRows(items);

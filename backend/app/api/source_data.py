@@ -95,9 +95,26 @@ async def list_source_data(
     }
 
 from pydantic import BaseModel
+from app.services.live_scraper import start_live_scrape, get_status as get_live_scrape_status
 
 class CollectRequest(BaseModel):
     source_ids: Optional[List[str]] = None
+
+@router.post("/live-scrape")
+async def live_scrape_start(
+    project_id: str,
+    req: Optional[CollectRequest] = None,
+    current_user: User = Depends(get_current_user),
+):
+    """Starts (or joins) a live scrape of the Target Source websites in the background."""
+    return start_live_scrape(project_id, current_user.id, req.source_ids if req else None)
+
+@router.get("/live-scrape/status")
+async def live_scrape_status(
+    project_id: str,
+    current_user: User = Depends(get_current_user),
+):
+    return get_live_scrape_status(project_id)
 
 @router.post("/collect")
 async def collect_source_data(

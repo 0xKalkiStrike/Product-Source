@@ -6,7 +6,7 @@ from sqlalchemy import select, func, or_
 from app.core.database import get_db
 from app.models.all_models import Product, ProductCategory, UploadedFile, User, AuditLog
 from app.schemas.phase2 import ProductCreate, ProductOut, ProductListOut
-from app.services.excel_parser import parse_product_file
+from app.services.excel_parser import parse_product_file_full
 from app.api.deps import get_current_user
 
 router = APIRouter(prefix="/projects/{project_id}/products", tags=["Products"])
@@ -99,7 +99,7 @@ async def upload_products(
 
     filename = file.filename or "uploaded_file.xlsx"
     try:
-        valid_products, errors = parse_product_file(contents, filename)
+        valid_products, errors, all_rows = parse_product_file_full(contents, filename)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"File parsing error: {str(e)}")
 
@@ -166,11 +166,11 @@ async def upload_products(
             project_id=project_id,
             filename=file.filename or "uploaded_file.xlsx",
             file_size=len(contents),
-            row_count=len(valid_products),
+            row_count=len(all_rows),
             valid_count=inserted_count,
             error_count=len(errors),
             error_report={"row_errors": errors},
-            raw_data=valid_products,
+            raw_data=all_rows,
             status="PROCESSED" if inserted_count > 0 else "FAILED"
         )
         db.add(upload_log)

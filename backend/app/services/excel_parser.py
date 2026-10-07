@@ -56,6 +56,15 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
     Parses Excel (.xlsx, .xls) or CSV files reliably.
     Returns (valid_products_list, error_reports_list)
     """
+    valid_products, errors, _all_rows = parse_product_file_full(file_content, filename)
+    return valid_products, errors
+
+def parse_product_file_full(file_content: bytes, filename: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Same as parse_product_file but also returns `all_rows`: EVERY row of the sheet
+    (including rows that have UPC/EAN format warnings), for immutable full-sheet viewing.
+    Returns (valid_products_list, error_reports_list, all_rows_list)
+    """
     ext = filename.lower().split('.')[-1]
     
     try:
@@ -154,6 +163,7 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
 
     valid_products = []
     errors = []
+    all_rows = []
     seen_skus: Dict[str, int] = {}
 
     for idx, row in df.iterrows():
@@ -246,6 +256,20 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
         if image_url:
             specifications["image_url"] = image_url
 
+        entry = {
+            "sku": sku,
+            "name": name,
+            "brand": brand or None,
+            "category_name": category or "General",
+            "mpn": mpn or None,
+            "upc": upc or None,
+            "ean": ean or None,
+            "pack_size": pack_size or None,
+            "variant": variant or None,
+            "specifications": specifications
+        }
+        all_rows.append({**entry, "row_errors": list(row_errors)})
+
         if row_errors:
             errors.append({
                 "row": row_num,
@@ -254,17 +278,6 @@ def parse_product_file(file_content: bytes, filename: str) -> Tuple[List[Dict[st
                 "errors": row_errors
             })
         else:
-            valid_products.append({
-                "sku": sku,
-                "name": name,
-                "brand": brand or None,
-                "category_name": category or "General",
-                "mpn": mpn or None,
-                "upc": upc or None,
-                "ean": ean or None,
-                "pack_size": pack_size or None,
-                "variant": variant or None,
-                "specifications": specifications
-            })
+            valid_products.append(entry)
 
-    return valid_products, errors
+    return valid_products, errors, all_rows

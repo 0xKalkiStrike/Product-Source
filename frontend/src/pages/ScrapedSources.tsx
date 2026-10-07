@@ -105,12 +105,24 @@ export const ScrapedSourcesPage: React.FC = () => {
     fetchScrapedData();
   }, [activeProject?.id, selectedSourceId]);
 
-  // Run scraper collection across target sources
+  // Run real live scraper collection across target sources
   const handleRunCollection = async () => {
     if (!activeProject) return;
     setCollecting(true);
     try {
-      await api.post(`/projects/${activeProject.id}/source-data/collect`, {});
+      await api.post(`/projects/${activeProject.id}/source-data/live-scrape`, {
+        source_ids: selectedSourceId !== 'ALL' ? [selectedSourceId] : undefined
+      });
+
+      // Poll live scrape status until completed
+      let attempts = 0;
+      while (attempts < 60) {
+        await new Promise((r) => setTimeout(r, 2000));
+        const stRes = await api.get(`/projects/${activeProject.id}/source-data/live-scrape/status`);
+        if (!stRes.data || !stRes.data.running) break;
+        attempts++;
+      }
+
       await fetchScrapedData();
     } catch (err: any) {
       alert(err.response?.data?.detail || 'Scraper execution failed');

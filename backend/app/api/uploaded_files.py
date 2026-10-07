@@ -133,7 +133,7 @@ async def get_excel_sheet_data(
     search: Optional[str] = Query(None, description="Search term across sheet fields"),
     category_id: Optional[str] = Query(None, description="Category filter"),
     skip: int = Query(0, ge=0),
-    limit: int = Query(500, ge=1, le=2000),
+    limit: int = Query(10000, ge=1, le=50000),
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
