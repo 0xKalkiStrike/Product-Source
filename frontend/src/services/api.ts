@@ -9,18 +9,7 @@ const getBaseUrl = () => {
     return url;
   }
 
-  // Dynamic endpoint resolution for Render static site host
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname.includes('.onrender.com')) {
-      if (hostname.includes('frontend')) {
-        const backendHost = hostname.replace('frontend', 'backend');
-        return `${window.location.protocol}//${backendHost}/api/v1`;
-      }
-      return `${window.location.protocol}//product-intelligence-backend-xnwn.onrender.com/api/v1`;
-    }
-  }
-
+  // Same-origin relative path works for unified FastAPI single-port deployment & local Vite dev server
   return '/api/v1';
 };
 
