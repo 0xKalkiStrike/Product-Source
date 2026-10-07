@@ -27,14 +27,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     let isMounted = true;
-    const timer = setTimeout(() => {
-      if (isMounted) setLoading(false);
-    }, 4000);
 
     const fetchUser = async () => {
       if (!token) {
         if (isMounted) setLoading(false);
-        clearTimeout(timer);
         return;
       }
       try {
@@ -48,14 +44,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
       } finally {
         if (isMounted) setLoading(false);
-        clearTimeout(timer);
       }
     };
     fetchUser();
 
     return () => {
       isMounted = false;
-      clearTimeout(timer);
     };
   }, [token]);
 
