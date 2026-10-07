@@ -115,7 +115,9 @@ async def upload_products(
         exist_res = await db.execute(select(Product).where(Product.project_id == project_id))
         existing_products_map = {p.sku: p for p in exist_res.scalars().all()}
 
-        for prod_data in valid_products:
+        import asyncio
+
+        for idx, prod_data in enumerate(valid_products):
             category_name = prod_data.get("category_name", "General")
             cat_key = category_name.lower()
 
@@ -160,6 +162,11 @@ async def upload_products(
                 db.add(product)
                 existing_products_map[sku] = product
             inserted_count += 1
+
+            # Periodically flush to DB and yield to Uvicorn event loop to prevent RAM OOM / 502 timeouts
+            if idx > 0 and idx % 250 == 0:
+                await db.flush()
+                await asyncio.sleep(0.01)
 
         # Save Upload Log
         upload_log = UploadedFile(
