@@ -3,6 +3,17 @@ import io
 import re
 from typing import List, Dict, Any, Tuple
 
+import math
+
+def is_nan_value(val: Any) -> bool:
+    if val is None or pd.isna(val):
+        return True
+    if isinstance(val, float) and (math.isnan(val) or math.isinf(val)):
+        return True
+    if isinstance(val, str) and val.strip().lower() in ['nan', 'none', '<na>', 'null', 'undefined', 'n/a', '---']:
+        return True
+    return False
+
 def clean_identifier(val: Any) -> str:
     if isinstance(val, (pd.Series, list)):
         for item in val:
@@ -10,7 +21,7 @@ def clean_identifier(val: Any) -> str:
             if res:
                 return res
         return ""
-    if pd.isna(val) or val is None:
+    if is_nan_value(val):
         return ""
     val_str = str(val).strip()
     if val_str.endswith(".0"):
@@ -29,11 +40,14 @@ def parse_price(val: Any) -> float | None:
             if res is not None:
                 return res
         return None
-    if pd.isna(val) or val is None:
+    if is_nan_value(val):
         return None
     val_str = str(val).strip().replace('$', '').replace(',', '')
     try:
-        return float(val_str)
+        parsed = float(val_str)
+        if math.isnan(parsed) or math.isinf(parsed):
+            return None
+        return parsed
     except Exception:
         return None
 

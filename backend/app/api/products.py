@@ -105,85 +105,89 @@ async def upload_products(
 
     inserted_count = 0
 
-    # Map categories to IDs, create missing categories on the fly
-    cat_res = await db.execute(select(ProductCategory))
-    categories = cat_res.scalars().all()
-    cat_map = {c.name.lower(): c.id for c in categories}
+    try:
+        # Map categories to IDs, create missing categories on the fly
+        cat_res = await db.execute(select(ProductCategory))
+        categories = cat_res.scalars().all()
+        cat_map = {c.name.lower(): c.id for c in categories}
 
-    # Pre-fetch ALL existing products for project to avoid N+1 queries during bulk processing
-    exist_res = await db.execute(select(Product).where(Product.project_id == project_id))
-    existing_products_map = {p.sku: p for p in exist_res.scalars().all()}
+        # Pre-fetch ALL existing products for project to avoid N+1 queries during bulk processing
+        exist_res = await db.execute(select(Product).where(Product.project_id == project_id))
+        existing_products_map = {p.sku: p for p in exist_res.scalars().all()}
 
-    for prod_data in valid_products:
-        category_name = prod_data.pop("category_name", "General")
-        cat_key = category_name.lower()
+        for prod_data in valid_products:
+            category_name = prod_data.get("category_name", "General")
+            cat_key = category_name.lower()
 
-        if cat_key not in cat_map:
-            new_cat = ProductCategory(
-                project_id=project_id,
-                name=category_name,
-                slug=category_name.lower().replace(' ', '-')
-            )
-            db.add(new_cat)
-            await db.flush()
-            cat_map[cat_key] = new_cat.id
+            if cat_key not in cat_map:
+                new_cat = ProductCategory(
+                    project_id=project_id,
+                    name=category_name,
+                    slug=category_name.lower().replace(' ', '-')
+                )
+                db.add(new_cat)
+                await db.flush()
+                cat_map[cat_key] = new_cat.id
 
-        category_id = cat_map[cat_key]
+            category_id = cat_map[cat_key]
 
-        sku = prod_data["sku"]
-        existing_product = existing_products_map.get(sku)
+            sku = prod_data["sku"]
+            existing_product = existing_products_map.get(sku)
 
-        if existing_product:
-            # Update existing product details
-            existing_product.name = prod_data["name"]
-            existing_product.brand = prod_data.get("brand") or existing_product.brand
-            existing_product.mpn = prod_data.get("mpn") or existing_product.mpn
-            existing_product.upc = prod_data.get("upc") or existing_product.upc
-            existing_product.category_id = category_id
-            existing_product.specifications = prod_data.get("specifications") or existing_product.specifications
-        else:
-            product = Product(
-                project_id=project_id,
-                category_id=category_id,
-                sku=prod_data["sku"],
-                name=prod_data["name"],
-                brand=prod_data.get("brand"),
-                mpn=prod_data.get("mpn"),
-                upc=prod_data.get("upc"),
-                ean=prod_data.get("ean"),
-                pack_size=prod_data.get("pack_size"),
-                variant=prod_data.get("variant"),
-                specifications=prod_data.get("specifications"),
-                status="UNVERIFIED"
-            )
-            db.add(product)
-            existing_products_map[sku] = product
-        inserted_count += 1
+            if existing_product:
+                # Update existing product details
+                existing_product.name = prod_data["name"]
+                existing_product.brand = prod_data.get("brand") or existing_product.brand
+                existing_product.mpn = prod_data.get("mpn") or existing_product.mpn
+                existing_product.upc = prod_data.get("upc") or existing_product.upc
+                existing_product.category_id = category_id
+                existing_product.specifications = prod_data.get("specifications") or existing_product.specifications
+            else:
+                product = Product(
+                    project_id=project_id,
+                    category_id=category_id,
+                    sku=prod_data["sku"],
+                    name=prod_data["name"],
+                    brand=prod_data.get("brand"),
+                    mpn=prod_data.get("mpn"),
+                    upc=prod_data.get("upc"),
+                    ean=prod_data.get("ean"),
+                    pack_size=prod_data.get("pack_size"),
+                    variant=prod_data.get("variant"),
+                    specifications=prod_data.get("specifications"),
+                    status="UNVERIFIED"
+                )
+                db.add(product)
+                existing_products_map[sku] = product
+            inserted_count += 1
 
-    # Save Upload Log
-    upload_log = UploadedFile(
-        project_id=project_id,
-        filename=file.filename,
-        file_size=len(contents),
-        row_count=len(valid_products),
-        valid_count=inserted_count,
-        error_count=len(errors),
-        error_report={"row_errors": errors},
-        raw_data=valid_products,
-        status="PROCESSED" if inserted_count > 0 else "FAILED"
-    )
-    db.add(upload_log)
+        # Save Upload Log
+        upload_log = UploadedFile(
+            project_id=project_id,
+            filename=file.filename or "uploaded_file.xlsx",
+            file_size=len(contents),
+            row_count=len(valid_products),
+            valid_count=inserted_count,
+            error_count=len(errors),
+            error_report={"row_errors": errors},
+            raw_data=valid_products,
+            status="PROCESSED" if inserted_count > 0 else "FAILED"
+        )
+        db.add(upload_log)
 
-    audit = AuditLog(
-        user_id=current_user.id,
-        project_id=project_id,
-        action="PRODUCT_EXCEL_UPLOAD",
-        status="SUCCESS" if inserted_count > 0 else "WARNING",
-        details={"filename": file.filename, "inserted": inserted_count, "errors": len(errors)}
-    )
-    db.add(audit)
+        audit = AuditLog(
+            user_id=current_user.id,
+            project_id=project_id,
+            action="PRODUCT_EXCEL_UPLOAD",
+            status="SUCCESS" if inserted_count > 0 else "WARNING",
+            details={"filename": file.filename, "inserted": inserted_count, "errors": len(errors)}
+        )
+        db.add(audit)
 
-    await db.commit()
+        await db.commit()
+    except Exception as e:
+        await db.rollback()
+        raise HTTPException(status_code=400, detail=f"Failed to process catalog upload: {str(e)}")
 
     return {
         "filename": file.filename,

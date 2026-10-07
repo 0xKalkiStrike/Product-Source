@@ -288,7 +288,8 @@ export const ProductsPage: React.FC = () => {
       setUploadResult(res.data);
       fetchProductsData();
     } catch (err: any) {
-      setUploadError(err.response?.data?.detail || 'Upload processing failed.');
+      const errMsg = err.response?.data?.detail || err.message || 'Upload processing failed.';
+      setUploadError(errMsg);
     } finally {
       setUploading(false);
     }
