@@ -66,9 +66,9 @@ async def init_db():
                 session.add(default_proj)
                 await session.commit()
 
-        # Save current database snapshot out to formatted JSON files in data/json_db/*.json
-        await export_db_to_json(session)
-
+        # Export snapshot only if necessary (non-blocking schedule)
+        from app.core.json_database import schedule_json_export
+        schedule_json_export()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -94,7 +94,7 @@ async def custom_cors_middleware(request: Request, call_next):
         response = Response(status_code=200)
         response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Access-Control-Allow-Credentials"] = "true"
-        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD"
         response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, Origin, User-Agent, Cache-Control, X-Requested-With"
         response.headers["Access-Control-Max-Age"] = "86400"
         return response
@@ -102,7 +102,7 @@ async def custom_cors_middleware(request: Request, call_next):
     response = await call_next(request)
     response.headers["Access-Control-Allow-Origin"] = origin
     response.headers["Access-Control-Allow-Credentials"] = "true"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, Origin, User-Agent, Cache-Control, X-Requested-With"
     return response
 
@@ -119,7 +119,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health_check():
     return {
         "title": settings.PROJECT_NAME,
@@ -127,6 +127,7 @@ async def health_check():
         "orchestration_engine": "operational",
         "api_v1": settings.API_V1_STR
     }
+
 
 # Mount static frontend bundle if available (for production Docker deployments)
 from fastapi.staticfiles import StaticFiles
@@ -149,7 +150,7 @@ if os.path.exists(static_dir):
             return FileResponse(target)
         return FileResponse(os.path.join(static_dir, "index.html"))
 else:
-    @app.get("/")
+    @app.api_route("/", methods=["GET", "HEAD"])
     async def root():
         return {
             "title": settings.PROJECT_NAME,
