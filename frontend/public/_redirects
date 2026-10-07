@@ -1,0 +1,3 @@
+# Render / Netlify Static Site Redirects & API Proxy Rule
+/api/*  https://product-intelligence-backend-xnwn.onrender.com/api/:splat  200
+/*  /index.html  200
