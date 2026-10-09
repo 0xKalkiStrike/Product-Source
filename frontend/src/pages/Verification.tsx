@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   CheckCircle2,
   Search,
@@ -69,7 +69,7 @@ export const VerificationPage: React.FC = () => {
     if (!activeProject) return;
     try {
       const res = await api.get(`/projects/${activeProject.id}/sources`);
-      setSources(res.data.items || []);
+      setSources(ensureArray<SourceOption>(res.data));
     } catch (err) {
       console.error('Failed to load sources', err);
     }
@@ -85,7 +85,7 @@ export const VerificationPage: React.FC = () => {
       let url = `/projects/${activeProject.id}/verification/results?limit=100`;
       if (selectedStatus !== 'ALL') url += `&status_filter=${selectedStatus}`;
       const res = await api.get(url);
-      setResults(res.data.items || []);
+      setResults(ensureArray<VerificationResultItem>(res.data));
     } catch (err) {
       console.error('Failed to fetch verification results', err);
     } finally {

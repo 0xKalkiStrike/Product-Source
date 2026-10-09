@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   Globe,
   Search,
@@ -69,7 +69,7 @@ export const ScrapedSourcesPage: React.FC = () => {
     if (!activeProject) return;
     try {
       const res = await api.get(`/projects/${activeProject.id}/sources`);
-      setSourcesList(res.data.items || []);
+      setSourcesList(ensureArray<TargetSourceSite>(res.data));
     } catch (err) {
       console.error('Failed to fetch target sources list', err);
     }
@@ -88,7 +88,7 @@ export const ScrapedSourcesPage: React.FC = () => {
         url += `&source_id=${selectedSourceId}`;
       }
       const res = await api.get(url);
-      setScrapedProducts(res.data.items || []);
+      setScrapedProducts(ensureArray<ScrapedProductItem>(res.data));
     } catch (err) {
       console.error('Failed to fetch scraped target sources data', err);
     } finally {
@@ -134,12 +134,14 @@ export const ScrapedSourcesPage: React.FC = () => {
   // Currently selected source metadata
   const currentSourceMeta = useMemo(() => {
     if (selectedSourceId === 'ALL') return null;
-    return sourcesList.find((s) => s.id === selectedSourceId) || null;
+    const safeSources = Array.isArray(sourcesList) ? sourcesList : [];
+    return safeSources.find((s) => s.id === selectedSourceId) || null;
   }, [selectedSourceId, sourcesList]);
 
   // Filtered scraped items
   const filteredProducts = useMemo(() => {
-    return scrapedProducts.filter((item) => {
+    const safeProducts = Array.isArray(scrapedProducts) ? scrapedProducts : [];
+    return safeProducts.filter((item) => {
       if (selectedAvailability !== 'ALL' && item.availability !== selectedAvailability) {
         return false;
       }
@@ -167,16 +169,17 @@ export const ScrapedSourcesPage: React.FC = () => {
 
   // Summary Metrics
   const metrics = useMemo(() => {
-    const total = scrapedProducts.length;
-    const inStock = scrapedProducts.filter((p) => p.availability === 'IN_STOCK').length;
+    const safeProducts = Array.isArray(scrapedProducts) ? scrapedProducts : [];
+    const total = safeProducts.length;
+    const inStock = safeProducts.filter((p) => p.availability === 'IN_STOCK').length;
     const inStockPct = total > 0 ? Math.round((inStock / total) * 100) : 0;
     
-    const validPrices = scrapedProducts.map((p) => p.price).filter((p): p is number => p !== null && p > 0);
+    const validPrices = safeProducts.map((p) => p.price).filter((p): p is number => p !== null && p > 0);
     const avgPrice = validPrices.length > 0
       ? (validPrices.reduce((a, b) => a + b, 0) / validPrices.length).toFixed(2)
       : '0.00';
 
-    const uniqueSources = new Set(scrapedProducts.map((p) => p.source_name)).size;
+    const uniqueSources = new Set(safeProducts.map((p) => p.source_name)).size;
 
     return { total, inStock, inStockPct, avgPrice, uniqueSources };
   }, [scrapedProducts]);

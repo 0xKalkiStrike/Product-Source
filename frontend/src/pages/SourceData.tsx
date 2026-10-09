@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   FileSpreadsheet,
   Search,
@@ -66,7 +66,7 @@ export const SourceDataPage: React.FC = () => {
     if (!activeProject) return;
     try {
       const res = await api.get(`/projects/${activeProject.id}/uploaded-files`);
-      setUploadedFiles(res.data || []);
+      setUploadedFiles(ensureArray<UploadedFileItem>(res.data));
     } catch (err) {
       console.error('Failed to fetch uploaded files list', err);
     }
@@ -84,8 +84,7 @@ export const SourceDataPage: React.FC = () => {
       const res = await api.get(
         `/projects/${activeProject.id}/uploaded-files/data?file_id=${fileParam}&limit=10000`
       );
-      const items = res.data.items || [];
-      setSheetRows(items);
+      setSheetRows(ensureArray<SheetRow>(res.data));
     } catch (err) {
       console.error('Failed to fetch raw excel sheet data', err);
     } finally {

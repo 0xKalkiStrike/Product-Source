@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Server, RefreshCw, Cpu, HardDrive } from 'lucide-react';
 
 export interface Worker {
@@ -23,7 +23,7 @@ export const WorkersPage: React.FC = () => {
   const fetchWorkers = async () => {
     try {
       const res = await api.get('/workers');
-      setWorkers(res.data.items || []);
+      setWorkers(ensureArray<Worker>(res.data));
     } catch (err) {
       console.error('Failed to fetch workers:', err);
     } finally {

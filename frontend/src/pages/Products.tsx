@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Link } from 'react-router-dom';
 import {
   Upload,
@@ -93,9 +93,9 @@ export const ProductsPage: React.FC = () => {
         api.get(`/projects/${activeProject.id}/categories`),
         api.get(`/projects/${activeProject.id}/sources`)
       ]);
-      setProducts(prodRes.data.items || []);
-      setCategories(catRes.data || []);
-      setTargetSources(srcRes.data.items || []);
+      setProducts(ensureArray<Product>(prodRes.data));
+      setCategories(ensureArray<Category>(catRes.data));
+      setTargetSources(ensureArray<any>(srcRes.data));
     } catch (err) {
       console.error('Failed to load products/categories/sources:', err);
     } finally {

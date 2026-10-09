@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   TrendingUp,
   DollarSign,
@@ -58,7 +58,7 @@ export const MarketIntelligencePage: React.FC = () => {
         api.get(`/projects/${activeProject.id}/market-intelligence/products?limit=100`)
       ]);
       setSummary(sumRes.data);
-      setProducts(prodRes.data.items || []);
+      setProducts(ensureArray<MarketProductItem>(prodRes.data));
     } catch (err) {
       console.error('Failed to fetch market intelligence', err);
     } finally {
@@ -66,7 +66,8 @@ export const MarketIntelligencePage: React.FC = () => {
     }
   };
 
-  const filteredProducts = products.filter((p) => {
+  const safeProductsList = Array.isArray(products) ? products : [];
+  const filteredProducts = safeProductsList.filter((p) => {
     if (!search) return true;
     const query = search.toLowerCase();
     return p.name.toLowerCase().includes(query) || p.sku.toLowerCase().includes(query) || (p.brand && p.brand.toLowerCase().includes(query));

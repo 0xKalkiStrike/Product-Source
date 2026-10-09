@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Globe, Plus, Trash2, Cpu, Settings2, RefreshCw, Play, CheckCircle2, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ export const SourcesPage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.get(`/projects/${activeProject.id}/sources`);
-      setSources(res.data.items || []);
+      setSources(ensureArray<Source>(res.data));
     } catch (err) {
       console.error('Failed to load sources:', err);
     } finally {
@@ -67,7 +67,7 @@ export const SourcesPage: React.FC = () => {
     setSeeding(true);
     try {
       const res = await api.post(`/projects/${activeProject.id}/sources/seed`);
-      setSources(res.data.items || []);
+      setSources(ensureArray<Source>(res.data));
     } catch (err: any) {
       alert(err.response?.data?.detail || 'Failed to seed target sources');
     } finally {

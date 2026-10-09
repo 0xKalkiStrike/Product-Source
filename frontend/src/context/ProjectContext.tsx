@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { useAuth } from './AuthContext';
 
 export interface Project {
@@ -34,7 +34,7 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       setLoading(true);
       const res = await api.get('/projects');
-      let items: Project[] = res.data.items || [];
+      let items: Project[] = ensureArray<Project>(res.data);
       
       if (items.length === 0) {
         try {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   FileSpreadsheet,
   Search,
@@ -62,9 +62,9 @@ export const ExcelComparisonPage: React.FC = () => {
         api.get(`/projects/${activeProject.id}/verification/results?limit=1000`)
       ]);
 
-      const products = prodRes.data.items || [];
-      const sources = srcRes.data.items || [];
-      const results = verRes.data.items || [];
+      const products = ensureArray(prodRes.data);
+      const sources = ensureArray(srcRes.data);
+      const results = ensureArray(verRes.data);
 
       setSourcesList(sources.map((s: any) => ({ id: s.id, name: s.name, url: s.url })));
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { KeyRound, Plus, ShieldCheck, RefreshCw } from 'lucide-react';
 
 export interface SourceCredential {
@@ -43,8 +43,8 @@ export const CredentialsPage: React.FC = () => {
         api.get(`/projects/${activeProject.id}/credentials`),
         api.get(`/projects/${activeProject.id}/sources`)
       ]);
-      setCredentials(credRes.data || []);
-      setSources(srcRes.data.items || []);
+      setCredentials(ensureArray<SourceCredential>(credRes.data));
+      setSources(ensureArray<any>(srcRes.data));
     } catch (err) {
       console.error('Failed to fetch credentials:', err);
     } finally {

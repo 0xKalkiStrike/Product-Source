@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import {
   Activity,
   Play,
@@ -48,8 +48,8 @@ export const MonitoringPage: React.FC = () => {
         api.get(`/projects/${activeProject.id}/monitoring/rules`),
         api.get(`/projects/${activeProject.id}/monitoring/events`)
       ]);
-      setRules(rRes.data.items || []);
-      setEvents(eRes.data.items || []);
+      setRules(ensureArray<MonitoringRuleItem>(rRes.data));
+      setEvents(ensureArray<ChangeEventItem>(eRes.data));
     } catch (err) {
       console.error('Failed to load monitoring data', err);
     } finally {

@@ -105,14 +105,14 @@ export const Dashboard: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {stats?.recent_activity?.length === 0 ? (
+                {(!Array.isArray(stats?.recent_activity) || stats.recent_activity.length === 0) ? (
                   <tr>
                     <td colSpan={3} style={{ textAlign: 'center', color: 'var(--text-dim)', padding: '2rem' }}>
                       No audit activity logged yet.
                     </td>
                   </tr>
                 ) : (
-                  stats?.recent_activity?.map((log: any) => (
+                  stats.recent_activity.map((log: any) => (
                     <tr key={log.id}>
                       <td style={{ fontWeight: 600 }}>{log.action}</td>
                       <td>

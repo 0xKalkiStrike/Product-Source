@@ -44,3 +44,12 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const ensureArray = <T = any>(data: any): T[] => {
+  if (Array.isArray(data)) return data;
+  if (data && Array.isArray(data.items)) return data.items;
+  if (data && Array.isArray(data.data)) return data.data;
+  if (data && Array.isArray(data.results)) return data.results;
+  return [];
+};
+

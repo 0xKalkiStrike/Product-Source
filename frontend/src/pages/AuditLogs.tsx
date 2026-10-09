@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Search, Eye } from 'lucide-react';
 
 interface AuditLogItem {
@@ -26,7 +26,7 @@ export const AuditLogsPage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.get('/audit-logs?limit=100');
-      setLogs(res.data.items || []);
+      setLogs(ensureArray<AuditLogItem>(res.data));
     } catch (err) {
       console.error('Failed to fetch audit logs', err);
     } finally {

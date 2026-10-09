@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Cpu, Plus, Play, Pause, XCircle, Clock, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 export interface Job {
@@ -33,7 +33,7 @@ export const JobsPage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.get(`/projects/${activeProject.id}/jobs`);
-      setJobs(res.data.items || []);
+      setJobs(ensureArray<Job>(res.data));
     } catch (err) {
       console.error('Failed to fetch jobs:', err);
     } finally {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProject } from '../context/ProjectContext';
-import { api } from '../services/api';
+import { api, ensureArray } from '../services/api';
 import { Image as ImageIcon } from 'lucide-react';
 
 interface EvidenceRecord {
@@ -37,7 +37,7 @@ export const EvidencePage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.get(`/projects/${activeProject.id}/evidence`);
-      setEvidenceList(res.data.items || []);
+      setEvidenceList(ensureArray<EvidenceRecord>(res.data));
     } catch (err) {
       console.error('Failed to load evidence', err);
     } finally {
