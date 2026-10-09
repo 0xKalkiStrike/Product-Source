@@ -15720,5 +15720,900 @@
     },
     "ip_address": null,
     "timestamp": "2026-10-07T20:47:44.538971"
+  },
+  {
+    "id": "da772c9a-843a-4418-9ac5-3167a68b6cdb",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:29.330268"
+  },
+  {
+    "id": "dbc188a9-5b85-4e7a-add8-7b5b34e5d1d6",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "94fa7ef6-88e8-4e9e-9606-29f50145ccc8",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Live Excel Upload Test Project"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:29.364088"
+  },
+  {
+    "id": "a303895e-b358-4d99-92f8-dda394b28c57",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "94fa7ef6-88e8-4e9e-9606-29f50145ccc8",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.xlsx",
+      "inserted": 3,
+      "errors": 0
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:29.943520"
+  },
+  {
+    "id": "f985f8eb-09d8-48fe-9bd1-3c0b9ae0f0f2",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:31.615117"
+  },
+  {
+    "id": "6bf4a5df-49b3-4b18-b4e0-c3be5b27027e",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "58ce0405-2cb8-4361-b5e1-59fe6b8eaee0",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Test Cigar & Vape Intelligence"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:31.637979"
+  },
+  {
+    "id": "3715335a-aa42-4baf-a696-6341e29c09d7",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.587544"
+  },
+  {
+    "id": "d192b322-3fb9-425b-a54d-c03e26c02e3a",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 2 Cigars & Vape Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.608881"
+  },
+  {
+    "id": "fc748b4a-806e-4997-b9b7-b5eb5171c96f",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.csv",
+      "inserted": 2,
+      "errors": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.653951"
+  },
+  {
+    "id": "9bc5d84b-5daa-428b-b995-890255fb5575",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Cigar Store",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.703854"
+  },
+  {
+    "id": "be9f4a9e-f46f-4a0b-bd19-21b9205aa4be",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "action": "CREDENTIAL_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Partner API Key",
+      "auth_type": "API_KEY"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.739087"
+  },
+  {
+    "id": "cd52faf9-19c5-41fa-9310-6f107e0b833e",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "action": "CREDENTIAL_VALIDATE",
+    "status": "SUCCESS",
+    "details": {
+      "credential_name": "Famous Smoke Partner API Key",
+      "is_valid": true,
+      "error": null
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:32.761341"
+  },
+  {
+    "id": "9addcaad-46fd-495c-8b54-209378ab8b27",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:33.676071"
+  },
+  {
+    "id": "1cb741fa-884c-4896-b78b-0bd2a4040dbd",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "a262c757-c54f-4ff4-b398-13f8d5a96907",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 3 Orchestration Test Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:33.699211"
+  },
+  {
+    "id": "a0f511e6-de04-41fe-894a-fd805d47f60a",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "a262c757-c54f-4ff4-b398-13f8d5a96907",
+    "action": "JOB_ENQUEUE",
+    "status": "SUCCESS",
+    "details": {
+      "job_id": "92d7c74e-18e2-48e3-89ac-4cfdc786557f",
+      "task_type": "VERIFICATION",
+      "priority": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:33.757067"
+  },
+  {
+    "id": "06de3cb9-e162-43c2-a018-a91541562fd8",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:37.135491"
+  },
+  {
+    "id": "b14672b3-cd97-4435-a7a5-184341875d3a",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 4 Verification Test Scope"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:37.154538"
+  },
+  {
+    "id": "026ac2bc-e303-4730-90a9-73776f071bfc",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Shop",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:37.197143"
+  },
+  {
+    "id": "f4d774ae-d467-493e-9431-d4cee9cedcf8",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "2075c3da-b340-4ba5-86bf-0eb4140f623b"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:37.245111"
+  },
+  {
+    "id": "5e196ce6-0805-4931-be83-3c818b51dabc",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.088920"
+  },
+  {
+    "id": "25048fea-4dde-47aa-9e89-b0f25ace3e6c",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "MarketLens Project Alpha"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.109710"
+  },
+  {
+    "id": "2a4fd46a-ca58-4aaa-9d54-cfb5c8df3b76",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Source A (Primary Market)",
+      "url": "https://source-a.example.com",
+      "adapter": "GenericSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.129409"
+  },
+  {
+    "id": "84f1a3f5-b619-4239-aa00-989991688613",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "SOURCE_DATA_COLLECTION",
+    "status": "SUCCESS",
+    "details": {
+      "sources_count": 1,
+      "items_collected": 3
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.188832"
+  },
+  {
+    "id": "bf0ee2b1-fff8-4c0c-88f0-f664666d594c",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "55d0ca81-32f6-4b28-a17f-22b6b886fcc5"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.247604"
+  },
+  {
+    "id": "732e68b9-0339-410e-b217-561a697e6de9",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "MONITORING_RUN_EXECUTED",
+    "status": "SUCCESS",
+    "details": {
+      "events_detected": 2
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.349704"
+  },
+  {
+    "id": "b8719f7d-007b-4daf-a712-93d1edeb3beb",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "json",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.427153"
+  },
+  {
+    "id": "53a756cc-9efb-4d4d-b997-f0e21e276690",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "csv",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:53:38.439375"
+  },
+  {
+    "id": "4ada1132-9412-430f-bbaa-29860136bea3",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:58:10.905240"
+  },
+  {
+    "id": "891f1641-e537-4f3b-b9b9-03a2210a5799",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T15:58:19.579350"
+  },
+  {
+    "id": "3c5eaf09-a0fa-40cd-aa28-2dd104d3b803",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:00:21.746179"
+  },
+  {
+    "id": "c4ffa6ae-44bd-4f2d-b0eb-14d833c02b20",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:01:59.337269"
+  },
+  {
+    "id": "b4e5adc0-efd2-4c6e-915d-0ccf12250178",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:13.606537"
+  },
+  {
+    "id": "12964f87-be99-4350-bfd2-6bef42d7f69b",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "f21f8ae9-054f-451f-977e-aa3e546bcf26",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Live Excel Upload Test Project"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:13.639473"
+  },
+  {
+    "id": "600487cb-deb2-4411-924d-803411d8d5b8",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "f21f8ae9-054f-451f-977e-aa3e546bcf26",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.xlsx",
+      "inserted": 3,
+      "errors": 0
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:14.455668"
+  },
+  {
+    "id": "d42a49cb-311c-4d77-806f-666fe68f9751",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:15.510844"
+  },
+  {
+    "id": "849a5b9c-adcb-47fc-bd9c-218d86133ae7",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6c865a4d-c21e-41aa-a830-a777382b7c70",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Test Cigar & Vape Intelligence"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:15.536856"
+  },
+  {
+    "id": "0b1ba72a-8f9a-42ed-86cf-76486b7560c9",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.493776"
+  },
+  {
+    "id": "3d591d22-d070-4705-bc26-fc04883228ea",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 2 Cigars & Vape Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.518193"
+  },
+  {
+    "id": "ff893ab3-4570-4897-b78e-968d00b40dfd",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.csv",
+      "inserted": 2,
+      "errors": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.560322"
+  },
+  {
+    "id": "dd827296-cd12-4227-a539-912e4b20666f",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Cigar Store",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.613442"
+  },
+  {
+    "id": "96915dbf-7ee8-4a82-a118-d52b1a6a7be0",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "action": "CREDENTIAL_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Partner API Key",
+      "auth_type": "API_KEY"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.650877"
+  },
+  {
+    "id": "1ed26cf0-fae9-4945-912c-efbed90c3115",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "action": "CREDENTIAL_VALIDATE",
+    "status": "SUCCESS",
+    "details": {
+      "credential_name": "Famous Smoke Partner API Key",
+      "is_valid": true,
+      "error": null
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:16.670291"
+  },
+  {
+    "id": "d4b5cf14-ca0a-4f7b-bcd4-fe5b751293c6",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:17.623580"
+  },
+  {
+    "id": "fce6c25c-7de7-44c3-bc0e-7a27f33efc47",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "420df7f5-7b02-4488-841e-ecf2e0b5511f",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 3 Orchestration Test Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:17.667738"
+  },
+  {
+    "id": "31fa6e87-b3c6-4b20-b73a-a6e2e718030e",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "420df7f5-7b02-4488-841e-ecf2e0b5511f",
+    "action": "JOB_ENQUEUE",
+    "status": "SUCCESS",
+    "details": {
+      "job_id": "82c95d62-5875-4a77-b5e3-eaecded107f4",
+      "task_type": "VERIFICATION",
+      "priority": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:17.719103"
+  },
+  {
+    "id": "1534ab67-3f26-456e-9496-fe1a01370088",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:21.259435"
+  },
+  {
+    "id": "f5d9a884-576c-40f6-ac21-786d5298d12a",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 4 Verification Test Scope"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:21.278712"
+  },
+  {
+    "id": "f59358c7-5ae3-4c07-965e-c904818bbbe2",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Shop",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:21.348168"
+  },
+  {
+    "id": "64ccf09e-4a0b-4d28-9284-ffc362309f17",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "56d2e680-1880-4d3b-ad2d-3651f1254e9f"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:21.497685"
+  },
+  {
+    "id": "40efe13a-1a05-4d3e-9661-1c77e03f53b6",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.323069"
+  },
+  {
+    "id": "2c532e59-3a73-461e-9545-faf4ac500474",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "MarketLens Project Alpha"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.338006"
+  },
+  {
+    "id": "b0fc9f6c-281b-4708-9233-a3679db60584",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Source A (Primary Market)",
+      "url": "https://source-a.example.com",
+      "adapter": "GenericSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.357518"
+  },
+  {
+    "id": "ec56b88b-a3c5-41d3-ac90-cb7bacd76e04",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "SOURCE_DATA_COLLECTION",
+    "status": "SUCCESS",
+    "details": {
+      "sources_count": 1,
+      "items_collected": 3
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.421593"
+  },
+  {
+    "id": "0ba5435c-68e5-46eb-b518-236dc8b335e7",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "PRODUCT_VERIFICATION_RUN",
+    "status": "SUCCESS",
+    "details": {
+      "total_products": 1,
+      "verified_count": 1,
+      "job_id": "f4118d6f-e185-4de9-9cee-9cb645c30fda"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.485815"
+  },
+  {
+    "id": "4289cffd-c91a-4f7d-9405-6015c6d9245c",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "MONITORING_RUN_EXECUTED",
+    "status": "SUCCESS",
+    "details": {
+      "events_detected": 2
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.581532"
+  },
+  {
+    "id": "465d7712-af22-4dc9-b55a-915395ac09f1",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "json",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.664706"
+  },
+  {
+    "id": "20a0cf10-8072-47d9-a4cb-241b1f788416",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "action": "REPORT_EXPORT",
+    "status": "SUCCESS",
+    "details": {
+      "format": "csv",
+      "record_count": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:03:22.675678"
+  },
+  {
+    "id": "ec16735e-bcd5-47fc-88a8-173dad97b1bd",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:50.163834"
+  },
+  {
+    "id": "5157e797-83a6-4785-9245-254450c7a1c5",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "82c80506-9760-4356-a583-4daa6599e1f3",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Live Excel Upload Test Project"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:50.192395"
+  },
+  {
+    "id": "21f2e6ed-5128-4784-ab45-5ac1e5e43978",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "82c80506-9760-4356-a583-4daa6599e1f3",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.xlsx",
+      "inserted": 3,
+      "errors": 0
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:50.677640"
+  },
+  {
+    "id": "f4db4666-c5d1-4653-b747-9c85f981e56f",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "deep@brainbean.in"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:52.229252"
+  },
+  {
+    "id": "9189a9a7-c5bc-48e4-900a-d73a0e3182b6",
+    "user_id": "fe14989e-f9ed-4752-984c-ba11b9e3cb23",
+    "project_id": "25ec67ab-e9e8-4984-a9f1-707f749aa692",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Test Cigar & Vape Intelligence"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:52.248948"
+  },
+  {
+    "id": "3e4c6ee6-019d-4104-b4c5-cb7133bb0c50",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.052812"
+  },
+  {
+    "id": "8c5e740c-9288-43cf-82d7-ba03f43b1716",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 2 Cigars & Vape Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.069831"
+  },
+  {
+    "id": "c28a9aea-5285-4361-97c9-45b4d5dfa309",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "action": "PRODUCT_EXCEL_UPLOAD",
+    "status": "SUCCESS",
+    "details": {
+      "filename": "test_catalog.csv",
+      "inserted": 2,
+      "errors": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.110773"
+  },
+  {
+    "id": "9793adfb-c0df-446f-8632-f06f825079bd",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "action": "SOURCE_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Cigar Store",
+      "url": "https://www.famous-smoke.com",
+      "adapter": "CigarSourceAdapter"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.154473"
+  },
+  {
+    "id": "5a73fabc-2082-4a12-901f-5b54da5e7f13",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "action": "CREDENTIAL_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Famous Smoke Partner API Key",
+      "auth_type": "API_KEY"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.196805"
+  },
+  {
+    "id": "cbfac385-30de-4bb7-89e9-c4b4d6345399",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "action": "CREDENTIAL_VALIDATE",
+    "status": "SUCCESS",
+    "details": {
+      "credential_name": "Famous Smoke Partner API Key",
+      "is_valid": true,
+      "error": null
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:53.215285"
+  },
+  {
+    "id": "b78fec38-1264-47c2-b936-d1975a7dd4ae",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": null,
+    "action": "AUTH_LOGIN",
+    "status": "SUCCESS",
+    "details": {
+      "email": "admin@platform.com"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:54.059695"
+  },
+  {
+    "id": "37c668db-6ee7-4610-9a83-824025e08e89",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "7186c5e8-d132-4bc7-a00d-acda150ad08d",
+    "action": "PROJECT_CREATE",
+    "status": "SUCCESS",
+    "details": {
+      "name": "Phase 3 Orchestration Test Workspace"
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:54.074798"
+  },
+  {
+    "id": "f95afb66-f4a0-488c-af9d-c459c257c025",
+    "user_id": "904c7259-8681-4622-a781-66699c5b69d1",
+    "project_id": "7186c5e8-d132-4bc7-a00d-acda150ad08d",
+    "action": "JOB_ENQUEUE",
+    "status": "SUCCESS",
+    "details": {
+      "job_id": "64658844-2b4d-48af-9800-047af76c7ac7",
+      "task_type": "VERIFICATION",
+      "priority": 1
+    },
+    "ip_address": null,
+    "timestamp": "2026-10-08T16:48:54.122602"
   }
 ]

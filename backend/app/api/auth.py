@@ -66,7 +66,8 @@ async def register(
     user_in: UserCreate,
     db: AsyncSession = Depends(get_db)
 ):
-    result = await db.execute(select(User).where(User.email == user_in.email))
+    clean_email = (user_in.email or "").strip().lower()
+    result = await db.execute(select(User).where(func.lower(User.email) == clean_email))
     if result.scalars().first():
         raise HTTPException(
             status_code=400,
@@ -74,9 +75,9 @@ async def register(
         )
     
     new_user = User(
-        email=user_in.email,
+        email=clean_email,
         hashed_password=get_password_hash(user_in.password),
-        full_name=user_in.full_name,
+        full_name=(user_in.full_name or "").strip(),
         role=user_in.role or "ADMIN",
         is_active=True
     )

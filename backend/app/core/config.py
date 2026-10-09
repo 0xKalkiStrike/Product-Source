@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     @property
     def DATABASE_URL(self) -> str:
         url = self.RAW_DB_URL
+        if not url or not url.strip():
+            url = f"sqlite+aiosqlite:///{self._default_db_path}"
         if url.startswith("postgres://"):
             url = url.replace("postgres://", "postgresql+asyncpg://", 1)
         elif url.startswith("postgresql://") and not url.startswith("postgresql+asyncpg://"):
@@ -41,6 +43,11 @@ class Settings(BaseSettings):
         "http://127.0.0.1:4173"
     ]
 
-    model_config = SettingsConfigDict(case_sensitive=True)
+    model_config = SettingsConfigDict(
+        case_sensitive=True,
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore"
+    )
 
 settings = Settings()

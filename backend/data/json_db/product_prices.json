@@ -3023,5 +3023,49 @@
     "currency": "USD",
     "normalized_usd": 24.99,
     "recorded_at": "2026-10-07T20:47:29.425958"
+  },
+  {
+    "id": "d2af0e48-d36c-4f86-8d00-f940ae70ae48",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "product_id": "67ead796-4333-4856-80ae-b757dad83c90",
+    "source_id": "17eab3d7-11b5-4690-900f-5658b26430cc",
+    "price": 149.99,
+    "msrp": 175.0,
+    "currency": "USD",
+    "normalized_usd": 149.99,
+    "recorded_at": "2026-10-08T15:53:37.226658"
+  },
+  {
+    "id": "b9de0ccf-b87e-49ae-9abb-2e985f22f9ab",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "product_id": "c94499a8-34ad-40e4-a9cd-2a2336535644",
+    "source_id": "34fd15dd-0e8c-4ddc-8831-38881dfd327e",
+    "price": 24.99,
+    "msrp": 29.99,
+    "currency": "USD",
+    "normalized_usd": 24.99,
+    "recorded_at": "2026-10-08T15:53:38.230469"
+  },
+  {
+    "id": "ef7155f5-df42-4274-95fb-392d5211dcb6",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "product_id": "dc67fb8b-41dd-40f8-81d3-3b99d3c44e20",
+    "source_id": "c1233fdb-1589-47fd-8b74-ee64d7e2c491",
+    "price": 149.99,
+    "msrp": 175.0,
+    "currency": "USD",
+    "normalized_usd": 149.99,
+    "recorded_at": "2026-10-08T16:03:21.415667"
+  },
+  {
+    "id": "10089802-81db-4407-90fe-c925298e8576",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "product_id": "26a17e0f-9bcd-425d-b17e-0f4865a4e76f",
+    "source_id": "0c60b30b-96ce-48d9-8d80-a9bad17277c8",
+    "price": 24.99,
+    "msrp": 29.99,
+    "currency": "USD",
+    "normalized_usd": 24.99,
+    "recorded_at": "2026-10-08T16:03:22.470563"
   }
 ]

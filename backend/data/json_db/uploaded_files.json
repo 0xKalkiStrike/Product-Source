@@ -185884,5 +185884,515 @@
     ],
     "status": "PROCESSED",
     "created_at": "2026-10-07T20:46:45.930071"
+  },
+  {
+    "id": "69e921d6-8624-4244-8d95-0512afc79e90",
+    "project_id": "94fa7ef6-88e8-4e9e-9606-29f50145ccc8",
+    "filename": "test_catalog.xlsx",
+    "file_size": 5176,
+    "row_count": 3,
+    "valid_count": 3,
+    "error_count": 0,
+    "error_report": {
+      "row_errors": []
+    },
+    "raw_data": [
+      {
+        "sku": "SKU-COH-001",
+        "name": "Premium Cuban Cigar Cohiba",
+        "brand": "Cohiba",
+        "category_name": "Cigars",
+        "mpn": "MPN-52",
+        "upc": "123456789012",
+        "ean": null,
+        "pack_size": "Box of 10",
+        "variant": null,
+        "specifications": {
+          "name": "Premium Cuban Cigar Cohiba",
+          "sku": "SKU-COH-001",
+          "brand": "Cohiba",
+          "category": "Cigars",
+          "upc": "123456789012",
+          "mpn": "MPN-52",
+          "price": 24.99,
+          "pack_size": "Box of 10"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-VAP-002",
+        "name": "Vape Pod starter Kit",
+        "brand": "Vaporesso",
+        "category_name": "Vape",
+        "mpn": "MPN-V1",
+        "upc": "234567890123",
+        "ean": null,
+        "pack_size": "Single Pack",
+        "variant": null,
+        "specifications": {
+          "name": "Vape Pod starter Kit",
+          "sku": "SKU-VAP-002",
+          "brand": "Vaporesso",
+          "category": "Vape",
+          "upc": "234567890123",
+          "mpn": "MPN-V1",
+          "price": 39.99,
+          "pack_size": "Single Pack"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-ZIP-003",
+        "name": "Special Edition Lighter",
+        "brand": "Zippo",
+        "category_name": "Accessories",
+        "mpn": "MPN-Z9",
+        "upc": "345678901234",
+        "ean": null,
+        "pack_size": "Single",
+        "variant": null,
+        "specifications": {
+          "name": "Special Edition Lighter",
+          "sku": "SKU-ZIP-003",
+          "brand": "Zippo",
+          "category": "Accessories",
+          "upc": "345678901234",
+          "mpn": "MPN-Z9",
+          "price": 15.0,
+          "pack_size": "Single"
+        },
+        "row_errors": []
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T15:53:29.955067"
+  },
+  {
+    "id": "17336a2d-536a-49bf-a8a5-cf18e17781b4",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "filename": "test_catalog.csv",
+    "file_size": 274,
+    "row_count": 3,
+    "valid_count": 2,
+    "error_count": 1,
+    "error_report": {
+      "row_errors": [
+        {
+          "row": 4,
+          "sku": "ERR-003",
+          "name": "MissingNameBrand",
+          "errors": [
+            "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+          ]
+        }
+      ]
+    },
+    "raw_data": [
+      {
+        "sku": "CIG-001",
+        "name": "Montecristo No. 2",
+        "brand": "Montecristo",
+        "category_name": "Cigars",
+        "mpn": "MPN-M2",
+        "upc": "012345678905",
+        "ean": null,
+        "pack_size": "Box of 20",
+        "variant": null,
+        "specifications": {
+          "sku": "CIG-001",
+          "name": "Montecristo No. 2",
+          "brand": "Montecristo",
+          "category": "Cigars",
+          "mpn": "MPN-M2",
+          "upc": "012345678905",
+          "pack_size": "Box of 20"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "VAPE-002",
+        "name": "GeekVape Aegis Legend 2",
+        "brand": "GeekVape",
+        "category_name": "Vape Devices/Accessories",
+        "mpn": "MPN-L2",
+        "upc": "098765432109",
+        "ean": null,
+        "pack_size": "Single Kit",
+        "variant": null,
+        "specifications": {
+          "sku": "VAPE-002",
+          "name": "GeekVape Aegis Legend 2",
+          "brand": "GeekVape",
+          "category": "Vape Devices/Accessories",
+          "mpn": "MPN-L2",
+          "upc": "098765432109",
+          "pack_size": "Single Kit"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "ERR-003",
+        "name": "MissingNameBrand",
+        "brand": "MissingNameBrand",
+        "category_name": "General",
+        "mpn": "MPN-E3",
+        "upc": null,
+        "ean": null,
+        "pack_size": "Pack",
+        "variant": null,
+        "specifications": {
+          "sku": "ERR-003",
+          "brand": "MissingNameBrand",
+          "mpn": "MPN-E3",
+          "upc": "INVALID_UPC",
+          "pack_size": "Pack"
+        },
+        "row_errors": [
+          "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+        ]
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T15:53:32.657422"
+  },
+  {
+    "id": "0fd210e6-72d3-44b8-be51-570dc8b4cc34",
+    "project_id": "f21f8ae9-054f-451f-977e-aa3e546bcf26",
+    "filename": "test_catalog.xlsx",
+    "file_size": 5175,
+    "row_count": 3,
+    "valid_count": 3,
+    "error_count": 0,
+    "error_report": {
+      "row_errors": []
+    },
+    "raw_data": [
+      {
+        "sku": "SKU-COH-001",
+        "name": "Premium Cuban Cigar Cohiba",
+        "brand": "Cohiba",
+        "category_name": "Cigars",
+        "mpn": "MPN-52",
+        "upc": "123456789012",
+        "ean": null,
+        "pack_size": "Box of 10",
+        "variant": null,
+        "specifications": {
+          "name": "Premium Cuban Cigar Cohiba",
+          "sku": "SKU-COH-001",
+          "brand": "Cohiba",
+          "category": "Cigars",
+          "upc": "123456789012",
+          "mpn": "MPN-52",
+          "price": 24.99,
+          "pack_size": "Box of 10"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-VAP-002",
+        "name": "Vape Pod starter Kit",
+        "brand": "Vaporesso",
+        "category_name": "Vape",
+        "mpn": "MPN-V1",
+        "upc": "234567890123",
+        "ean": null,
+        "pack_size": "Single Pack",
+        "variant": null,
+        "specifications": {
+          "name": "Vape Pod starter Kit",
+          "sku": "SKU-VAP-002",
+          "brand": "Vaporesso",
+          "category": "Vape",
+          "upc": "234567890123",
+          "mpn": "MPN-V1",
+          "price": 39.99,
+          "pack_size": "Single Pack"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-ZIP-003",
+        "name": "Special Edition Lighter",
+        "brand": "Zippo",
+        "category_name": "Accessories",
+        "mpn": "MPN-Z9",
+        "upc": "345678901234",
+        "ean": null,
+        "pack_size": "Single",
+        "variant": null,
+        "specifications": {
+          "name": "Special Edition Lighter",
+          "sku": "SKU-ZIP-003",
+          "brand": "Zippo",
+          "category": "Accessories",
+          "upc": "345678901234",
+          "mpn": "MPN-Z9",
+          "price": 15.0,
+          "pack_size": "Single"
+        },
+        "row_errors": []
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T16:03:14.464133"
+  },
+  {
+    "id": "5b1e38e1-b6e3-430e-b0bb-da7477b1ae95",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "filename": "test_catalog.csv",
+    "file_size": 274,
+    "row_count": 3,
+    "valid_count": 2,
+    "error_count": 1,
+    "error_report": {
+      "row_errors": [
+        {
+          "row": 4,
+          "sku": "ERR-003",
+          "name": "MissingNameBrand",
+          "errors": [
+            "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+          ]
+        }
+      ]
+    },
+    "raw_data": [
+      {
+        "sku": "CIG-001",
+        "name": "Montecristo No. 2",
+        "brand": "Montecristo",
+        "category_name": "Cigars",
+        "mpn": "MPN-M2",
+        "upc": "012345678905",
+        "ean": null,
+        "pack_size": "Box of 20",
+        "variant": null,
+        "specifications": {
+          "sku": "CIG-001",
+          "name": "Montecristo No. 2",
+          "brand": "Montecristo",
+          "category": "Cigars",
+          "mpn": "MPN-M2",
+          "upc": "012345678905",
+          "pack_size": "Box of 20"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "VAPE-002",
+        "name": "GeekVape Aegis Legend 2",
+        "brand": "GeekVape",
+        "category_name": "Vape Devices/Accessories",
+        "mpn": "MPN-L2",
+        "upc": "098765432109",
+        "ean": null,
+        "pack_size": "Single Kit",
+        "variant": null,
+        "specifications": {
+          "sku": "VAPE-002",
+          "name": "GeekVape Aegis Legend 2",
+          "brand": "GeekVape",
+          "category": "Vape Devices/Accessories",
+          "mpn": "MPN-L2",
+          "upc": "098765432109",
+          "pack_size": "Single Kit"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "ERR-003",
+        "name": "MissingNameBrand",
+        "brand": "MissingNameBrand",
+        "category_name": "General",
+        "mpn": "MPN-E3",
+        "upc": null,
+        "ean": null,
+        "pack_size": "Pack",
+        "variant": null,
+        "specifications": {
+          "sku": "ERR-003",
+          "brand": "MissingNameBrand",
+          "mpn": "MPN-E3",
+          "upc": "INVALID_UPC",
+          "pack_size": "Pack"
+        },
+        "row_errors": [
+          "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+        ]
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T16:03:16.564387"
+  },
+  {
+    "id": "ea5052eb-a6f2-4d5d-99b8-e3bc611cd067",
+    "project_id": "82c80506-9760-4356-a583-4daa6599e1f3",
+    "filename": "test_catalog.xlsx",
+    "file_size": 5176,
+    "row_count": 3,
+    "valid_count": 3,
+    "error_count": 0,
+    "error_report": {
+      "row_errors": []
+    },
+    "raw_data": [
+      {
+        "sku": "SKU-COH-001",
+        "name": "Premium Cuban Cigar Cohiba",
+        "brand": "Cohiba",
+        "category_name": "Cigars",
+        "mpn": "MPN-52",
+        "upc": "123456789012",
+        "ean": null,
+        "pack_size": "Box of 10",
+        "variant": null,
+        "specifications": {
+          "name": "Premium Cuban Cigar Cohiba",
+          "sku": "SKU-COH-001",
+          "brand": "Cohiba",
+          "category": "Cigars",
+          "upc": "123456789012",
+          "mpn": "MPN-52",
+          "price": 24.99,
+          "pack_size": "Box of 10"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-VAP-002",
+        "name": "Vape Pod starter Kit",
+        "brand": "Vaporesso",
+        "category_name": "Vape",
+        "mpn": "MPN-V1",
+        "upc": "234567890123",
+        "ean": null,
+        "pack_size": "Single Pack",
+        "variant": null,
+        "specifications": {
+          "name": "Vape Pod starter Kit",
+          "sku": "SKU-VAP-002",
+          "brand": "Vaporesso",
+          "category": "Vape",
+          "upc": "234567890123",
+          "mpn": "MPN-V1",
+          "price": 39.99,
+          "pack_size": "Single Pack"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "SKU-ZIP-003",
+        "name": "Special Edition Lighter",
+        "brand": "Zippo",
+        "category_name": "Accessories",
+        "mpn": "MPN-Z9",
+        "upc": "345678901234",
+        "ean": null,
+        "pack_size": "Single",
+        "variant": null,
+        "specifications": {
+          "name": "Special Edition Lighter",
+          "sku": "SKU-ZIP-003",
+          "brand": "Zippo",
+          "category": "Accessories",
+          "upc": "345678901234",
+          "mpn": "MPN-Z9",
+          "price": 15.0,
+          "pack_size": "Single"
+        },
+        "row_errors": []
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T16:48:50.689511"
+  },
+  {
+    "id": "4811e6bb-a4a6-4474-85a5-658c2f846c5a",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "filename": "test_catalog.csv",
+    "file_size": 274,
+    "row_count": 3,
+    "valid_count": 2,
+    "error_count": 1,
+    "error_report": {
+      "row_errors": [
+        {
+          "row": 4,
+          "sku": "ERR-003",
+          "name": "MissingNameBrand",
+          "errors": [
+            "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+          ]
+        }
+      ]
+    },
+    "raw_data": [
+      {
+        "sku": "CIG-001",
+        "name": "Montecristo No. 2",
+        "brand": "Montecristo",
+        "category_name": "Cigars",
+        "mpn": "MPN-M2",
+        "upc": "012345678905",
+        "ean": null,
+        "pack_size": "Box of 20",
+        "variant": null,
+        "specifications": {
+          "sku": "CIG-001",
+          "name": "Montecristo No. 2",
+          "brand": "Montecristo",
+          "category": "Cigars",
+          "mpn": "MPN-M2",
+          "upc": "012345678905",
+          "pack_size": "Box of 20"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "VAPE-002",
+        "name": "GeekVape Aegis Legend 2",
+        "brand": "GeekVape",
+        "category_name": "Vape Devices/Accessories",
+        "mpn": "MPN-L2",
+        "upc": "098765432109",
+        "ean": null,
+        "pack_size": "Single Kit",
+        "variant": null,
+        "specifications": {
+          "sku": "VAPE-002",
+          "name": "GeekVape Aegis Legend 2",
+          "brand": "GeekVape",
+          "category": "Vape Devices/Accessories",
+          "mpn": "MPN-L2",
+          "upc": "098765432109",
+          "pack_size": "Single Kit"
+        },
+        "row_errors": []
+      },
+      {
+        "sku": "ERR-003",
+        "name": "MissingNameBrand",
+        "brand": "MissingNameBrand",
+        "category_name": "General",
+        "mpn": "MPN-E3",
+        "upc": null,
+        "ean": null,
+        "pack_size": "Pack",
+        "variant": null,
+        "specifications": {
+          "sku": "ERR-003",
+          "brand": "MissingNameBrand",
+          "mpn": "MPN-E3",
+          "upc": "INVALID_UPC",
+          "pack_size": "Pack"
+        },
+        "row_errors": [
+          "Invalid UPC format 'INVALID_UPC' (must contain digits only)"
+        ]
+      }
+    ],
+    "status": "PROCESSED",
+    "created_at": "2026-10-08T16:48:53.114488"
   }
 ]

@@ -2616,5 +2616,418 @@
     "completed_at": "2026-10-07T20:47:36.872208",
     "created_at": "2026-10-07T20:47:36.863463",
     "updated_at": "2026-10-07T20:47:36.874591"
+  },
+  {
+    "id": "5d2fd4c4-e0d1-41cb-8e1f-abf532142187",
+    "project_id": "c864a1f4-9edf-46ec-9583-df20a31109f6",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "COMPLETED",
+    "payload": {
+      "source_id": "d8ca1cc5-97e3-4609-bfe0-d2ae3ce1f434",
+      "source_name": "Famous Smoke Shop",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 1,
+    "worker_id": "Worker-04",
+    "retry_count": 1,
+    "max_retries": 3,
+    "error_message": "Retry #1: EXECUTION_FAILURE: (sqlite3.IntegrityError) UNIQUE constraint failed: execution_checkpoints.job_id\n[SQL: INSERT INTO execution_checkpoints (id, job_id, step_number, completed_item_ids, state_data, updated_at) VALUES (?, ?, ?, ?, ?, ?)]\n[parameters: ('2cd8b065-6514-4236-9986-a90e8d7b1533', '5d2fd4c4-e0d1-41cb-8e1f-abf532142187', 1, '[\"6994c9ab-039a-420f-a9b5-451e6b236352\"]', 'null', '2026-10-08 15:57:11.576943')]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+    "scheduled_at": "2026-10-08T15:57:16.603807",
+    "started_at": "2026-10-08T15:57:11.491504",
+    "completed_at": "2026-10-08T15:57:11.651079",
+    "created_at": "2026-10-08T15:53:33.678136",
+    "updated_at": "2026-10-08T15:57:11.651810"
+  },
+  {
+    "id": "4088d209-88e4-4f81-8a85-b87f36d5acb9",
+    "project_id": "31af351d-50b9-4735-bd25-bb3ad73d78be",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "COMPLETED",
+    "payload": {
+      "source_id": "a2b97559-f931-4432-93a5-383f5d5b0db5",
+      "source_name": "Famous Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 2,
+    "processed_items": 2,
+    "worker_id": "Worker-03",
+    "retry_count": 1,
+    "max_retries": 3,
+    "error_message": "Retry #1: EXECUTION_FAILURE: (sqlite3.IntegrityError) UNIQUE constraint failed: execution_checkpoints.job_id\n[SQL: INSERT INTO execution_checkpoints (id, job_id, step_number, completed_item_ids, state_data, updated_at) VALUES (?, ?, ?, ?, ?, ?)]\n[parameters: ('cd1d67c4-d773-41ac-8448-22712ceb70d7', '4088d209-88e4-4f81-8a85-b87f36d5acb9', 1, '[\"eb43417d-5fa4-48fc-81e7-2ca6005c770c\"]', 'null', '2026-10-08 15:57:13.216297')]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+    "scheduled_at": "2026-10-08T15:57:18.271699",
+    "started_at": "2026-10-08T15:57:12.813427",
+    "completed_at": "2026-10-08T15:57:13.490362",
+    "created_at": "2026-10-08T15:53:33.704680",
+    "updated_at": "2026-10-08T15:57:13.490917"
+  },
+  {
+    "id": "92d7c74e-18e2-48e3-89ac-4cfdc786557f",
+    "project_id": "a262c757-c54f-4ff4-b398-13f8d5a96907",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "source_name": "Test Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 0,
+    "processed_items": 0,
+    "worker_id": "Worker-02",
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:53:33.749461",
+    "started_at": "2026-10-08T15:57:11.477478",
+    "completed_at": "2026-10-08T15:57:11.518777",
+    "created_at": "2026-10-08T15:53:33.749464",
+    "updated_at": "2026-10-08T15:57:11.519109"
+  },
+  {
+    "id": "2075c3da-b340-4ba5-86bf-0eb4140f623b",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "67ead796-4333-4856-80ae-b757dad83c90"
+      ],
+      "source_ids": [
+        "17eab3d7-11b5-4690-900f-5658b26430cc"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:53:37.219362",
+    "started_at": null,
+    "completed_at": "2026-10-08T15:53:37.230342",
+    "created_at": "2026-10-08T15:53:37.219365",
+    "updated_at": "2026-10-08T15:53:37.231316"
+  },
+  {
+    "id": "25f5e67b-115a-45aa-98fa-883c09f1d675",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "task_type": "SOURCE_COLLECTION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "source_ids": [
+        "34fd15dd-0e8c-4ddc-8831-38881dfd327e"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 3,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:53:38.166768",
+    "started_at": null,
+    "completed_at": "2026-10-08T15:53:38.175964",
+    "created_at": "2026-10-08T15:53:38.166773",
+    "updated_at": "2026-10-08T15:53:38.177808"
+  },
+  {
+    "id": "55d0ca81-32f6-4b28-a17f-22b6b886fcc5",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "task_type": "VERIFICATION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "c94499a8-34ad-40e4-a9cd-2a2336535644"
+      ],
+      "source_ids": [
+        "34fd15dd-0e8c-4ddc-8831-38881dfd327e"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:53:38.223943",
+    "started_at": null,
+    "completed_at": "2026-10-08T15:53:38.232432",
+    "created_at": "2026-10-08T15:53:38.223946",
+    "updated_at": "2026-10-08T15:53:38.233079"
+  },
+  {
+    "id": "993a682a-48e3-4af9-a628-49753bcfcba5",
+    "project_id": "14330f04-69d1-4bfc-9a05-ad1b75132602",
+    "task_type": "MONITORING_SWEEP",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "trigger": "MANUAL_EXECUTION"
+    },
+    "progress": 100.0,
+    "total_items": 10,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:53:38.331148",
+    "started_at": null,
+    "completed_at": "2026-10-08T15:53:38.340659",
+    "created_at": "2026-10-08T15:53:38.331152",
+    "updated_at": "2026-10-08T15:53:38.345194"
+  },
+  {
+    "id": "64feb0f9-0509-4af9-949e-20c4935770f4",
+    "project_id": "b927cf8b-6d8b-40b6-b312-9d80f7a6a974",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "COMPLETED",
+    "payload": {
+      "source_id": "17eab3d7-11b5-4690-900f-5658b26430cc",
+      "source_name": "Famous Smoke Shop",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 1,
+    "worker_id": "Worker-01",
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T15:57:11.498621",
+    "started_at": "2026-10-08T15:57:14.303362",
+    "completed_at": "2026-10-08T15:57:14.416733",
+    "created_at": "2026-10-08T15:57:11.498624",
+    "updated_at": "2026-10-08T15:57:14.417098"
+  },
+  {
+    "id": "7416be5e-2910-4c64-b1ee-f21adb060aa6",
+    "project_id": "e143ddc9-d13c-4078-af77-ff31dfc615c9",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "COMPLETED",
+    "payload": {
+      "source_id": "e880cd21-5ceb-4193-9afc-f78e118780e5",
+      "source_name": "Famous Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 2,
+    "processed_items": 2,
+    "worker_id": "Worker-04",
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:17.389106",
+    "started_at": "2026-10-08T16:03:21.137922",
+    "completed_at": "2026-10-08T16:03:21.354778",
+    "created_at": "2026-10-08T16:03:17.389111",
+    "updated_at": "2026-10-08T16:03:21.355132"
+  },
+  {
+    "id": "82c95d62-5875-4a77-b5e3-eaecded107f4",
+    "project_id": "420df7f5-7b02-4488-841e-ecf2e0b5511f",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "source_name": "Test Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 0,
+    "processed_items": 0,
+    "worker_id": "Worker-03",
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:17.712033",
+    "started_at": "2026-10-08T16:03:20.781744",
+    "completed_at": "2026-10-08T16:03:20.812324",
+    "created_at": "2026-10-08T16:03:17.712038",
+    "updated_at": "2026-10-08T16:03:20.812867"
+  },
+  {
+    "id": "56d2e680-1880-4d3b-ad2d-3651f1254e9f",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "dc67fb8b-41dd-40f8-81d3-3b99d3c44e20"
+      ],
+      "source_ids": [
+        "c1233fdb-1589-47fd-8b74-ee64d7e2c491"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:21.409831",
+    "started_at": null,
+    "completed_at": "2026-10-08T16:03:21.421474",
+    "created_at": "2026-10-08T16:03:21.409833",
+    "updated_at": "2026-10-08T16:03:21.422739"
+  },
+  {
+    "id": "fa94917d-a7d4-46c6-a5de-f9bee892c924",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "task_type": "SOURCE_COLLECTION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "source_ids": [
+        "0c60b30b-96ce-48d9-8d80-a9bad17277c8"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 3,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:22.404223",
+    "started_at": null,
+    "completed_at": "2026-10-08T16:03:22.411039",
+    "created_at": "2026-10-08T16:03:22.404228",
+    "updated_at": "2026-10-08T16:03:22.411397"
+  },
+  {
+    "id": "f4118d6f-e185-4de9-9cee-9cb645c30fda",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "task_type": "VERIFICATION",
+    "priority": 2,
+    "status": "COMPLETED",
+    "payload": {
+      "product_ids": [
+        "26a17e0f-9bcd-425d-b17e-0f4865a4e76f"
+      ],
+      "source_ids": [
+        "0c60b30b-96ce-48d9-8d80-a9bad17277c8"
+      ]
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:22.463669",
+    "started_at": null,
+    "completed_at": "2026-10-08T16:03:22.473473",
+    "created_at": "2026-10-08T16:03:22.463677",
+    "updated_at": "2026-10-08T16:03:22.474068"
+  },
+  {
+    "id": "6bd2ac40-fbac-4ba9-9af0-bbdeb25a4ec6",
+    "project_id": "6b08988f-abc6-450f-9ce6-3989c600e09f",
+    "task_type": "MONITORING_SWEEP",
+    "priority": 1,
+    "status": "COMPLETED",
+    "payload": {
+      "trigger": "MANUAL_EXECUTION"
+    },
+    "progress": 100.0,
+    "total_items": 10,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:22.566615",
+    "started_at": null,
+    "completed_at": "2026-10-08T16:03:22.574827",
+    "created_at": "2026-10-08T16:03:22.566618",
+    "updated_at": "2026-10-08T16:03:22.577133"
+  },
+  {
+    "id": "1b63e081-dcd0-4fc1-8e9d-a64af33d5e6b",
+    "project_id": "b28b6ee7-86b0-474f-b6c8-922288813423",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "COMPLETED",
+    "payload": {
+      "source_id": "c1233fdb-1589-47fd-8b74-ee64d7e2c491",
+      "source_name": "Famous Smoke Shop",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 100.0,
+    "total_items": 1,
+    "processed_items": 1,
+    "worker_id": "Worker-01",
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:03:26.953179",
+    "started_at": "2026-10-08T16:03:27.273077",
+    "completed_at": "2026-10-08T16:03:27.360642",
+    "created_at": "2026-10-08T16:03:26.953182",
+    "updated_at": "2026-10-08T16:03:27.360957"
+  },
+  {
+    "id": "6ed81d85-71c3-4c36-b6d6-64c41bea9fd2",
+    "project_id": "704e5547-a225-4ea3-aab6-c7414f932164",
+    "task_type": "MONITORING",
+    "priority": 3,
+    "status": "QUEUED",
+    "payload": {
+      "source_id": "ce1ef688-beff-4042-9ef1-857bac002033",
+      "source_name": "Famous Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 0.0,
+    "total_items": 0,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:48:53.831167",
+    "started_at": null,
+    "completed_at": null,
+    "created_at": "2026-10-08T16:48:53.831168",
+    "updated_at": "2026-10-08T16:48:53.831169"
+  },
+  {
+    "id": "64658844-2b4d-48af-9800-047af76c7ac7",
+    "project_id": "7186c5e8-d132-4bc7-a00d-acda150ad08d",
+    "task_type": "VERIFICATION",
+    "priority": 1,
+    "status": "QUEUED",
+    "payload": {
+      "source_name": "Test Cigar Store",
+      "adapter_name": "CigarSourceAdapter"
+    },
+    "progress": 0.0,
+    "total_items": 0,
+    "processed_items": 0,
+    "worker_id": null,
+    "retry_count": 0,
+    "max_retries": 3,
+    "error_message": null,
+    "scheduled_at": "2026-10-08T16:48:54.115176",
+    "started_at": null,
+    "completed_at": null,
+    "created_at": "2026-10-08T16:48:54.115180",
+    "updated_at": "2026-10-08T16:48:54.115181"
   }
 ]

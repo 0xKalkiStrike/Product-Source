@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { ShieldCheck, Lock, Mail, User as UserIcon, AlertCircle } from 'lucide-react';
@@ -12,8 +12,14 @@ export const Register: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { register } = useAuth();
+  const { token, loading: authLoading, register } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authLoading && token) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [token, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

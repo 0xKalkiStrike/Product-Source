@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { ShieldCheck, Lock, Mail, AlertCircle } from 'lucide-react';
@@ -9,8 +9,14 @@ export const Login: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
+  const { token, loading: authLoading, login } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authLoading && token) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [token, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +24,7 @@ export const Login: React.FC = () => {
     setLoading(true);
     try {
       await login(email, password);
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Authentication failed. Check credentials.');
     } finally {

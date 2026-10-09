@@ -25,6 +25,10 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  if (config.url && (config.url.includes('/projects/undefined') || config.url.endsWith('/projects/undefined'))) {
+    console.warn('[API Interceptor] Blocked request with undefined project ID:', config.url);
+    return Promise.reject(new axios.Cancel('Request cancelled: project ID is undefined'));
+  }
   return config;
 });
 
